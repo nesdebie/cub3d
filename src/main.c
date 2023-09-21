@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:22 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/09/21 12:22:46 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/09/21 12:28:33 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,17 @@ int	close_game(t_game *game)
 
 static int	deal_key(int key_code, t_game *game)
 {
-	if (key_code == KEY_ESC)
+	if (key_code == KEY_ESC || key_code == KEY_Q)
 		close_game(game);
 	else if (!game->flag.held_keys)
 	{
-		if (key_code == KEY_W)
+		if (key_code == KEY_W || key_code == KEY_UP)
 			return(0);//ft_move(game, &(game->player.spr), UP);
-		else if (key_code == KEY_A)
+		else if (key_code == KEY_A || key_code == KEY_LEFT)
 			return (0);//ft_move(game, &(game->player.spr), LEFT);
-		else if (key_code == KEY_S)
+		else if (key_code == KEY_S || key_code == KEY_DOWN)
 			return (0);//ft_move(game, &(game->player.spr), DOWN);
-		else if (key_code == KEY_D)
+		else if (key_code == KEY_D || key_code == KEY_RIGHT)
 			return (0);//ft_move(game, &(game->player.spr), RIGHT);
 	}
 	return (0);
@@ -55,8 +55,8 @@ int	main(int argc, char **argv)
 		ft_error("Too many arguments (max. 1)");
 	if (!ft_strnstr(argv[1], ".cub", ft_strlen(argv[1])))
 		ft_error("Not a '<name>.cub' file.");
-	file_read(&game, argv[1]);
-	init_game(&game);
+	//file_read(&game, argv[1]);
+	//init_game(&game);
 	mlx_hook(game.win, KEYBOARD_CODE, 0, &deal_key, &game);
 	mlx_hook(game.win, RED_CROSS, 0, &close_game, &game);
 	mlx_loop_hook(game.mlx, &cub3d, &game);

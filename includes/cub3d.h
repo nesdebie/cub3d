@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/09/21 12:21:21 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/09/21 12:27:39 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,17 @@
 # define RIGHT		4
 
 # define KEY_ESC	53
+# define KEY_Q      12
 
 # define KEY_W	13
 # define KEY_A	0
 # define KEY_S	1
 # define KEY_D	2
+
+# define KEY_LEFT	123
+# define KEY_RIGHT	124
+# define KEY_DOWN	125
+# define KEY_UP	    126
 
 # define RED_CROSS 17
 # define KEYBOARD_CODE 2
