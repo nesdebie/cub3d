@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/09/21 12:27:39 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/09/28 08:22:55 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,10 @@
 
 # define KEY_LEFT	123
 # define KEY_RIGHT	124
-# define KEY_DOWN	125
-# define KEY_UP	    126
 
 # define RED_CROSS 17
-# define KEYBOARD_CODE 2
+# define PRESS_KEY 2
+# define RELEASE_KEY 3
 
 typedef struct s_flags
 {

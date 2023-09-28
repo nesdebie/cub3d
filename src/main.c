@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:22 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/09/21 14:49:58 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/09/28 08:22:25 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,18 @@ static int	deal_key(int key_code, t_game *game)
 		close_game(game);
 	else if (!game->flag.held_keys)
 	{
-		if (key_code == KEY_W || key_code == KEY_UP)
+		if (key_code == KEY_W)
 			return(0);//ft_move(game, &(game->player.spr), UP);
-		else if (key_code == KEY_A || key_code == KEY_LEFT)
+		else if (key_code == KEY_A)
 			return (0);//ft_move(game, &(game->player.spr), LEFT);
-		else if (key_code == KEY_S || key_code == KEY_DOWN)
+		else if (key_code == KEY_S)
 			return (0);//ft_move(game, &(game->player.spr), DOWN);
-		else if (key_code == KEY_D || key_code == KEY_RIGHT)
+		else if (key_code == KEY_D)
 			return (0);//ft_move(game, &(game->player.spr), RIGHT);
+		else if (key_code == KEY_LEFT)
+			return (0);//move camera
+		else if (key_code == KEY_RIGHT)
+			return (0);//move camera
 	}
 	return (0);
 }
@@ -57,7 +61,7 @@ int	main(int argc, char **argv)
 		ft_error("Not a '<name>.cub' file.");
 	read_file(&game, argv[1]);
 	//init_game(&game);
-	mlx_hook(game.win, KEYBOARD_CODE, 0, &deal_key, &game);
+	mlx_hook(game.win, PRESS_KEY, 0, &deal_key, &game);
 	mlx_hook(game.win, RED_CROSS, 0, &close_game, &game);
 	mlx_loop_hook(game.mlx, &cub3d, &game);
 	mlx_loop(game.mlx);
