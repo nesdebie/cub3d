@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/02 15:22:15 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/03 00:07:37 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,11 @@ int	args_error(int ac, char *filename);
 
 /* READER */
 int	read_file(t_game *game, char *filename);
+
+/* FREE */
+void	ft_freesplit(char **arr);
+void	clear_read(t_game *game);
+void    clear_temp_str(t_game *game);
 
 /* TEMP */
 int	add_ea(t_game *game, char **arr);

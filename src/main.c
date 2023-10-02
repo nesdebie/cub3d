@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:22 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/02 15:10:30 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/03 00:10:56 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ return (0);
 }*/
 
 
+
 int	init_flags(t_game *game)
 {
 	game = malloc(sizeof(t_game *));
@@ -86,28 +87,27 @@ int	check_extension(char *filename)
 
 int	main(int argc, char **argv)
 {
-	t_game	game;
+	t_game	*game;
 
-	(void) game;
+	game = NULL;
 	if (argc < 2 || argc > 2)
 		return(args_error(argc, NULL));
 	if (check_extension(argv[1]))
 		return(args_error(argc, argv[1]));
-	if (init_flags(&game))
+	if (init_flags(game))
 		return (1);
-	if (read_file(&game, argv[1]))
+	if (read_file(game, argv[1]))
 	{
-		//FREE LES MALLOCS DE TEMP
-		free(&game);
+		clear_read(game);
 		return (1);
-	}
-	//FREE LES MALLOC DE TEMP 
-	free(&game);
-	/*
+	} 
 	//init_game(&game);
-	mlx_hook(game.win, PRESS_KEY, 0, &deal_key, &game);
-	mlx_hook(game.win, RED_CROSS, 0, &close_game, &game);
-	mlx_loop_hook(game.mlx, &cub3d, &game);
-	mlx_loop(game.mlx);*/
+	clear_temp_str(game); // apres init game
+	//mlx_hook(game.win, PRESS_KEY, 0, &deal_key, &game);
+	//mlx_hook(game.win, RED_CROSS, 0, &close_game, &game);
+	//mlx_loop_hook(game.mlx, &cub3d, &game);
+	//mlx_loop(game.mlx);*/
+	ft_freesplit(game->map); // a add dans quit
+	free(game); // a add dans quit
 	return (0);
 }

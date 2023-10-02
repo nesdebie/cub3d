@@ -3,7 +3,8 @@ NAME = cub3d
 SRCS = 	src/main.c \
 		src/errors.c \
 		src/reader.c \
-		src/reader_utils.c
+		src/reader_utils.c \
+		src/ft_free.c
 
 SRCS_B = 	src/main.c
 
@@ -15,7 +16,9 @@ CC 		= cc
 
 CFLAGS 	= -Wall -Wextra -Werror
 
-MLXFLAGS = -lmlx -framework OpenGL -framework AppKit
+#MLXFLAGS = -lmlx -framework OpenGL -framework AppKit # version 19macos
+
+MLXFLAGS = -framework OpenGL -framework AppKit # version macos
 
 .c.o:		%.o : %.c
 	@${CC} ${CFLAGS} -Imlx -c $< -o $@

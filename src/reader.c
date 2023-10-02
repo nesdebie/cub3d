@@ -3,25 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   reader.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 14:34:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/02 15:23:52 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/03 00:11:58 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-static void	ft_freesplit(char **arr)
-{
-	int i;
-
-	i = 0;
-	while (arr[i] != 0)
-		free(arr[i++]);
-	free(arr[i]);
-	free(arr);
-}
 
 static int	parse_texture(t_game *game, char *line)
 {
