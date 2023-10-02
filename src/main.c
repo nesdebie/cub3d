@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:22 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/02 11:07:10 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/02 11:53:22 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,25 @@ static int	cub3d(t_game *game)
 	return (0);
 }*/
 
-
+int read_file(t_game *game, char *filename)
+{
+	int fd;
+	char *tmp;
+	(void) game;
+	
+	fd = open(filename, O_RDONLY);
+	if (fd < 1)
+		return (1);
+	tmp = get_next_line(fd);
+	while (tmp)
+	{
+		ft_putstr_fd(tmp, 1);// CHANGE CHECK LINE
+		free (tmp);
+		tmp = get_next_line(fd);
+	}
+	free (tmp);
+	return (0);
+}
 
 int	check_extension(char *filename)
 {
@@ -77,7 +95,9 @@ int	main(int argc, char **argv)
 		return(args_error(argc, NULL));
 	if (check_extension(argv[1]))
 		return(args_error(argc, argv[1]));
-	/*read_file(&game, argv[1]);
+	if (read_file(&game, argv[1]))
+		return (1);
+	/*
 	//init_game(&game);
 	mlx_hook(game.win, PRESS_KEY, 0, &deal_key, &game);
 	mlx_hook(game.win, RED_CROSS, 0, &close_game, &game);

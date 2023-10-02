@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 22:55:21 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/05/26 16:07:59 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/02 11:50:45 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,6 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 char	*ft_strjoingnl(char *s1, char *s2);
 char	*ft_free(char *s1, char *s2);
-int		get_next_line(int fd, char **line);
+char 	*get_next_line(int fd);
 
 #endif

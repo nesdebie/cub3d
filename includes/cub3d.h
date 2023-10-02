@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/02 11:07:39 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/02 11:59:16 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,64 +41,24 @@
 # define PRESS_KEY 2
 # define RELEASE_KEY 3
 
-typedef struct s_flags
+typedef	struct	s_spr
 {
-	int		held_keys;
-}			t_flags;
+	void	*no;
+	void	*so;
+	void	*we;
+	void	*ea;
+	int		f[3];
+	int		c[3];
+}				t_spr;
 
-typedef struct s_check
-{
-	int				x;
-	int				y;
-	struct s_check	*next;
-}			t_check;
-
-typedef struct s_img
-{
-	void	*ptr;
-	int		h;
-	int		w;
-}			t_img;
-
-typedef struct s_coord
-{
-	int		x;
-	int		y;
-}			t_coord;
-
-typedef struct s_tile
-{
-	t_img	N;
-	t_img	S;
-	t_img	E;
-	t_img	W;
-}			t_tile;
-
-typedef struct s_player
-{
-	int		step;
-	int		item;
-}			t_player;
-
-typedef struct s_map
-{
-	int		rows;
-	int		cols;
-	char	**coord;
-	char	*file;
-}			t_map;
 
 typedef struct s_game
 {
-	void		*mlx;
-	void		*win;
-	t_img		img64;
-	t_tile		tile;
-	t_player	player;
-	t_coord		dir2coord[5];
-	t_map		maps;
-	t_check		*check;
-	t_flags		flag;
+	void	*mlx;
+	void	*win;
+	char	**map;
+	t_spr	sprites;
+
 }				t_game;
 
 /* ERRORS */
