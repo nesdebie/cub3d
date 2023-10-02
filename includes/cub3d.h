@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/02 12:56:11 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/02 14:38:57 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,16 @@
 
 typedef	struct	s_spr
 {
-	void	*no;
-	void	*so;
-	void	*we;
-	void	*ea;
-	int		f[3];
-	int		c[3];
+	void	*n;
+	void	*s;
+	void	*w;
+	void	*e;
+	char	*no;
+	char	*so;
+	char	*we;
+	char	*ea;
+	char	*f;
+	char	*c;
 }				t_spr;
 
 typedef struct	s_flag
@@ -65,6 +69,7 @@ typedef struct	s_flag
 	int e_flag;
 	int	c_flag;
 	int	f_flag;
+	int cnt;
 }				t_flag;
 
 
@@ -79,5 +84,15 @@ typedef struct s_game
 
 /* ERRORS */
 int args_error(int ac, char *filename);
+
+/* READER */
+int read_file(t_game *game, char *filename);
+
+/* TEMP */
+int add_ea(t_game *game, char **arr);
+int add_we(t_game *game, char **arr);
+int add_so(t_game *game, char **arr);
+int add_no(t_game *game, char **arr);
+int add_fc(t_game *game, char **arr, char flag);
 
 #endif

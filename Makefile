@@ -1,7 +1,9 @@
 NAME = cub3d
 
 SRCS = 	src/main.c \
-		src/errors.c
+		src/errors.c \
+		src/reader.c \
+		src/reader_utils.c
 
 SRCS_B = 	src/main.c
 
