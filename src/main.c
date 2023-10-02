@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:22 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/02 11:53:22 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/02 13:00:52 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,22 +49,82 @@ static int	cub3d(t_game *game)
 	return (0);
 }*/
 
+int check_line(char *line, int flag)
+{
+	if (flag == ERROR_FLAG)
+		return (1);
+	ft_putstr_fd(line, 1); // DEBUG
+	return (0);
+}
+
+int isinset(char c, char *set)
+{
+	int i;
+
+	i = 0;
+	while(set[i])
+	{
+		if (c == set[i])
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int	set_line_flag2(char *line, t_game *game)
+{
+	(void)line;
+	(void)game;
+	//int	ret;
+	//int i;
+
+	//i = 0;
+	/*
+	while (line[i] && !isinset(line[i], " NSWE01\n"))
+	{
+		if (line[i] == '\n')
+			return (MAP_FLAG);
+		if (!isinset(line[i], "NSWE"))
+			game->flags.p_flag++;
+		if (game->flags.p_flag > 1)
+			return (ERROR_FLAG);
+		i++;
+	}*/
+	return (0);
+}
+
+int	set_line_flag(char *line, t_game *game)
+{
+	if (!line)
+		return (ERROR_FLAG);
+	if (line[0] == '\n' && game->flags.l_flag == MAP_FLAG)
+		return(ERROR_FLAG);
+	return (set_line_flag2(line, game));
+}
+
 int read_file(t_game *game, char *filename)
 {
 	int fd;
 	char *tmp;
-	(void) game;
-	
+
+	game->flags.l_flag = 0;
+	game->flags.p_flag = 0;
 	fd = open(filename, O_RDONLY);
 	if (fd < 1)
 		return (1);
 	tmp = get_next_line(fd);
 	while (tmp)
 	{
-		ft_putstr_fd(tmp, 1);// CHANGE CHECK LINE
+		game->flags.l_flag = set_line_flag(tmp, game);
+		if (check_line(tmp, game->flags.l_flag))
+		{
+			free(tmp);
+			return (1);
+		}
 		free (tmp);
 		tmp = get_next_line(fd);
 	}
+	close(fd);
 	free (tmp);
 	return (0);
 }

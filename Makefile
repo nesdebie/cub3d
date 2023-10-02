@@ -21,7 +21,8 @@ MLXFLAGS = -lmlx -framework OpenGL -framework AppKit
 all: 		$(NAME)
 
 $(NAME):	$(OBJS)
-	make re -C ./libft
+	make -C ./libft
+	make -C ./mlx
 	$(CC) $(OBJS) $(MLXFLAGS) -Llibft -lft -o $(NAME)
 
 
@@ -31,6 +32,7 @@ bonus:		$(OBJS_B)
 
 clean:
 	make clean -C ./libft
+	make clean -C ./mlx
 	rm -f $(OBJS) $(OBJS_B)
 
 fclean: 	clean

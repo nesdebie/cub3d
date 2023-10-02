@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/02 11:59:16 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/02 12:56:11 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,10 @@
 # define PRESS_KEY 2
 # define RELEASE_KEY 3
 
+# define TEXTURE_FLAG 0
+# define MAP_FLAG 1
+# define ERROR_FLAG 2
+
 typedef	struct	s_spr
 {
 	void	*no;
@@ -51,6 +55,18 @@ typedef	struct	s_spr
 	int		c[3];
 }				t_spr;
 
+typedef struct	s_flag
+{
+	int	l_flag;
+	int	p_flag;
+	int	n_flag;
+	int s_flag;
+	int	w_flag;
+	int e_flag;
+	int	c_flag;
+	int	f_flag;
+}				t_flag;
+
 
 typedef struct s_game
 {
@@ -58,7 +74,7 @@ typedef struct s_game
 	void	*win;
 	char	**map;
 	t_spr	sprites;
-
+	t_flag	flags;
 }				t_game;
 
 /* ERRORS */
