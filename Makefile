@@ -1,6 +1,7 @@
 NAME = cub3d
 
-SRCS = 	src/main.c
+SRCS = 	src/main.c \
+		src/errors.c
 
 SRCS_B = 	src/main.c
 

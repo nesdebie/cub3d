@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
+/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:22 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/09/28 08:22:25 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/02 11:07:10 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
+/*
 int	close_game(t_game *game)
 {
 	if (game->mlx && game->win)
@@ -34,9 +34,9 @@ static int	deal_key(int key_code, t_game *game)
 		else if (key_code == KEY_D)
 			return (0);//ft_move(game, &(game->player.spr), RIGHT);
 		else if (key_code == KEY_LEFT)
-			return (0);//move camera
+			return (0);//move camera left
 		else if (key_code == KEY_RIGHT)
-			return (0);//move camera
+			return (0);//move camera right
 	}
 	return (0);
 }
@@ -47,23 +47,41 @@ static int	cub3d(t_game *game)
 	draw_sprites(game);
     //TO DO
 	return (0);
+}*/
+
+
+
+int	check_extension(char *filename)
+{
+	unsigned long	i;
+
+	i = 0;
+	if (!ft_strnstr(filename, ".cub", ft_strlen(filename)))
+		return (1);
+	else
+	{
+		while (i < ft_strlen(filename) - 4)
+			i++;
+		if (ft_strncmp(&filename[i], ".cub", 5))
+			return (1);
+	}
+	return (0);
 }
 
 int	main(int argc, char **argv)
 {
 	t_game	game;
 
-	if (argc < 2)
-		ft_error("No argument (min. 1)");
-	if (argc > 2)
-		ft_error("Too many arguments (max. 1)");
-	if (!ft_strnstr(argv[1], ".cub", ft_strlen(argv[1])))
-		ft_error("Not a '<name>.cub' file.");
-	read_file(&game, argv[1]);
+	(void) game;
+	if (argc < 2 || argc > 2)
+		return(args_error(argc, NULL));
+	if (check_extension(argv[1]))
+		return(args_error(argc, argv[1]));
+	/*read_file(&game, argv[1]);
 	//init_game(&game);
 	mlx_hook(game.win, PRESS_KEY, 0, &deal_key, &game);
 	mlx_hook(game.win, RED_CROSS, 0, &close_game, &game);
 	mlx_loop_hook(game.mlx, &cub3d, &game);
-	mlx_loop(game.mlx);
+	mlx_loop(game.mlx);*/
 	return (0);
 }

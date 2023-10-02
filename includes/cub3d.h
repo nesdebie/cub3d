@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
+/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/09/28 08:22:55 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/02 11:07:39 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <string.h>
 # include <unistd.h>
 # include <fcntl.h>
-# include <mlx.h>
+# include <../mlx/mlx.h>
 # include "../libft/libft.h"
 
 # define NO_MOVE	0
@@ -100,5 +100,8 @@ typedef struct s_game
 	t_check		*check;
 	t_flags		flag;
 }				t_game;
+
+/* ERRORS */
+int args_error(int ac, char *filename);
 
 #endif
