@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 14:29:04 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/02 14:38:26 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/02 15:09:52 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,23 +58,23 @@ int add_no(t_game *game, char **arr)
 
 int add_fc(t_game *game, char **arr, char flag)
 {
-    if (flag == 'f')
-    {
-        if (game->flags.f_flag)
-            return (1);
-        game->sprites.f = ft_strdup(arr[1]);
-        if (!game->sprites.f)
-            return (1);
-        game->flags.f_flag++;
-    }
-    if (flag == 'c')
-    {
-        if (game->flags.c_flag)
-            return (1);
-        game->sprites.c = ft_strdup(arr[1]);
-        if (!game->sprites.c)
-            return (1);
-        game->flags.c_flag++;
-    }
+	if (flag == 'f')
+	{
+		if (game->flags.f_flag)
+			return (1);
+		game->sprites.f = ft_strdup(arr[1]);
+		if (!game->sprites.f)
+			return (1);
+		game->flags.f_flag++;
+	}
+	if (flag == 'c')
+	{
+		if (game->flags.c_flag)
+			return (1);
+		game->sprites.c = ft_strdup(arr[1]);
+		if (!game->sprites.c)
+			return (1);
+		game->flags.c_flag++;
+	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/02 14:38:57 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/02 15:22:15 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,16 +83,16 @@ typedef struct s_game
 }				t_game;
 
 /* ERRORS */
-int args_error(int ac, char *filename);
+int	args_error(int ac, char *filename);
 
 /* READER */
-int read_file(t_game *game, char *filename);
+int	read_file(t_game *game, char *filename);
 
 /* TEMP */
-int add_ea(t_game *game, char **arr);
-int add_we(t_game *game, char **arr);
-int add_so(t_game *game, char **arr);
-int add_no(t_game *game, char **arr);
-int add_fc(t_game *game, char **arr, char flag);
+int	add_ea(t_game *game, char **arr);
+int	add_we(t_game *game, char **arr);
+int	add_so(t_game *game, char **arr);
+int	add_no(t_game *game, char **arr);
+int	add_fc(t_game *game, char **arr, char flag);
 
 #endif
