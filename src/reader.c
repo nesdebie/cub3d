@@ -6,7 +6,7 @@
 /*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 14:34:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/03 00:11:58 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/03 00:57:06 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ static int	parse_texture(t_game *game, char *line)
 	ret = 1;
 	arr = ft_split(line, ' ');
 	if (!arr)
-		return(1);
-	if (arr[2] != 0)
+		return (reader_error(MALLOC));
+	if (arr[1] == 0 || arr[2] != 0)
 	{
 		ft_freesplit(arr);
-		return (1);
+		return (reader_error(FORMAT));
 	}
 	if (!ft_strncmp(arr[0], "NO", 3))
 		ret = add_no(game, arr);
@@ -49,7 +49,7 @@ int read_file(t_game *game, char *filename)
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 1)
-		return (1);
+		return (reader_error(FILE_ERROR));
 	tmp = get_next_line(fd);
 	while (tmp && game->flags.cnt < 6)
 	{
@@ -65,16 +65,26 @@ int read_file(t_game *game, char *filename)
 		free (tmp);
 		tmp = get_next_line(fd);
 	}
+	while (tmp)
+	{
+		if (tmp[0] == '\n')
+			tmp = get_next_line(fd);
+	}
     while (tmp)
     {
         if (tmp[0] == '\n')
         {
             free(tmp);
-            return (1);
+            return (reader_error(FORMAT));
         }
-        //strjoin petit a petit puis split sur \n
+		game->map_str = ft_strjoingnl(game->map_str, tmp);
+		if (!game->map_str)
+			return (reader_error(MALLOC));
+		free(tmp);
         tmp = get_next_line(fd);
     }
+	if (!game->map_str)
+		return (reader_error(FORMAT));
 	free (tmp);
 	close(fd);
 	return (0);

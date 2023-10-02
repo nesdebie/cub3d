@@ -6,7 +6,7 @@
 /*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 00:03:27 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/03 00:07:27 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/03 00:30:47 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ void    clear_temp_str(t_game *game)
 		free(game->sprites.f);
 	if (game->flags.c_flag)
 		free(game->sprites.c);
+    if (game->map_str)
+		free(game->map_str);
 }
 
 void	clear_read(t_game *game)
 {
     clear_temp_str(game);
-	if (game->map)
-		ft_freesplit(game->map);
 	free(game);
 }

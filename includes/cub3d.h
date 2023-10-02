@@ -6,7 +6,7 @@
 /*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/03 00:07:37 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/03 00:48:11 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@
 # define PRESS_KEY 2
 # define RELEASE_KEY 3
 
-# define TEXTURE_FLAG 0
-# define MAP_FLAG 1
-# define ERROR_FLAG 2
+# define FILE_ERROR 0
+# define FORMAT 1
+# define MALLOC 2
 
 typedef	struct	s_spr
 {
@@ -78,12 +78,14 @@ typedef struct s_game
 	void	*mlx;
 	void	*win;
 	char	**map;
+	char	*map_str;
 	t_spr	sprites;
 	t_flag	flags;
 }				t_game;
 
 /* ERRORS */
 int	args_error(int ac, char *filename);
+int reader_error(int error);
 
 /* READER */
 int	read_file(t_game *game, char *filename);

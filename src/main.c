@@ -6,7 +6,7 @@
 /*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:22 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/03 00:10:56 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/03 00:50:44 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,12 @@ int	init_flags(t_game *game)
 	game = malloc(sizeof(t_game *));
 	if (!game)
 		return (1);
+	game->map_str = ft_calloc(1, 1);
+	if (!game->map_str)
+	{
+		free (game);
+		return (1);
+	}
 	game->flags.c_flag = 0;
 	game->flags.e_flag = 0;
 	game->flags.f_flag = 0;
