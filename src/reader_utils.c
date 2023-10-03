@@ -6,13 +6,13 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 14:29:04 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/03 13:34:44 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/03 13:54:29 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int add_ea(t_game *game, char **arr)
+int	add_ea(t_game *game, char **arr)
 {
 	if (game->flags.e_flag > 0)
 		return (reader_error(FORMAT_ERROR));
@@ -23,7 +23,7 @@ int add_ea(t_game *game, char **arr)
 	return (0);
 }
 
-int add_we(t_game *game, char **arr)
+int	add_we(t_game *game, char **arr)
 {
 	if (game->flags.w_flag > 0)
 		return (reader_error(FORMAT_ERROR));
@@ -34,7 +34,7 @@ int add_we(t_game *game, char **arr)
 	return (0);
 }
 
-int add_so(t_game *game, char **arr)
+int	add_so(t_game *game, char **arr)
 {
 	if (game->flags.s_flag > 0)
 		return (reader_error(FORMAT_ERROR));
@@ -45,7 +45,7 @@ int add_so(t_game *game, char **arr)
 	return (0);
 }
 
-int add_no(t_game *game, char **arr)
+int	add_no(t_game *game, char **arr)
 {
 	if (game->flags.n_flag > 0)
 		return (reader_error(FORMAT_ERROR));
@@ -56,7 +56,7 @@ int add_no(t_game *game, char **arr)
 	return (0);
 }
 
-int add_fc(t_game *game, char **arr, char flag)
+int	add_fc(t_game *game, char **arr, char flag)
 {
 	if (flag == 'f')
 	{

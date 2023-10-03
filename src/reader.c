@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 14:34:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/03 13:43:29 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/03 13:54:04 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,19 +48,19 @@ static int	read_map(t_game *game, char *tmp, int fd)
 		free(tmp);
 		return (reader_error(MALLOC_ERROR));
 	}
-    while (tmp)
-    {
-        if (tmp[0] == '\n')
-        {
-            free(tmp);
-            return (reader_error(FORMAT_ERROR));
-        }
+	while (tmp)
+	{
+		if (tmp[0] == '\n')
+		{
+			free(tmp);
+			return (reader_error(FORMAT_ERROR));
+		}
 		game->map_str = ft_strjoingnl(game->map_str, tmp);
 		free(tmp);
 		if (!game->map_str)
 			return (reader_error(MALLOC_ERROR));
-        tmp = get_next_line(fd);
-    }
+		tmp = get_next_line(fd);
+	}
 	free (tmp);
 	if (!game->map_str)
 		return (reader_error(FORMAT_ERROR));
@@ -68,7 +68,7 @@ static int	read_map(t_game *game, char *tmp, int fd)
 	return (0);
 }
 
-int read_file(t_game *game, char *filename, int fd, char *tmp)
+int	read_file(t_game *game, char *filename, int fd, char *tmp)
 {
 	fd = open(filename, O_RDONLY);
 	if (fd < 1)
@@ -83,7 +83,7 @@ int read_file(t_game *game, char *filename, int fd, char *tmp)
 				free(tmp);
 				return (1);
 			}
-            game->flags.cnt++;
+			game->flags.cnt++;
 		}
 		free (tmp);
 		tmp = get_next_line(fd);
