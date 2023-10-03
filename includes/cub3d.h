@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/03 12:50:40 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/03 13:47:37 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,14 @@
 # define PRESS_KEY 2
 # define RELEASE_KEY 3
 
-typedef enum
+typedef enum s_error
 {
 	FILE_ERROR,
 	FORMAT_ERROR,
 	MALLOC_ERROR
-}	error_t;
+}	t_error;
 
-typedef	struct	s_spr
+typedef struct s_spr
 {
 	void	*n;
 	void	*s;
@@ -63,19 +63,18 @@ typedef	struct	s_spr
 	char	*c;
 }				t_spr;
 
-typedef struct	s_flag
+typedef struct s_flag
 {
 	int	l_flag;
-	int p_flag;
+	int	p_flag;
 	int	n_flag;
-	int s_flag;
+	int	s_flag;
 	int	w_flag;
-	int e_flag;
+	int	e_flag;
 	int	c_flag;
 	int	f_flag;
-	int cnt;
+	int	cnt;
 }				t_flag;
-
 
 typedef struct s_game
 {
@@ -88,21 +87,21 @@ typedef struct s_game
 }				t_game;
 
 /* ERRORS */
-int	args_error(int ac, char *filename);
-int reader_error(int error);
+int		args_error(int ac, char *filename);
+int		reader_error(int error);
 
 /* READER */
-int	read_file(t_game *game, char *filename);
+int		read_file(t_game *game, char *filename, int fd, char *tmp);
 
 /* FREE */
 void	ft_freesplit(char **arr);
-void    clear_temp_str(t_game *game);
+void	clear_temp_str(t_game *game);
 
 /* TEMP */
-int	add_ea(t_game *game, char **arr);
-int	add_we(t_game *game, char **arr);
-int	add_so(t_game *game, char **arr);
-int	add_no(t_game *game, char **arr);
-int	add_fc(t_game *game, char **arr, char flag);
+int		add_ea(t_game *game, char **arr);
+int		add_we(t_game *game, char **arr);
+int		add_so(t_game *game, char **arr);
+int		add_no(t_game *game, char **arr);
+int		add_fc(t_game *game, char **arr, char flag);
 
 #endif

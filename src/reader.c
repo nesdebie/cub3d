@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 14:34:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/03 12:42:08 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/03 13:43:29 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ static int	parse_texture(t_game *game, char *line, int ret)
 
 static int	read_map(t_game *game, char *tmp, int fd)
 {
-	game->map_str = ft_calloc(1, 1); // TO NORM
-	while (tmp && tmp[0] == '\n')
+	game->map_str = ft_calloc(1, 1);
+	if (!game->map_str)
 	{
-		free (tmp);
-		tmp = get_next_line(fd);
+		free(tmp);
+		return (reader_error(MALLOC_ERROR));
 	}
     while (tmp)
     {
@@ -62,17 +62,14 @@ static int	read_map(t_game *game, char *tmp, int fd)
         tmp = get_next_line(fd);
     }
 	free (tmp);
-	close (fd);
 	if (!game->map_str)
 		return (reader_error(FORMAT_ERROR));
+	close (fd);
 	return (0);
 }
 
-int read_file(t_game *game, char *filename)
+int read_file(t_game *game, char *filename, int fd, char *tmp)
 {
-	int fd;
-	char *tmp;
-
 	fd = open(filename, O_RDONLY);
 	if (fd < 1)
 		return (reader_error(FILE_ERROR));
@@ -88,6 +85,11 @@ int read_file(t_game *game, char *filename)
 			}
             game->flags.cnt++;
 		}
+		free (tmp);
+		tmp = get_next_line(fd);
+	}
+	while (tmp && tmp[0] == '\n')
+	{
 		free (tmp);
 		tmp = get_next_line(fd);
 	}

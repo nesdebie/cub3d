@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:22 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/03 13:12:25 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/03 13:43:56 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	init_flags(t_game *game)
 	game->flags.w_flag = 0;
 	game->flags.cnt = 0;
 	game->map_str = NULL;
+	game->map_str = NULL;
 }
 
 int	check_extension(char *filename)
@@ -84,8 +85,8 @@ int	check_extension(char *filename)
 
 void	print_params(t_game *game)
 {
-	printf("NO: %s\nSO %s\nEA : %s\nWE : %s\n\nf : %s\nc : %s\n", game->sprites.no, game->sprites.so, game->sprites.ea, game->sprites.we, game->sprites.f, game->sprites.c);
-	printf("\n\nMAP :\n%s", game->map_str);
+	printf("NO: %sSO: %sEA: %sWE: %s\nf : %sc : %s", game->sprites.no, game->sprites.so, game->sprites.ea, game->sprites.we, game->sprites.f, game->sprites.c);
+	printf("\nMAP:\n%s", game->map_str);
 }
 
 int	main(int argc, char **argv)
@@ -97,7 +98,7 @@ int	main(int argc, char **argv)
 	if (check_extension(argv[1]))
 		return(args_error(argc, argv[1]));
 	init_flags(&game);
-	if (read_file(&game, argv[1]))
+	if (read_file(&game, argv[1], 0, NULL))
 	{
 		clear_temp_str(&game);
 		return (1);
