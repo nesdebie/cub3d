@@ -9,8 +9,6 @@ SRCS = 	src/main.c \
 
 OBJS 	= $(SRCS:.c=.o)
 
-OBJDIR	= obj
-
 RM		= rm -rf
 
 CC 		= cc
@@ -28,13 +26,11 @@ $(NAME):	$(OBJS)
 	make -C ./libft
 	make -C ./mlx
 	$(CC) $(OBJS) $(MLXFLAGS) -Llibft -lft -o $(NAME)
-	mkdir $(OBJDIR)
-	mv $(OBJS) $(OBJDIR)
 
 clean:
 	make clean -C ./libft
 	make clean -C ./mlx
-	$(RM) $(OBJS) $(OBJDIR)
+	$(RM) $(OBJS)
 
 fclean: 	clean
 	make fclean -C ./libft
