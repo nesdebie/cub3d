@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/03 13:47:37 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/03 14:10:07 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,11 @@ typedef enum s_error
 {
 	FILE_ERROR,
 	FORMAT_ERROR,
-	MALLOC_ERROR
+	MALLOC_ERROR,
+	NO_PLAYER,
+	TWO_PLAYER,
+	NOT_WALLED,
+	INVALID_CHAR
 }	t_error;
 
 typedef struct s_spr
@@ -89,13 +93,17 @@ typedef struct s_game
 /* ERRORS */
 int		args_error(int ac, char *filename);
 int		reader_error(int error);
+int		checker_error(int error);
 
 /* READER */
 int		read_file(t_game *game, char *filename, int fd, char *tmp);
 
+/* CHECKER */
+int		check_params(t_game *game);
+
 /* FREE */
 void	ft_freesplit(char **arr);
-void	clear_temp_str(t_game *game);
+int		clear_temp_str(t_game *game);
 
 /* TEMP */
 int		add_ea(t_game *game, char **arr);

@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:22 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/03 13:50:00 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/03 14:07:58 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,10 +99,9 @@ int	main(int argc, char **argv)
 		return(args_error(argc, argv[1]));
 	init_flags(&game);
 	if (read_file(&game, argv[1], 0, NULL))
-	{
-		clear_temp_str(&game);
-		return (1);
-	}
+		return (clear_temp_str(&game));
+	if (check_params(&game))
+		return (clear_temp_str(&game));
 	print_params(&game); // DEBUG
 	//init_game(&game);
 	clear_temp_str(&game);

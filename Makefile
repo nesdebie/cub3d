@@ -4,7 +4,8 @@ SRCS = 	src/main.c \
 		src/errors.c \
 		src/reader.c \
 		src/reader_utils.c \
-		src/ft_free.c
+		src/ft_free.c \
+		src/checker.c
 
 SRCS_B = 	src/main.c
 

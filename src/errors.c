@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:00:12 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/03 13:56:29 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/03 14:05:00 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,19 @@ int args_error(int ac, char *filename)
 		ft_putendl_fd("too many arguments", 2);
 	ft_putendl_fd("./cub3d <file>.cub", 2);
 	return (1);
+}
+
+int checker_error(int error)
+{
+	if (error == NO_PLAYER)
+		ft_putendl_fd("error: cub3d: player not found", 2);
+	else if (error == TWO_PLAYER)
+		ft_putendl_fd("error: cub3d: too many players found", 2);
+	else if (error == NOT_WALLED)
+		ft_putendl_fd("error: cub3d: map not walled", 2);
+    else if (error == INVALID_CHAR)
+		ft_putendl_fd("error: cub3d: invalid char", 2);  
+    return (1);
 }
 
 int reader_error(int error)
