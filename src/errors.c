@@ -6,11 +6,11 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:00:12 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/03 14:05:00 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/03 15:54:39 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <../includes/cub3d.h>
+#include "../includes/cub3d.h"
 
 int args_error(int ac, char *filename)
 {

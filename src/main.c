@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:22 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/03 14:07:58 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/03 14:58:29 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,15 @@ int	check_extension(char *filename)
 
 void	print_params(t_game *game)
 {
+	int i = 0;
 	printf("NO: %sSO: %sEA: %sWE: %s\nf : %sc : %s", game->sprites.no, game->sprites.so, game->sprites.ea, game->sprites.we, game->sprites.f, game->sprites.c);
-	printf("\nMAP:\n%s", game->map_str);
+	printf("\nMAP (char *):\n%s", game->map_str);
+	ft_putendl_fd("\n________________________\nMAP (arr):", 1);
+	while(game->map[i])
+	{
+		ft_putendl_fd(game->map[i], 1);
+		i++;
+	}
 }
 
 int	main(int argc, char **argv)
@@ -99,12 +106,12 @@ int	main(int argc, char **argv)
 		return(args_error(argc, argv[1]));
 	init_flags(&game);
 	if (read_file(&game, argv[1], 0, NULL))
-		return (clear_temp_str(&game));
+		return (clear_args(&game));
 	if (check_params(&game))
-		return (clear_temp_str(&game));
+		return (clear_args(&game));
 	print_params(&game); // DEBUG
 	//init_game(&game);
-	clear_temp_str(&game);
+	clear_args(&game);
 	//mlx_hook(game.win, PRESS_KEY, 0, &deal_key, &game);
 	//mlx_hook(game.win, RED_CROSS, 0, &close_game, &game);
 	//mlx_loop_hook(game.mlx, &cub3d, &game);

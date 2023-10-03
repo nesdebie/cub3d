@@ -6,14 +6,14 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/03 14:10:07 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/03 15:13:32 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include <stdio.h> //TO DEL
+# include <stdio.h> // DEBUG
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
@@ -103,7 +103,7 @@ int		check_params(t_game *game);
 
 /* FREE */
 void	ft_freesplit(char **arr);
-int		clear_temp_str(t_game *game);
+int		clear_args(t_game *game);
 
 /* TEMP */
 int		add_ea(t_game *game, char **arr);

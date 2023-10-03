@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 00:03:27 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/03 14:08:41 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/03 14:52:53 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_freesplit(char **arr)
 	free(arr);
 }
 
-int	clear_temp_str(t_game *game)
+int	clear_args(t_game *game)
 {
 	if (game->flags.n_flag > 0)
 		free(game->sprites.no);
