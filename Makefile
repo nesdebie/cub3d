@@ -16,9 +16,7 @@ CC 		= cc
 
 CFLAGS 	= -Wall -Wextra -Werror
 
-#MLXFLAGS = -lmlx -framework OpenGL -framework AppKit # version 19macos
-
-MLXFLAGS = -framework OpenGL -framework AppKit # version macos
+MLXFLAGS = -framework OpenGL -framework AppKit -Lmlx
 
 .c.o:		%.o : %.c
 	@${CC} ${CFLAGS} -Imlx -c $< -o $@

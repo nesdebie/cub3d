@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
+/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:00:12 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/03 00:48:51 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/03 11:25:21 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ int reader_error(int error)
 {
     if (error == FILE_ERROR)
         ft_putendl_fd("error: cub3d: cannot open file", 2);
-    else if (error == FORMAT)
+    else if (error == FORMAT_ERROR)
         ft_putendl_fd("error: cub3d: invalid file format", 2);
-    else if (error == MALLOC)
+    else if (error == MALLOC_ERROR)
         ft_putendl_fd("error: cub3d: malloc failed", 2);
     return (1);
 }

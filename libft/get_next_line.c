@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 16:52:36 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/02 11:45:51 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/03 13:08:44 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,9 @@ static char	*ft_get_line(char *buffer)
 	return (line);
 }
 
-static char	*read_file(int fd, char *res)
+static char	*read_file(int fd, char *res, int is_read)
 {
 	char	*tmp;
-	int		is_read;
 
 	if (!res)
 		res = ft_calloc(1, 1);
@@ -93,14 +92,13 @@ static char	*read_file(int fd, char *res)
 	tmp = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	if (!tmp)
 		return (ft_free(res, 0));
-	is_read = 1;
 	while (is_read > 0)
 	{
 		is_read = read(fd, tmp, BUFFER_SIZE);
 		if (is_read == -1)
 			return (ft_free(res, tmp));
 		tmp[is_read] = 0;
-		res = ft_strjoin(res, tmp);
+		res = ft_strjoingnl(res, tmp);
 		if (!res)
 			return (ft_free(tmp, 0));
 		if (ft_strchr(tmp, '\n'))
@@ -117,7 +115,7 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
-	buffer = read_file(fd, buffer);
+	buffer = read_file(fd, buffer, 1);
 	if (!buffer)
 		return (0);
 	line = ft_get_line(buffer);

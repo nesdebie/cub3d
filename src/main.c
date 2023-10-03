@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
+/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:22 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/03 00:50:44 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/03 13:12:25 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,8 @@ return (0);
 
 
 
-int	init_flags(t_game *game)
+void	init_flags(t_game *game)
 {
-	game = malloc(sizeof(t_game *));
-	if (!game)
-		return (1);
-	game->map_str = ft_calloc(1, 1);
-	if (!game->map_str)
-	{
-		free (game);
-		return (1);
-	}
 	game->flags.c_flag = 0;
 	game->flags.e_flag = 0;
 	game->flags.f_flag = 0;
@@ -71,7 +62,7 @@ int	init_flags(t_game *game)
 	game->flags.s_flag = 0;
 	game->flags.w_flag = 0;
 	game->flags.cnt = 0;
-	return (0);
+	game->map_str = NULL;
 }
 
 int	check_extension(char *filename)
@@ -91,29 +82,34 @@ int	check_extension(char *filename)
 	return (0);
 }
 
+void	print_params(t_game *game)
+{
+	printf("NO: %s\nSO %s\nEA : %s\nWE : %s\n\nf : %s\nc : %s\n", game->sprites.no, game->sprites.so, game->sprites.ea, game->sprites.we, game->sprites.f, game->sprites.c);
+	printf("\n\nMAP :\n%s", game->map_str);
+}
+
 int	main(int argc, char **argv)
 {
-	t_game	*game;
+	t_game	game;
 
-	game = NULL;
 	if (argc < 2 || argc > 2)
 		return(args_error(argc, NULL));
 	if (check_extension(argv[1]))
 		return(args_error(argc, argv[1]));
-	if (init_flags(game))
-		return (1);
-	if (read_file(game, argv[1]))
+	init_flags(&game);
+	if (read_file(&game, argv[1]))
 	{
-		clear_read(game);
+		clear_temp_str(&game);
 		return (1);
-	} 
+	}
+	print_params(&game); // DEBUG
 	//init_game(&game);
-	clear_temp_str(game); // apres init game
+	clear_temp_str(&game);
 	//mlx_hook(game.win, PRESS_KEY, 0, &deal_key, &game);
 	//mlx_hook(game.win, RED_CROSS, 0, &close_game, &game);
 	//mlx_loop_hook(game.mlx, &cub3d, &game);
 	//mlx_loop(game.mlx);*/
-	ft_freesplit(game->map); // a add dans quit
-	free(game); // a add dans quit
+	
+	//ft_freesplit(game.map); // a add dans quit
 	return (0);
 }
