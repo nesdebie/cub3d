@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:07:18 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/03 16:40:27 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/06 11:11:47 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,6 @@ void    ft_resize(char **arr, size_t size)
         }
         arr[i] = ft_strjoingnl(arr[i], tmp);
         free (tmp);
-        if (!arr[i])
-            break ;
         i++;
     }
 }
@@ -119,6 +117,8 @@ int check_params(t_game *game)
 {
     if (check_chars(game->map_str))
         return (1);
+    if (game->map_str[ft_strlen(game->map_str) - 1] != '\n')
+        game->map_str = ft_strjoingnl(game->map_str, "\n");
     game->map = ft_split(game->map_str, '\n');
     if (!game->map)
         return (reader_error(MALLOC_ERROR));
