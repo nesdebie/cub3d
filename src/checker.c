@@ -6,13 +6,13 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:07:18 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/06 11:44:46 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/06 12:14:44 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int check_chars(char *str)
+static int check_chars(char *str)
 {
     int i;
     int nb_pl;
@@ -34,7 +34,7 @@ int check_chars(char *str)
     return (0);
 }
 
-int ft_check_arounds(char **map, int y, int x)
+static int ft_check_arounds(char **map, int y, int x)
 {
     if (!y || !x || !map[y + 1] || !map[y][x + 1])
         return (1);
@@ -57,7 +57,7 @@ int ft_check_arounds(char **map, int y, int x)
     return (0);
 }
 
-int check_walls(char **map)
+static int check_walls(char **map)
 {
     int i;
     int j;
