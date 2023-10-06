@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/06 11:31:37 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/06 13:36:53 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,9 @@ typedef struct s_spr
 	char	*we;
 	char	*ea;
 	char	*f;
+	int		f_trgb;
 	char	*c;
+	int		c_trgb;
 }				t_spr;
 
 typedef struct s_flag
