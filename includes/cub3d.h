@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/03 15:13:32 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/06 11:31:37 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,4 +112,7 @@ int		add_so(t_game *game, char **arr);
 int		add_no(t_game *game, char **arr);
 int		add_fc(t_game *game, char **arr, char flag);
 
+/* UTILS */
+int		isinset(char c, char *set);
+int		resize_array(char **map);
 #endif

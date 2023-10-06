@@ -6,25 +6,11 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:07:18 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/06 11:11:47 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/06 11:44:46 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-static int isinset(char c, char *set)
-{
-    int i;
-
-    i = 0;
-    while (set[i])
-    {
-        if (c == set[i])
-            return (0);
-        i++;
-    }
-    return (1);
-}
 
 int check_chars(char *str)
 {
@@ -48,68 +34,51 @@ int check_chars(char *str)
     return (0);
 }
 
-int check_walls(char **map)
+int ft_check_arounds(char **map, int y, int x)
 {
-    (void)map;
+    if (!y || !x || !map[y + 1] || !map[y][x + 1])
+        return (1);
+    if (isinset(map[y - 1][x - 1], "01SNEW"))
+        return (1);
+    if (isinset(map[y - 1][x], "01SNEW"))
+        return (1);
+    if (isinset(map[y - 1][x + 1], "01SNEW"))
+        return (1);
+    if (isinset(map[y][x - 1], "01SNEW"))
+        return (1);
+    if (isinset(map[y][x + 1], "01SNEW"))
+        return (1);
+    if (isinset(map[y + 1][x - 1], "01SNEW"))
+        return (1);
+    if (isinset(map[y + 1][x], "01SNEW"))
+        return (1);
+    if (isinset(map[y + 1][x + 1], "01SNEW"))
+        return (1);
     return (0);
 }
 
-char    *ft_space_line(size_t size)
+int check_walls(char **map)
 {
-    size_t     i;
-    char    *line;
-
+    int i;
+    int j;
+    
     i = 0;
-    line = malloc(sizeof(char) * size + 1);
-    if (!line)
-        return (NULL);
-    while (i < size)
-    {
-        line[i] = ' ';
-        i++;
-    }
-    line[i] = 0;
-    return (line);
-}
-
-void    ft_resize(char **arr, size_t size)
-{
-    size_t     i;
-    char    *tmp;
-
-    i = 0;
-    while (arr[i])
-    {
-        tmp = ft_space_line(size - ft_strlen(arr[i]));
-        if (!tmp)
-        {
-            ft_freesplit(arr);
-            break ;
-        }
-        arr[i] = ft_strjoingnl(arr[i], tmp);
-        free (tmp);
-        i++;
-    }
-}
-
-int resize_array(char **map)
-{
-    int     i;
-    size_t  biggest;
-    size_t  tmp;
-
-    i = 0;
-    biggest = 0;
     while (map[i])
     {
-        tmp = ft_strlen(map[i]);
-        if (tmp > biggest)
-            biggest = tmp;
+        j = 0;
+        while (map[i][j])
+        {
+            if (!isinset(map[i][j], "0SNEW"))
+            {
+                if (!i || !j || !map[i + 1] || !map[i][j + 1])
+                    return (1);
+                else if (ft_check_arounds(map, i, j))
+                    return (1);
+            }
+            j++;
+        }
         i++;
     }
-    ft_resize(map, biggest);
-    if (!map)
-        return (1);
     return (0);
 }
 

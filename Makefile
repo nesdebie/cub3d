@@ -5,7 +5,8 @@ SRCS = 	src/main.c \
 		src/reader.c \
 		src/reader_utils.c \
 		src/ft_free.c \
-		src/checker.c
+		src/checker.c \
+		src/checker_utils.c
 
 OBJS 	= $(SRCS:.c=.o)
 
