@@ -6,7 +6,7 @@
 /*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:07:18 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/09 17:40:17 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/09 17:51:30 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,42 +98,54 @@ int onlyint(char *s)
 
 int set_trgb(int r, int g, int b)
 {
-    return (255 << 24 | r << 16 | g << 8 | b);
+	int	t;
+
+	t = 255;
+    return (t << 24 | r << 16 | g << 8 | b);
 }
 
-int check_fc(t_game *game, char c)
+static int	check_fc_args(char **arr)
 {
-	int     i;
-	char    **arr;
-	int     tmp;
+	int	i;
+	int tmp;
 
 	i = 0;
-	if (c == 'c')
-		arr = ft_split(game->sprites.c, ',');
-	if (c == 'f')
-		arr = ft_split(game->sprites.f, ',');
-	if (!arr)
-		return (reader_error(MALLOC_ERROR));
+	tmp = 0;
 	while (arr[i])
 	{
 		if (onlyint(arr[i]))
 		{
-			ft_freesplit(arr);
 			return (1);
 		}
 		tmp = ft_atoi(arr[i]);
 		if (tmp < 0 || tmp > 255)
 		{
-			ft_freesplit(arr);
 			return (1);
 		}
         i++;
 	}
     if (i != 3)
     {
-        ft_freesplit(arr);
         return (reader_error(FORMAT_ERROR));
     }
+	return (0);
+}
+
+int check_fc(t_game *game, char c)
+{
+	char    **arr;
+
+	if (c == 'c')
+		arr = ft_split(game->sprites.c, ',');
+	if (c == 'f')
+		arr = ft_split(game->sprites.f, ',');
+	if (!arr)
+		return (reader_error(MALLOC_ERROR));
+	if (check_fc_args(arr))
+	{
+		ft_freesplit(arr);
+		return (1);
+	}
     if (c == 'c')
 		game->sprites.c_trgb = set_trgb(ft_atoi(arr[0]), ft_atoi(arr[1]), ft_atoi(arr[2]));
 	if (c == 'f')
