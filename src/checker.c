@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:07:18 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/06 13:42:56 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/09 17:40:17 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int check_fc(t_game *game, char c)
 	i = 0;
 	if (c == 'c')
 		arr = ft_split(game->sprites.c, ',');
-	else if (c == 'f')
+	if (c == 'f')
 		arr = ft_split(game->sprites.f, ',');
 	if (!arr)
 		return (reader_error(MALLOC_ERROR));
@@ -136,7 +136,7 @@ int check_fc(t_game *game, char c)
     }
     if (c == 'c')
 		game->sprites.c_trgb = set_trgb(ft_atoi(arr[0]), ft_atoi(arr[1]), ft_atoi(arr[2]));
-	else if (c == 'f')
+	if (c == 'f')
 		game->sprites.f_trgb = set_trgb(ft_atoi(arr[0]), ft_atoi(arr[1]), ft_atoi(arr[2]));
     ft_freesplit(arr);
 	return (0);
@@ -144,6 +144,18 @@ int check_fc(t_game *game, char c)
 
 int check_textures(t_game *game)
 {
+	int	i;
+
+	i = 0;
+	while (game->sprites.f[i] != '\n')
+		i++;
+	if (game->sprites.f[i])
+		game->sprites.f[i] = 0;
+	i = 0;
+	while (game->sprites.c[i] != '\n')
+		i++;
+	if (game->sprites.c[i])
+		game->sprites.c[i] = 0;
 	if (check_fc (game, 'f'))
 		return(1);
 	if (check_fc (game, 'c'))
