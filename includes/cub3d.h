@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/10 14:31:02 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/10 15:27:11 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,9 @@ int		add_we(t_game *game, char **arr);
 int		add_so(t_game *game, char **arr);
 int		add_no(t_game *game, char **arr);
 int		add_fc(t_game *game, char **arr, char flag);
+
+/* SETTER */
+int	set_trgb(int r, int g, int b);
 
 /* UTILS */
 int		isinset(char c, char *set);

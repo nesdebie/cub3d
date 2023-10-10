@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 12:01:49 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/10 13:07:42 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/10 15:30:23 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	read_file(t_game *game, char *filename, int fd, char *tmp)
 			if (parse_texture(game, tmp, 1))
 			{
 				free(tmp);
-				return(error_msg(FORMAT_ERROR));
+				return (error_msg(FORMAT_ERROR));
 			}
 			game->flags.cnt++;
 		}

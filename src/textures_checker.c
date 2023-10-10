@@ -6,24 +6,16 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 12:02:41 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/10 14:38:15 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/10 15:26:35 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int set_trgb(int r, int g, int b)
-{
-	int	t;
-
-	t = 255;
-    return (t << 24 | r << 16 | g << 8 | b);
-}
-
 static int	check_fc_args(char **arr)
 {
 	int	i;
-	int tmp;
+	int	tmp;
 
 	i = 0;
 	tmp = 0;
@@ -34,16 +26,16 @@ static int	check_fc_args(char **arr)
 		tmp = ft_atoi(arr[i]);
 		if (tmp < 0 || tmp > 255)
 			error_msg(RGB_VALUE);
-        i++;
+		i++;
 	}
-    if (i != 3)
-        return (error_msg(RGB_FORMAT));
+	if (i != 3)
+		return (error_msg(RGB_FORMAT));
 	return (0);
 }
 
-static int check_fc(t_game *game, char c)
+static int	check_fc(t_game *game, char c)
 {
-	char    **arr;
+	char	**arr;
 
 	if (c == 'c')
 		arr = ft_split(game->sprites.c, ',');
@@ -56,11 +48,13 @@ static int check_fc(t_game *game, char c)
 		ft_freesplit(arr);
 		return (1);
 	}
-    if (c == 'c')
-		game->sprites.c_trgb = set_trgb(ft_atoi(arr[0]), ft_atoi(arr[1]), ft_atoi(arr[2]));
+	if (c == 'c')
+		game->sprites.c_trgb = set_trgb(ft_atoi(arr[0]),
+				ft_atoi(arr[1]), ft_atoi(arr[2]));
 	if (c == 'f')
-		game->sprites.f_trgb = set_trgb(ft_atoi(arr[0]), ft_atoi(arr[1]), ft_atoi(arr[2]));
-    ft_freesplit(arr);
+		game->sprites.f_trgb = set_trgb(ft_atoi(arr[0]),
+				ft_atoi(arr[1]), ft_atoi(arr[2]));
+	ft_freesplit(arr);
 	return (0);
 }
 
@@ -93,7 +87,7 @@ int	check_nsew(t_game *game)
 	return (0);
 }
 
-int check_textures(t_game *game)
+int	check_textures(t_game *game)
 {
 	int	i;
 
@@ -108,10 +102,10 @@ int check_textures(t_game *game)
 	if (game->sprites.c[i])
 		game->sprites.c[i] = 0;
 	if (check_fc (game, 'f'))
-		return(1);
+		return (1);
 	if (check_fc (game, 'c'))
-		return(1);
+		return (1);
 	if (check_nsew(game))
-		return(1);
+		return (1);
 	return (0);
 }

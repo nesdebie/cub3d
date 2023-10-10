@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 12:05:19 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/10 14:37:55 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/10 15:31:30 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	add_ea(t_game *game, char **arr)
 	if (!game->sprites.ea)
 		return (error_msg(MALLOC_ERROR));
 	game->flags.e_flag++;
-	while(game->sprites.ea[i] && game->sprites.ea[i] != '\n')
+	while (game->sprites.ea[i] && game->sprites.ea[i] != '\n')
 		i++;
 	if (game->sprites.ea[i])
 		game->sprites.ea[i] = 0;
@@ -41,7 +41,7 @@ int	add_we(t_game *game, char **arr)
 	if (!game->sprites.we)
 		return (error_msg(MALLOC_ERROR));
 	game->flags.w_flag++;
-	while(game->sprites.we[i] && game->sprites.we[i] != '\n')
+	while (game->sprites.we[i] && game->sprites.we[i] != '\n')
 		i++;
 	if (game->sprites.we[i])
 		game->sprites.we[i] = 0;
@@ -59,7 +59,7 @@ int	add_so(t_game *game, char **arr)
 	if (!game->sprites.so)
 		return (error_msg(MALLOC_ERROR));
 	game->flags.s_flag++;
-	while(game->sprites.so[i] && game->sprites.so[i] != '\n')
+	while (game->sprites.so[i] && game->sprites.so[i] != '\n')
 		i++;
 	if (game->sprites.so[i])
 		game->sprites.so[i] = 0;
@@ -77,7 +77,7 @@ int	add_no(t_game *game, char **arr)
 	if (!game->sprites.no)
 		return (error_msg(MALLOC_ERROR));
 	game->flags.n_flag++;
-	while(game->sprites.no[i] && game->sprites.no[i] != '\n')
+	while (game->sprites.no[i] && game->sprites.no[i] != '\n')
 		i++;
 	if (game->sprites.no[i])
 		game->sprites.no[i] = 0;

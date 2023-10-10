@@ -6,16 +6,16 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 12:02:17 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/10 12:13:38 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/10 15:27:46 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static int check_chars(char *str)
+static int	check_chars(char *str)
 {
-	int i;
-	int nb_pl;
+	int	i;
+	int	nb_pl;
 
 	i = 0;
 	nb_pl = 0;
@@ -34,7 +34,7 @@ static int check_chars(char *str)
 	return (0);
 }
 
-static int ft_check_arounds(char **map, int y, int x)
+static int	ft_check_arounds(char **map, int y, int x)
 {
 	if (!y || !x || !map[y + 1] || !map[y][x + 1])
 		return (1);
@@ -57,10 +57,10 @@ static int ft_check_arounds(char **map, int y, int x)
 	return (0);
 }
 
-static int check_walls(char **map)
+static int	check_walls(char **map)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (map[i])
@@ -82,7 +82,7 @@ static int check_walls(char **map)
 	return (0);
 }
 
-int check_params(t_game *game)
+int	check_params(t_game *game)
 {
 	if (check_chars(game->map_str))
 		return (1);
