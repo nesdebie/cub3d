@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/06 13:36:53 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/10 14:31:02 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,12 @@ typedef enum s_error
 	NO_PLAYER,
 	TWO_PLAYER,
 	NOT_WALLED,
-	INVALID_CHAR
+	INVALID_CHAR,
+	TEXTURE_ACCESS,
+	TEXTURE_EXTENSION,
+	TEXTURE_OPEN,
+	RGB_VALUE,
+	RGB_FORMAT
 }	t_error;
 
 typedef struct s_spr
@@ -64,8 +69,8 @@ typedef struct s_spr
 	char	*we;
 	char	*ea;
 	char	*f;
-	int		f_trgb;
 	char	*c;
+	int		f_trgb;
 	int		c_trgb;
 }				t_spr;
 
@@ -94,14 +99,17 @@ typedef struct s_game
 
 /* ERRORS */
 int		args_error(int ac, char *filename);
-int		reader_error(int error);
-int		checker_error(int error);
+int		error_msg(int error);
+int		xpmfile_error(char *filename, int error);
 
 /* READER */
 int		read_file(t_game *game, char *filename, int fd, char *tmp);
 
 /* CHECKER */
 int		check_params(t_game *game);
+int		check_extension(char *filename, char *ext);
+int		check_textures(t_game *game);
+int		check_nsew(t_game *game);
 
 /* FREE */
 void	ft_freesplit(char **arr);
@@ -117,4 +125,6 @@ int		add_fc(t_game *game, char **arr, char flag);
 /* UTILS */
 int		isinset(char c, char *set);
 int		resize_array(char **map);
+int		onlyint(char *s);
+
 #endif

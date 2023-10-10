@@ -2,11 +2,13 @@ NAME = cub3d
 
 SRCS = 	src/main.c \
 		src/errors.c \
-		src/reader.c \
-		src/reader_utils.c \
-		src/ft_free.c \
-		src/checker.c \
-		src/checker_utils.c
+		src/file_checker.c \
+		src/file_checker_utils.c \
+		src/map_checker.c \
+		src/map_checker_utils.c \
+		src/textures_checker.c \
+		src/textures_checker_utils.c \
+		src/ft_free.c
 
 OBJS 	= $(SRCS:.c=.o)
 

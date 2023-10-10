@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reader.c                                           :+:      :+:    :+:   */
+/*   file_checker.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/02 14:34:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/03 13:54:04 by nesdebie         ###   ########.fr       */
+/*   Created: 2023/10/10 12:01:49 by nesdebie          #+#    #+#             */
+/*   Updated: 2023/10/10 13:07:42 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ static int	parse_texture(t_game *game, char *line, int ret)
 
 	arr = ft_split(line, ' ');
 	if (!arr)
-		return (reader_error(MALLOC_ERROR));
+		return (error_msg(MALLOC_ERROR));
 	if (arr[1] == 0 || arr[2] != 0)
 	{
 		ft_freesplit(arr);
-		return (reader_error(FORMAT_ERROR));
+		return (error_msg(FORMAT_ERROR));
 	}
 	if (!ft_strncmp(arr[0], "NO", 3))
 		ret = add_no(game, arr);
@@ -46,24 +46,24 @@ static int	read_map(t_game *game, char *tmp, int fd)
 	if (!game->map_str)
 	{
 		free(tmp);
-		return (reader_error(MALLOC_ERROR));
+		return (error_msg(MALLOC_ERROR));
 	}
 	while (tmp)
 	{
 		if (tmp[0] == '\n')
 		{
 			free(tmp);
-			return (reader_error(FORMAT_ERROR));
+			return (error_msg(FORMAT_ERROR));
 		}
 		game->map_str = ft_strjoingnl(game->map_str, tmp);
 		free(tmp);
 		if (!game->map_str)
-			return (reader_error(MALLOC_ERROR));
+			return (error_msg(MALLOC_ERROR));
 		tmp = get_next_line(fd);
 	}
 	free (tmp);
 	if (!game->map_str)
-		return (reader_error(FORMAT_ERROR));
+		return (error_msg(FORMAT_ERROR));
 	close (fd);
 	return (0);
 }
@@ -72,7 +72,7 @@ int	read_file(t_game *game, char *filename, int fd, char *tmp)
 {
 	fd = open(filename, O_RDONLY);
 	if (fd < 1)
-		return (reader_error(FILE_ERROR));
+		return (error_msg(FILE_ERROR));
 	tmp = get_next_line(fd);
 	while (tmp && game->flags.cnt != 6)
 	{
@@ -81,7 +81,7 @@ int	read_file(t_game *game, char *filename, int fd, char *tmp)
 			if (parse_texture(game, tmp, 1))
 			{
 				free(tmp);
-				return (1);
+				return(error_msg(FORMAT_ERROR));
 			}
 			game->flags.cnt++;
 		}
@@ -94,4 +94,21 @@ int	read_file(t_game *game, char *filename, int fd, char *tmp)
 		tmp = get_next_line(fd);
 	}
 	return (read_map(game, tmp, fd));
+}
+
+int	check_extension(char *filename, char *str)
+{
+	unsigned long	i;
+
+	i = 0;
+	if (!ft_strnstr(filename, str, ft_strlen(filename)))
+		return (1);
+	else
+	{
+		while (i < ft_strlen(filename) - 4)
+			i++;
+		if (ft_strncmp(&filename[i], str, 5))
+			return (1);
+	}
+	return (0);
 }

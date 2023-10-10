@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:22 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/06 11:06:55 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/10 14:39:29 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,27 +66,12 @@ void	init_flags(t_game *game)
 	game->map = NULL;
 }
 
-int	check_extension(char *filename)
-{
-	unsigned long	i;
 
-	i = 0;
-	if (!ft_strnstr(filename, ".cub", ft_strlen(filename)))
-		return (1);
-	else
-	{
-		while (i < ft_strlen(filename) - 4)
-			i++;
-		if (ft_strncmp(&filename[i], ".cub", 5))
-			return (1);
-	}
-	return (0);
-}
 
 void	print_params(t_game *game)
 {
 	int i = 0;
-	printf("NO: %sSO: %sEA: %sWE: %s\nf : %sc : %s", game->sprites.no, game->sprites.so, game->sprites.ea, game->sprites.we, game->sprites.f, game->sprites.c);
+	printf("NO: |%s|\nSO: |%s|\nEA: |%s|\nWE: |%s|\nf : |%s|\nc : |%s|\n", game->sprites.no, game->sprites.so, game->sprites.ea, game->sprites.we, game->sprites.f, game->sprites.c);
 	printf("\nMAP (char *):\n%s", game->map_str);
 	ft_putendl_fd("\n________________________\nMAP (arr):", 1);
 	while(game->map[i] != NULL)
@@ -102,7 +87,7 @@ int	main(int argc, char **argv)
 
 	if (argc < 2 || argc > 2)
 		return(args_error(argc, NULL));
-	if (check_extension(argv[1]))
+	if (check_extension(argv[1], ".cub"))
 		return(args_error(argc, argv[1]));
 	init_flags(&game);
 	if (read_file(&game, argv[1], 0, NULL))

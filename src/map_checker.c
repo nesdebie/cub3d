@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   map_checker.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
+/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/03 14:07:18 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/09 17:51:30 by nesdebie         ###   ########.fr       */
+/*   Created: 2023/10/10 12:02:17 by nesdebie          #+#    #+#             */
+/*   Updated: 2023/10/10 12:13:38 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,15 @@ static int check_chars(char *str)
 	while (str[i])
 	{
 		if (isinset(str[i], " \n01NSEW"))
-			return (checker_error(INVALID_CHAR));
+			return (error_msg(INVALID_CHAR));
 		if (!isinset(str[i], "NSEW"))
 			nb_pl++;
 		if (nb_pl > 1)
-			return (checker_error(TWO_PLAYER));
+			return (error_msg(TWO_PLAYER));
 		i++;
 	}
 	if (!nb_pl)
-		return (checker_error(NO_PLAYER));
+		return (error_msg(NO_PLAYER));
 	return (0);
 }
 
@@ -82,99 +82,6 @@ static int check_walls(char **map)
 	return (0);
 }
 
-int onlyint(char *s)
-{
-	int i;
-
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] < '0' || s[i] > '9')
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-int set_trgb(int r, int g, int b)
-{
-	int	t;
-
-	t = 255;
-    return (t << 24 | r << 16 | g << 8 | b);
-}
-
-static int	check_fc_args(char **arr)
-{
-	int	i;
-	int tmp;
-
-	i = 0;
-	tmp = 0;
-	while (arr[i])
-	{
-		if (onlyint(arr[i]))
-		{
-			return (1);
-		}
-		tmp = ft_atoi(arr[i]);
-		if (tmp < 0 || tmp > 255)
-		{
-			return (1);
-		}
-        i++;
-	}
-    if (i != 3)
-    {
-        return (reader_error(FORMAT_ERROR));
-    }
-	return (0);
-}
-
-int check_fc(t_game *game, char c)
-{
-	char    **arr;
-
-	if (c == 'c')
-		arr = ft_split(game->sprites.c, ',');
-	if (c == 'f')
-		arr = ft_split(game->sprites.f, ',');
-	if (!arr)
-		return (reader_error(MALLOC_ERROR));
-	if (check_fc_args(arr))
-	{
-		ft_freesplit(arr);
-		return (1);
-	}
-    if (c == 'c')
-		game->sprites.c_trgb = set_trgb(ft_atoi(arr[0]), ft_atoi(arr[1]), ft_atoi(arr[2]));
-	if (c == 'f')
-		game->sprites.f_trgb = set_trgb(ft_atoi(arr[0]), ft_atoi(arr[1]), ft_atoi(arr[2]));
-    ft_freesplit(arr);
-	return (0);
-}
-
-int check_textures(t_game *game)
-{
-	int	i;
-
-	i = 0;
-	while (game->sprites.f[i] != '\n')
-		i++;
-	if (game->sprites.f[i])
-		game->sprites.f[i] = 0;
-	i = 0;
-	while (game->sprites.c[i] != '\n')
-		i++;
-	if (game->sprites.c[i])
-		game->sprites.c[i] = 0;
-	if (check_fc (game, 'f'))
-		return(1);
-	if (check_fc (game, 'c'))
-		return(1);
-	return (0);
-}
-
 int check_params(t_game *game)
 {
 	if (check_chars(game->map_str))
@@ -185,10 +92,10 @@ int check_params(t_game *game)
 		game->map_str = ft_strjoingnl(game->map_str, "\n");
 	game->map = ft_split(game->map_str, '\n');
 	if (!game->map)
-		return (reader_error(MALLOC_ERROR));
+		return (error_msg(MALLOC_ERROR));
 	if (resize_array(game->map))
-		return (reader_error(MALLOC_ERROR));
+		return (error_msg(MALLOC_ERROR));
 	if (check_walls(game->map))
-		return (checker_error(NOT_WALLED));
+		return (error_msg(NOT_WALLED));
 	return (0);
 }
