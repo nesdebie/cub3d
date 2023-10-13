@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:22 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/10 15:20:59 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/13 12:39:57 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	init_flags(t_game *game)
 void	print_params(t_game *game)
 {
 	int i = 0;
-	printf("NO: |%s|\nSO: |%s|\nEA: |%s|\nWE: |%s|\nf : |%s|\nc : |%s|\n", game->sprites.no, game->sprites.so, game->sprites.ea, game->sprites.we, game->sprites.f, game->sprites.c);
+	printf("NO: |%s|\nSO: |%s|\nEA: |%s|\nWE: |%s|\nf : |%s|=|%d|\nc : |%s|=|%d|\n", game->sprites.no, game->sprites.so, game->sprites.ea, game->sprites.we, game->sprites.f, game->sprites.f_trgb, game->sprites.c, game->sprites.c_trgb);
 	printf("\nMAP (char *):\n%s", game->map_str);
 	ft_putendl_fd("\n________________________\nMAP (arr):", 1);
 	while(game->map[i] != NULL)

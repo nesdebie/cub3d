@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 12:18:44 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/10 15:26:38 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/13 12:59:38 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ int	onlyint(char *s)
 	return (0);
 }
 
-int	set_trgb(int r, int g, int b)
+int	set_trgb(int red, int green, int blue)
 {
-	int	t;
+	int	transparency;
 
-	t = 255;
-	return (t << 24 | r << 16 | g << 8 | b);
+	transparency = 255;
+	return (transparency << 24 | red << 16 | green << 8 | blue);
 }
