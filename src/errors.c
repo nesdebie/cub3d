@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:00:12 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/10 15:24:14 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/16 12:48:17 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,16 @@ int	xpmfile_error(char *filename, int error)
 		ft_putendl_fd(": permission denied", 2);
 	if (error == TEXTURE_EXTENSION)
 		ft_putendl_fd(" is not a .xpm file", 2);
+	return (1);
+}
+
+int	mlx_error(int error)
+{
+	ft_putendl_fd("Error", 2);
+	if (error == MLX_INIT)
+		ft_putendl_fd("cub3d: mlx: mlx_init() failed", 2);
+	else if (error == MLX_WIN)
+		ft_putendl_fd("cub3d: mlx: mlx_new_window() failed", 2);
 	return (1);
 }
 

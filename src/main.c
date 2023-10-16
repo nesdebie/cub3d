@@ -6,24 +6,25 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:22 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/13 12:39:57 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/16 14:15:21 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-/*
-   int	close_game(t_game *game)
-   {
-   if (game->mlx && game->win)
-   mlx_destroy_window(game->mlx, game->win);
-   exit(EXIT_SUCCESS);
-   }
 
-   static int	deal_key(int key_code, t_game *game)
-   {
-   if (key_code == KEY_ESC || key_code == KEY_Q)
-   close_game(game);
-   else if (!game->flag.held_keys)
+int	close_game(t_game *game)
+{
+	if (game->mlx && game->win)
+	mlx_destroy_window(game->mlx, game->win);
+	clear_args(game);
+	exit(EXIT_SUCCESS);
+}
+
+static int	deal_key(int key_code, t_game *game)
+{
+	if (key_code == KEY_ESC || key_code == KEY_Q)
+	close_game(game);/*
+   else if (!game->held_key)
    {
    if (key_code == KEY_W)
    return(0);//ft_move(game, &(game->player.spr), UP);
@@ -37,17 +38,18 @@
    return (0);//move camera left
    else if (key_code == KEY_RIGHT)
    return (0);//move camera right
-   }
-   return (0);
-   }
+   }*/
+	return (0);
+}
 
-   static int	cub3d(t_game *game)
-   {
-   draw_map(game);
-   draw_sprites(game);
+static int	cub3d(t_game *game)
+{
+//   draw_map(game);
+  // draw_sprites(game);
 //TO DO
-return (0);
-}*/
+	(void)game;
+	return (0);
+}
 
 
 
@@ -81,6 +83,21 @@ void	print_params(t_game *game)
 	}
 }
 
+static void	init_window(t_game *game)
+{
+	int	width;
+	int	height;
+
+	game->mlx = mlx_init();
+	if (!game->mlx)
+		mlx_error(MLX_INIT);
+	width = 1000;
+	height = 600;
+	game->win = mlx_new_window(game->mlx, width, height, "cub3d");
+	if (!game->win)
+		mlx_error(MLX_WIN);
+}
+
 int	main(int argc, char **argv)
 {
 	t_game	game;
@@ -95,12 +112,12 @@ int	main(int argc, char **argv)
 	if (check_params(&game))
 		return (clear_args(&game));
 	print_params(&game); // DEBUG
-	//init_game(&game);
-	clear_args(&game);
-	//mlx_hook(game.win, PRESS_KEY, 0, &deal_key, &game);
-	//mlx_hook(game.win, RED_CROSS, 0, &close_game, &game);
-	//mlx_loop_hook(game.mlx, &cub3d, &game);
-	//mlx_loop(game.mlx);*/
-
+	init_window(&game); //TODO
+	
+	mlx_hook(game.win, PRESS_KEY, 0, &deal_key, &game);
+	mlx_hook(game.win, RED_CROSS, 0, &close_game, &game);
+	mlx_loop_hook(game.mlx, &cub3d, &game);
+	mlx_loop(game.mlx);
+	clear_args(&game); //TMP
 	return (0);
 }

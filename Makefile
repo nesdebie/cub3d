@@ -18,7 +18,7 @@ CC 		= cc
 
 CFLAGS 	= -Wall -Wextra -Werror
 
-MLXFLAGS = -framework OpenGL -framework AppKit -Lmlx
+MLXFLAGS = -lmlx -framework OpenGL -framework AppKit -Lmlx
 
 %.o : %.c
 	$(CC) $(CFLAGS) -Imlx -c $< -o $@

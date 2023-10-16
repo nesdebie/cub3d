@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/10 15:27:11 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/16 13:48:46 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include "../mlx/mlx.h"
+//# include <mlx.h>
 # include "../libft/libft.h"
 
 # define NO_MOVE	0
@@ -55,7 +56,9 @@ typedef enum s_error
 	TEXTURE_EXTENSION,
 	TEXTURE_OPEN,
 	RGB_VALUE,
-	RGB_FORMAT
+	RGB_FORMAT,
+	MLX_WIN,
+	MLX_INIT
 }	t_error;
 
 typedef struct s_spr
@@ -93,6 +96,7 @@ typedef struct s_game
 	void	*win;
 	char	**map;
 	char	*map_str;
+	int		held_key;
 	t_spr	sprites;
 	t_flag	flags;
 }				t_game;
@@ -101,6 +105,7 @@ typedef struct s_game
 int		args_error(int ac, char *filename);
 int		error_msg(int error);
 int		xpmfile_error(char *filename, int error);
+int		mlx_error(int error);
 
 /* READER */
 int		read_file(t_game *game, char *filename, int fd, char *tmp);
