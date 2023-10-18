@@ -6,7 +6,7 @@
 /*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:22 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/18 15:09:55 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/10/18 17:32:54 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,82 +20,46 @@ int	close_game(t_game *game)
 	exit(EXIT_SUCCESS);
 }
 
-void	ft_draw_player(t_game *game)
-{
-	int red = 255;
-    int green = 255;
-    int blue = 0;
-    int color = (red << 16) | (green << 8) | blue;
-	int	x;
-	int	y;
-
-	x = -5;
-	while (x < 5)
-	{
-		y = -5;
-		while (y < 5)
-		{
-			mlx_pixel_put(game->mlx, game->win, game->player.px + x, game->player.py + y, color);
-			y++;
-		}
-		x++;
-	}
-}
-
-void	draw_map(t_game *game)
-{
-	int red = 128;
-    int green = 128;
-    int blue = 128;
-	int	x;
-	int y;
-    int color = (red << 16) | (green << 8) | blue;
-
-	x = 0;
-	while (x < 100)
-	{
-		y = 0;
-		while (y < 60)
-		{
-			mlx_pixel_put(game->mlx, game->win, x, y, color);
-			y++;
-		}
-		x++;
-	}
-}
-
 static int	cub3d(t_game *game)
 {
-	int red = 0;
-    int green = 0;
-    int blue = 0;
-    int color = (red << 16) | (green << 8) | blue;
-	int	x;
-	int	y;
-	x = -5;
-	while (x < 5)
+	static float	pdx = 0.25;
+	static float	pdy = 0.25;
+
+	ft_erase_player(game);
+	if (game->player.turn_right == 1)
 	{
-		y = -5;
-		while (y < 5)
-		{
-			mlx_pixel_put(game->mlx, game->win, game->player.px + x, game->player.py + y, color);
-			y++;
-		}
-		x++;
+		game->player.dir -= 0.1;
+		if (game->player.dir < 0)
+			game->player.dir += 2 * PI;
+		pdx = cos(game->player.dir) * 5;
+		pdy = sin(game->player.dir) * 5;
+	}
+	if (game->player.turn_left == 1)
+	{
+		game->player.dir += 0.1;
+		if (game->player.dir > (2 * PI))
+			game->player.dir -= 2 * PI;
+		pdx = cos(game->player.dir) * 5;
+		pdy = sin(game->player.dir) * 5;
 	}
 	if (game->player.down == 1 && game->player.py < 600)
-		game->player.py += 1;
+	{
+		game->player.py -= pdx;
+		game->player.px -= pdy;
+	}
 	if (game->player.up == 1 && game->player.py > 0)
-		game->player.py -= 1;
+	{
+		game->player.py += pdx;
+		game->player.px += pdy;
+	}
 	if (game->player.left == 1 && game->player.px > 0)
 		game->player.px -= 1;
 	if (game->player.right == 1 && game->player.px < 1000)
 		game->player.px += 1;
 	//draw_map(game);
-	ft_draw_player(game);
+	ft_draw_player(game, pdx, pdy);
   // draw_sprites(game);
 //TO DO
-	//printf("%f\n", game->player.py);
 	return (0);
 }
 
@@ -146,6 +110,17 @@ static void	init_window(t_game *game)
 		mlx_error(MLX_WIN);
 }
 
+float	ft_dir(char c)
+{
+	if (c == 'N')
+		return (0.25);
+	else if (c == 'E')
+		return (0.00);
+	else if (c == 'S')
+		return (0.75);
+	return (0.50);
+}
+
 void	ft_init_player(t_game *game, int x, int y)
 {
 	t_player	player;
@@ -160,13 +135,14 @@ void	ft_init_player(t_game *game, int x, int y)
 		{
 			if (isinset(game->map[y][x], "NSWE") == 0)
 			{
-				player.px = x * 1000;
-				player.py = y * 600;
+				player.px = x;
+				player.py = y;
 			}
 		}
 	}
-	player.px /= x;
-	player.py /= y;
+	player.dir = ft_dir(game->map[(int)player.py][(int)player.px]);
+	player.px = player.px * (1000 / x);
+	player.py = player.py * (600 / y);
 	player.right = 0;
 	player.up = 0;
 	player.turn_left = 0;

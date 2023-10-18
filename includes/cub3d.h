@@ -6,7 +6,7 @@
 /*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/18 13:28:23 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/10/18 17:24:01 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+# include <math.h>
 # include <fcntl.h>
 # include "../mlx/mlx.h"
 //# include <mlx.h>
@@ -42,6 +43,8 @@
 # define RED_CROSS 17
 # define PRESS_KEY 2
 # define RELEASE_KEY 3
+
+# define PI 3.1415926535
 
 typedef enum s_error
 {
@@ -71,6 +74,7 @@ typedef struct s_player
 	int		turn_right;
 	float	px;
 	float	py;
+	float	dir;
 }				t_player;
 
 typedef struct s_spr
@@ -152,5 +156,10 @@ int		onlyint(char *s);
 int		key_press(int key_code, t_game *game);
 int		key_release(int key_code, t_game *game);
 int		close_game(t_game *game);
+
+/*Display*/
+void	ft_erase_player(t_game *game);
+void	draw_map(t_game *game);
+void	ft_draw_player(t_game *game, float pdx, float pdy);
 
 #endif

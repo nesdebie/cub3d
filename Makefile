@@ -9,7 +9,8 @@ SRCS = 	src/main.c \
 		src/textures_checker.c \
 		src/textures_checker_utils.c \
 		src/ft_free.c \
-		src/key_press.c
+		src/key_press.c \
+		src/ft_display.c
 
 OBJS 	= $(SRCS:.c=.o)
 
