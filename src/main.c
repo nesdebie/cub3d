@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:22 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/16 14:15:21 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/18 15:09:55 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,34 +20,82 @@ int	close_game(t_game *game)
 	exit(EXIT_SUCCESS);
 }
 
-static int	deal_key(int key_code, t_game *game)
+void	ft_draw_player(t_game *game)
 {
-	if (key_code == KEY_ESC || key_code == KEY_Q)
-	close_game(game);/*
-   else if (!game->held_key)
-   {
-   if (key_code == KEY_W)
-   return(0);//ft_move(game, &(game->player.spr), UP);
-   else if (key_code == KEY_A)
-   return (0);//ft_move(game, &(game->player.spr), LEFT);
-   else if (key_code == KEY_S)
-   return (0);//ft_move(game, &(game->player.spr), DOWN);
-   else if (key_code == KEY_D)
-   return (0);//ft_move(game, &(game->player.spr), RIGHT);
-   else if (key_code == KEY_LEFT)
-   return (0);//move camera left
-   else if (key_code == KEY_RIGHT)
-   return (0);//move camera right
-   }*/
-	return (0);
+	int red = 255;
+    int green = 255;
+    int blue = 0;
+    int color = (red << 16) | (green << 8) | blue;
+	int	x;
+	int	y;
+
+	x = -5;
+	while (x < 5)
+	{
+		y = -5;
+		while (y < 5)
+		{
+			mlx_pixel_put(game->mlx, game->win, game->player.px + x, game->player.py + y, color);
+			y++;
+		}
+		x++;
+	}
+}
+
+void	draw_map(t_game *game)
+{
+	int red = 128;
+    int green = 128;
+    int blue = 128;
+	int	x;
+	int y;
+    int color = (red << 16) | (green << 8) | blue;
+
+	x = 0;
+	while (x < 100)
+	{
+		y = 0;
+		while (y < 60)
+		{
+			mlx_pixel_put(game->mlx, game->win, x, y, color);
+			y++;
+		}
+		x++;
+	}
 }
 
 static int	cub3d(t_game *game)
 {
-//   draw_map(game);
+	int red = 0;
+    int green = 0;
+    int blue = 0;
+    int color = (red << 16) | (green << 8) | blue;
+	int	x;
+	int	y;
+	x = -5;
+	while (x < 5)
+	{
+		y = -5;
+		while (y < 5)
+		{
+			mlx_pixel_put(game->mlx, game->win, game->player.px + x, game->player.py + y, color);
+			y++;
+		}
+		x++;
+	}
+	if (game->player.down == 1 && game->player.py < 600)
+		game->player.py += 1;
+	if (game->player.up == 1 && game->player.py > 0)
+		game->player.py -= 1;
+	if (game->player.left == 1 && game->player.px > 0)
+		game->player.px -= 1;
+	if (game->player.right == 1 && game->player.px < 1000)
+		game->player.px += 1;
+	//draw_map(game);
+	ft_draw_player(game);
   // draw_sprites(game);
 //TO DO
-	(void)game;
+	//printf("%f\n", game->player.py);
 	return (0);
 }
 
@@ -98,6 +146,34 @@ static void	init_window(t_game *game)
 		mlx_error(MLX_WIN);
 }
 
+void	ft_init_player(t_game *game, int x, int y)
+{
+	t_player	player;
+
+	player.down = 0;
+	player.left = 0;
+	y = -1;
+	while (game->map[++y])
+	{
+		x = -1;
+		while (game->map[y][++x])
+		{
+			if (isinset(game->map[y][x], "NSWE") == 0)
+			{
+				player.px = x * 1000;
+				player.py = y * 600;
+			}
+		}
+	}
+	player.px /= x;
+	player.py /= y;
+	player.right = 0;
+	player.up = 0;
+	player.turn_left = 0;
+	player.turn_right = 0;
+	game->player = player;
+}
+
 int	main(int argc, char **argv)
 {
 	t_game	game;
@@ -113,8 +189,9 @@ int	main(int argc, char **argv)
 		return (clear_args(&game));
 	print_params(&game); // DEBUG
 	init_window(&game); //TODO
-	
-	mlx_hook(game.win, PRESS_KEY, 0, &deal_key, &game);
+	ft_init_player(&game, 0, 0);
+	mlx_hook(game.win, PRESS_KEY, 0, &key_press, &game);
+	mlx_hook(game.win, RELEASE_KEY, 0, &key_release, &game);
 	mlx_hook(game.win, RED_CROSS, 0, &close_game, &game);
 	mlx_loop_hook(game.mlx, &cub3d, &game);
 	mlx_loop(game.mlx);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_checker.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 12:02:17 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/10 15:27:46 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/18 14:43:06 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static int	check_chars(char *str)
 			return (error_msg(TWO_PLAYER));
 		i++;
 	}
+	
 	if (!nb_pl)
 		return (error_msg(NO_PLAYER));
 	return (0);

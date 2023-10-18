@@ -8,7 +8,8 @@ SRCS = 	src/main.c \
 		src/map_checker_utils.c \
 		src/textures_checker.c \
 		src/textures_checker_utils.c \
-		src/ft_free.c
+		src/ft_free.c \
+		src/key_press.c
 
 OBJS 	= $(SRCS:.c=.o)
 

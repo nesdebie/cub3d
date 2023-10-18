@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/16 13:48:46 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/18 13:28:23 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,18 @@ typedef enum s_error
 	MLX_INIT
 }	t_error;
 
+typedef struct s_player
+{
+	int		up;
+	int 	down;
+	int 	left;
+	int 	right;
+	int		turn_left;
+	int		turn_right;
+	float	px;
+	float	py;
+}				t_player;
+
 typedef struct s_spr
 {
 	void	*n;
@@ -92,13 +104,14 @@ typedef struct s_flag
 
 typedef struct s_game
 {
-	void	*mlx;
-	void	*win;
-	char	**map;
-	char	*map_str;
-	int		held_key;
-	t_spr	sprites;
-	t_flag	flags;
+	void		*mlx;
+	void		*win;
+	char		**map;
+	char		*map_str;
+	int			held_key;
+	t_spr		sprites;
+	t_flag		flags;
+	t_player	player;
 }				t_game;
 
 /* ERRORS */
@@ -134,5 +147,10 @@ int	set_trgb(int r, int g, int b);
 int		isinset(char c, char *set);
 int		resize_array(char **map);
 int		onlyint(char *s);
+
+/*Key event*/
+int		key_press(int key_code, t_game *game);
+int		key_release(int key_code, t_game *game);
+int		close_game(t_game *game);
 
 #endif
