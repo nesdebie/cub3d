@@ -6,7 +6,7 @@
 /*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 16:39:09 by hubrygo           #+#    #+#             */
-/*   Updated: 2023/10/18 17:45:57 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/10/19 11:59:35 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	ft_draw_player(t_game *game, float pdx, float pdy)
 	int rgb[3];
 	int	x;
 	int y;
-	float	dx;
-	float 	dy;
+	int	i;
+	int	j;
     int color;
 
 	rgb[0] = 255;
@@ -39,21 +39,19 @@ void	ft_draw_player(t_game *game, float pdx, float pdy)
 		}
 		x++;
 	}
-	rgb[0] = 0;
-    rgb[1] = 0;
-    rgb[2] = 255;
-	color = (rgb[0] << 16) | (rgb[1] << 8) | rgb[2];
+	//rgb[0] = 128;
+    //rgb[1] = 128;
+    //rgb[2] = 255;
+	//color = (rgb[0] << 16) | (rgb[1] << 8) | rgb[2];
+	j = pdx;
+	i = pdy;
 	mlx_pixel_put(game->mlx, game->win, game->player.px, game->player.py, color);
-	dx = 0;
-	while (dx < pdx)
+	while (x < 10)
 	{
-		dy = 0;
-		while (dy < pdy)
-		{
-			mlx_pixel_put(game->mlx, game->win, game->player.px + x, game->player.py + y, color);
-			dy += 0.1;
-		}
-		dx += 0.1;
+		mlx_pixel_put(game->mlx, game->win, game->player.px + i, game->player.py + j, color);
+		j += cos(game->player.dir) * 5;
+		i += sin(game->player.dir) * 5;
+		x++;
 	}
 }
 
@@ -81,11 +79,13 @@ void	draw_map(t_game *game)
 	}
 }
 
-void	ft_erase_player(t_game *game)
+void	ft_erase_player(t_game *game, float pdx, float pdy)
 {
 	int rgb[3];
     int color;
 	int	x;
+	int	i;
+	int	j;
 	int	y;
 	
 	rgb[0] = 0;
@@ -101,6 +101,15 @@ void	ft_erase_player(t_game *game)
 			mlx_pixel_put(game->mlx, game->win, game->player.px + x, game->player.py + y, color);
 			y++;
 		}
+		x++;
+	}
+	j = pdx;
+	i = pdy;
+	while (x < 10)
+	{
+		mlx_pixel_put(game->mlx, game->win, game->player.px + i, game->player.py + j, color);
+		j += cos(game->player.dir) * 5;
+		i += sin(game->player.dir) * 5;
 		x++;
 	}
 }

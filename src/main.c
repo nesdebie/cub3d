@@ -6,7 +6,7 @@
 /*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:22 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/18 17:32:54 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/10/19 11:58:15 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,26 +22,24 @@ int	close_game(t_game *game)
 
 static int	cub3d(t_game *game)
 {
-	static float	pdx = 0.25;
-	static float	pdy = 0.25;
+	static float	pdx = 1;
+	static float	pdy = 1;
 
-	ft_erase_player(game);
+	ft_erase_player(game, pdx, pdy);
 	if (game->player.turn_right == 1)
 	{
 		game->player.dir -= 0.1;
 		if (game->player.dir < 0)
 			game->player.dir += 2 * PI;
-		pdx = cos(game->player.dir) * 5;
-		pdy = sin(game->player.dir) * 5;
 	}
 	if (game->player.turn_left == 1)
 	{
 		game->player.dir += 0.1;
 		if (game->player.dir > (2 * PI))
 			game->player.dir -= 2 * PI;
-		pdx = cos(game->player.dir) * 5;
-		pdy = sin(game->player.dir) * 5;
 	}
+	pdx = cos(game->player.dir) * 5;
+	pdy = sin(game->player.dir) * 5;
 	if (game->player.down == 1 && game->player.py < 600)
 	{
 		game->player.py -= pdx;
@@ -56,7 +54,7 @@ static int	cub3d(t_game *game)
 		game->player.px -= 1;
 	if (game->player.right == 1 && game->player.px < 1000)
 		game->player.px += 1;
-	//draw_map(game);
+	draw_map(game);
 	ft_draw_player(game, pdx, pdy);
   // draw_sprites(game);
 //TO DO
