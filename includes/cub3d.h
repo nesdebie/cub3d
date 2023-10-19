@@ -6,7 +6,7 @@
 /*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/19 11:30:40 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/10/19 15:03:48 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,7 @@ int		onlyint(char *s);
 int		key_press(int key_code, t_game *game);
 int		key_release(int key_code, t_game *game);
 int		close_game(t_game *game);
+void	ft_move(t_game *game, float pdx, float pdy);
 
 /*Display*/
 void	ft_erase_player(t_game *game, float pdx, float pdy);

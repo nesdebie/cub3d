@@ -6,7 +6,7 @@
 /*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 16:39:09 by hubrygo           #+#    #+#             */
-/*   Updated: 2023/10/19 14:23:35 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/10/19 15:04:33 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_draw_player(t_game *game, float pdx, float pdy)
 	{
 		mlx_pixel_put(game->mlx, game->win, game->player.px + pdy, \
 						game->player.py + pdx, color);
-		pdx += cos(game->player.dir) * 2; // * 5 = ecart entre les points. *3 = plus rapproche et *6 = plus eloigne
+		pdx += cos(game->player.dir) * 2;
 		pdy += sin(game->player.dir) * 2;
 	}
 }
@@ -81,7 +81,7 @@ void	ft_erase_player(t_game *game, float pdx, float pdy)
 	{
 		mlx_pixel_put(game->mlx, game->win, game->player.px + pdy, \
 						game->player.py + pdx, color);
-		pdx += cos(game->player.dir) * 2; // * 5 = ecart entre les points. *3 = plus rapproche et *6 = plus eloigne
+		pdx += cos(game->player.dir) * 2;
 		pdy += sin(game->player.dir) * 2;
 	}
 }

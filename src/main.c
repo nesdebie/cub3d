@@ -6,7 +6,7 @@
 /*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:22 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/19 14:25:07 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/10/19 15:06:43 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,44 +26,11 @@ static int	cub3d(t_game *game)
 	static float	pdy = 1;
 
 	ft_erase_player(game, pdx, pdy);
-	if (game->player.turn_right == 1)
-	{
-		game->player.dir -= 0.1;
-		if (game->player.dir < 0)
-			game->player.dir += 2 * PI;
-	}
-	if (game->player.turn_left == 1)
-	{
-		game->player.dir += 0.1;
-		if (game->player.dir > (2 * PI))
-			game->player.dir -= 2 * PI;
-	}
-	pdx = cos(game->player.dir) * 5;
-	pdy = sin(game->player.dir) * 5;
-	if (game->player.down == 1 && game->player.py < 600 && game->player.py > 0)
-	{
-		game->player.py -= pdx;
-		game->player.px -= pdy;
-	}
-	if (game->player.up == 1 && game->player.py < 600 && game->player.py > 0)
-	{
-		game->player.py += pdx;
-		game->player.px += pdy;
-	}
-	if (game->player.left == 1 && game->player.px > 0)
-	{
-		game->player.py -= pdy;
-		game->player.px += pdx;
-	}
-	if (game->player.right == 1 && game->player.px < 1000)
-	{
-		game->player.py += pdy;
-		game->player.px -= pdx;
-	}
-	draw_map(game);
+	ft_move(game, pdx, pdy);
+	//draw_map(game);
 	ft_draw_player(game, pdx, pdy);
-  // draw_sprites(game);
-//TO DO
+	//draw_sprites(game);
+	//TO DO
 	return (0);
 }
 
@@ -82,15 +49,18 @@ void	init_flags(t_game *game)
 	game->map = NULL;
 }
 
-
-
 void	print_params(t_game *game)
 {
-	int i = 0;
-	printf("NO: |%s|\nSO: |%s|\nEA: |%s|\nWE: |%s|\nf : |%s|=|%d|\nc : |%s|=|%d|\n", game->sprites.no, game->sprites.so, game->sprites.ea, game->sprites.we, game->sprites.f, game->sprites.f_trgb, game->sprites.c, game->sprites.c_trgb);
+	int	i;
+
+	i = 0;
+	printf("NO: |%s|\nSO: |%s|\nEA: |%s|\nWE: |%s|\nf : |%s|=|%d|\nc : \
+			|%s|=|%d|\n", game->sprites.no, game->sprites.so, game->sprites.ea, \
+			game->sprites.we, game->sprites.f, game->sprites.f_trgb, \
+			game->sprites.c, game->sprites.c_trgb);
 	printf("\nMAP (char *):\n%s", game->map_str);
 	ft_putendl_fd("\n________________________\nMAP (arr):", 1);
-	while(game->map[i] != NULL)
+	while (game->map[i] != NULL)
 	{
 		ft_putendl_fd(game->map[i], 1);
 		i++;
@@ -157,9 +127,9 @@ int	main(int argc, char **argv)
 	t_game	game;
 
 	if (argc < 2 || argc > 2)
-		return(args_error(argc, NULL));
+		return (args_error(argc, NULL));
 	if (check_extension(argv[1], ".cub"))
-		return(args_error(argc, argv[1]));
+		return (args_error(argc, argv[1]));
 	init_flags(&game);
 	if (read_file(&game, argv[1], 0, NULL))
 		return (clear_args(&game));
