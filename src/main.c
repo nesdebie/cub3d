@@ -6,7 +6,7 @@
 /*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:22 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/19 11:58:15 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/10/19 13:40:20 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,20 +40,26 @@ static int	cub3d(t_game *game)
 	}
 	pdx = cos(game->player.dir) * 5;
 	pdy = sin(game->player.dir) * 5;
-	if (game->player.down == 1 && game->player.py < 600)
+	if (game->player.down == 1 && game->player.py < 600 && game->player.py > 0)
 	{
 		game->player.py -= pdx;
 		game->player.px -= pdy;
 	}
-	if (game->player.up == 1 && game->player.py > 0)
+	if (game->player.up == 1 && game->player.py < 600 && game->player.py > 0)
 	{
 		game->player.py += pdx;
 		game->player.px += pdy;
 	}
 	if (game->player.left == 1 && game->player.px > 0)
-		game->player.px -= 1;
+	{
+		game->player.py -= pdy;
+		game->player.px += pdx;
+	}
 	if (game->player.right == 1 && game->player.px < 1000)
-		game->player.px += 1;
+	{
+		game->player.py += pdy;
+		game->player.px -= pdx;
+	}
 	draw_map(game);
 	ft_draw_player(game, pdx, pdy);
   // draw_sprites(game);

@@ -6,7 +6,7 @@
 /*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 16:39:09 by hubrygo           #+#    #+#             */
-/*   Updated: 2023/10/19 11:59:35 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/10/19 12:44:08 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,13 @@ void	ft_draw_player(t_game *game, float pdx, float pdy)
 		}
 		x++;
 	}
-	//rgb[0] = 128;
-    //rgb[1] = 128;
-    //rgb[2] = 255;
-	//color = (rgb[0] << 16) | (rgb[1] << 8) | rgb[2];
 	j = pdx;
 	i = pdy;
 	mlx_pixel_put(game->mlx, game->win, game->player.px, game->player.py, color);
-	while (x < 10)
+	while (x < 20) // longueur
 	{
 		mlx_pixel_put(game->mlx, game->win, game->player.px + i, game->player.py + j, color);
-		j += cos(game->player.dir) * 5;
+		j += cos(game->player.dir) * 5; // * 5 = ecart entre les points. *3 = plus rapproche et *6 = plus eloigne
 		i += sin(game->player.dir) * 5;
 		x++;
 	}
@@ -105,7 +101,7 @@ void	ft_erase_player(t_game *game, float pdx, float pdy)
 	}
 	j = pdx;
 	i = pdy;
-	while (x < 10)
+	while (x < 30)
 	{
 		mlx_pixel_put(game->mlx, game->win, game->player.px + i, game->player.py + j, color);
 		j += cos(game->player.dir) * 5;
