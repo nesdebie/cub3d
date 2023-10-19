@@ -6,7 +6,7 @@
 /*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:22 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/19 13:40:20 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/10/19 14:25:07 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	close_game(t_game *game)
 {
 	if (game->mlx && game->win)
-	mlx_destroy_window(game->mlx, game->win);
+		mlx_destroy_window(game->mlx, game->win);
 	clear_args(game);
 	exit(EXIT_SUCCESS);
 }
@@ -66,8 +66,6 @@ static int	cub3d(t_game *game)
 //TO DO
 	return (0);
 }
-
-
 
 void	init_flags(t_game *game)
 {

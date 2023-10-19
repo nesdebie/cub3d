@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nedebies <nedebies@student.s19.be>         +#+  +:+       +#+        */
+/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 20:36:15 by nedebies          #+#    #+#             */
-/*   Updated: 2021/04/28 12:31:07 by nedebies         ###   ########.fr       */
+/*   Updated: 2023/10/19 14:10:53 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 	s = (unsigned char *)src;
 	i = 0;
 	while (i < n)
-	{	
+	{
 		if (s[i] == (unsigned char)c)
 		{
 			d[i] = s[i];

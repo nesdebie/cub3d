@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 22:55:21 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/03 11:48:47 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/19 14:11:26 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,8 @@ t_list	*ft_lstnew(void *content);
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-
 char	*ft_strjoingnl(char *s1, char *s2);
 char	*ft_free(char *s1, char *s2);
-char 	*get_next_line(int fd);
+char	*get_next_line(int fd);
 
 #endif

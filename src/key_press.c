@@ -6,7 +6,7 @@
 /*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:16:50 by hubrygo           #+#    #+#             */
-/*   Updated: 2023/10/18 17:00:28 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/10/19 14:24:05 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	key_press(int key_code, t_game *game)
 {
 	if (key_code == KEY_ESC || key_code == KEY_Q)
-	close_game(game);
+		close_game(game);
 	if (key_code == KEY_W)
 		game->player.up = 1;
 	if (key_code == KEY_A)
