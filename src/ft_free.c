@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 00:03:27 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/03 14:52:53 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:46:57 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,13 @@ int	clear_args(t_game *game)
 		free(game->map_str);
 	if (game->map)
 		ft_freesplit(game->map);
+	if (game->sprites.n)
+		mlx_destroy_image(game->mlx, game->sprites.n);
+	if (game->sprites.s)
+		mlx_destroy_image(game->mlx, game->sprites.s);
+	if (game->sprites.e)
+		mlx_destroy_image(game->mlx, game->sprites.e);
+	if (game->sprites.w)
+		mlx_destroy_image(game->mlx, game->sprites.w);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:00:12 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/16 12:48:17 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:44:59 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ int	mlx_error(int error)
 		ft_putendl_fd("cub3d: mlx: mlx_init() failed", 2);
 	else if (error == MLX_WIN)
 		ft_putendl_fd("cub3d: mlx: mlx_new_window() failed", 2);
+	else if (error == MLX_XPM)
+		ft_putendl_fd("cub3d: mlx: mlx_xpm_file_to_image()) failed", 2);
 	return (1);
 }
 

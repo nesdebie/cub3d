@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
+/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:22 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/19 15:06:43 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/10/19 16:02:20 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,10 @@ void	init_flags(t_game *game)
 	game->flags.cnt = 0;
 	game->map_str = NULL;
 	game->map = NULL;
+	game->sprites.n = 0;
+	game->sprites.e = 0;
+	game->sprites.w = 0;
+	game->sprites.s = 0;
 }
 
 void	print_params(t_game *game)
@@ -122,6 +126,28 @@ void	ft_init_player(t_game *game, int x, int y)
 	game->player = player;
 }
 
+int ft_init_img(t_game *game)
+{
+	int	w;
+	int	h;
+
+	w = 128;
+	h = 128;
+	game->sprites.n = mlx_xpm_file_to_image(game->mlx, game->sprites.no, &h, &w);
+	if (!game->sprites.n)
+		return (mlx_error(MLX_XPM));
+	game->sprites.s = mlx_xpm_file_to_image(game->mlx, game->sprites.so, &h, &w);
+	if (!game->sprites.s)
+		return (mlx_error(MLX_XPM));
+	game->sprites.e = mlx_xpm_file_to_image(game->mlx, game->sprites.ea, &h, &w);
+	if (!game->sprites.e)
+		return (mlx_error(MLX_XPM));
+	game->sprites.w = mlx_xpm_file_to_image(game->mlx, game->sprites.we, &h, &w);
+	if (!game->sprites.w)
+		return (mlx_error(MLX_XPM));
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_game	game;
@@ -136,13 +162,15 @@ int	main(int argc, char **argv)
 	if (check_params(&game))
 		return (clear_args(&game));
 	print_params(&game); // DEBUG
-	init_window(&game); //TODO
+	init_window(&game);
+	if (ft_init_img(&game))
+		return (clear_args(&game));
 	ft_init_player(&game, 0, 0);
+	
 	mlx_hook(game.win, PRESS_KEY, 0, &key_press, &game);
 	mlx_hook(game.win, RELEASE_KEY, 0, &key_release, &game);
 	mlx_hook(game.win, RED_CROSS, 0, &close_game, &game);
 	mlx_loop_hook(game.mlx, &cub3d, &game);
 	mlx_loop(game.mlx);
-	clear_args(&game); //TMP
 	return (0);
 }

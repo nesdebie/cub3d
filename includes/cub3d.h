@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
+/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/19 15:03:48 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/10/19 15:45:09 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ typedef enum s_error
 	RGB_VALUE,
 	RGB_FORMAT,
 	MLX_WIN,
-	MLX_INIT
+	MLX_INIT,
+	MLX_XPM
 }	t_error;
 
 typedef struct s_player
