@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   map_checker_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 11:29:08 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/10 15:29:48 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/22 18:42:05 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 int	isinset(char c, char *set)
 {

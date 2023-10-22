@@ -2,14 +2,14 @@ NAME = cub3d
 
 SRCS = 	src/main.c \
 		src/errors.c \
-		src/file_checker.c \
-		src/file_checker_utils.c \
-		src/map_checker.c \
-		src/map_checker_utils.c \
-		src/textures_checker.c \
-		src/textures_checker_utils.c \
+		src/param_checkers/file_checker.c \
+		src/param_checkers/file_checker_utils.c \
+		src/param_checkers/map_checker.c \
+		src/param_checkers/map_checker_utils.c \
+		src/param_checkers/textures_checker.c \
+		src/param_checkers/textures_checker_utils.c \
 		src/ft_free.c \
-		src/key_press.c \
+		src/key_manager/key_press.c \
 		src/ft_display.c
 
 OBJS 	= $(SRCS:.c=.o)

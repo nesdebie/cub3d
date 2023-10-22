@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/19 15:45:09 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/23 00:49:07 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,8 @@
 //# include <mlx.h>
 # include "../libft/libft.h"
 
-# define NO_MOVE	0
-# define DOWN		1
-# define LEFT		2
-# define UP			3
-# define RIGHT		4
+# define X	560
+# define Y	560
 
 # define KEY_ESC	53
 # define KEY_Q      12

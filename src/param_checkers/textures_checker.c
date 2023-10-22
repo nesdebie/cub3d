@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   textures_checker.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 12:02:41 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/10 15:26:35 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/22 18:42:13 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 static int	check_fc_args(char **arr)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:22 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/19 16:02:20 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/23 00:53:01 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,41 @@ int	close_game(t_game *game)
 	exit(EXIT_SUCCESS);
 }
 
+void draw_fc(t_game *game)
+{
+	int	x;
+	int y;
+
+	x = 0;
+	y = 0;
+	int c1 = (0 << 16) | (0 << 8) | 0;
+	int c2 = (255 << 16) | (255 << 8) | 255;
+	while (y < Y / 2)
+	{
+		while (x < X)
+			mlx_pixel_put(game->mlx, game->win, x++, y, c1);
+		x = 0;
+		y++;
+	}
+	while (y < Y)
+	{
+		while (x < X)
+			mlx_pixel_put(game->mlx, game->win, x++, y, c2);
+		x = 0;
+		y++;
+	}
+}
+
 static int	cub3d(t_game *game)
 {
-	static float	pdx = 1;
-	static float	pdy = 1;
+	//static float	pdx = 1; // commented for fc-raycasting test
+	//static float	pdy = 1; // commented for fc-raycasting test
 
-	ft_erase_player(game, pdx, pdy);
-	ft_move(game, pdx, pdy);
-	//draw_map(game);
-	ft_draw_player(game, pdx, pdy);
+	draw_fc(game);
+	//ft_erase_player(game, pdx, pdy); // commented for fc-raycasting test
+	//ft_move(game, pdx, pdy); // commented for fc-raycasting test
+	//draw_map(game); // commented for fc-raycasting test
+	//ft_draw_player(game, pdx, pdy); // commented for fc-raycasting test
 	//draw_sprites(game);
 	//TO DO
 	return (0);
@@ -79,8 +105,8 @@ static void	init_window(t_game *game)
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		mlx_error(MLX_INIT);
-	width = 1000;
-	height = 600;
+	width = X;
+	height = Y;
 	game->win = mlx_new_window(game->mlx, width, height, "cub3d");
 	if (!game->win)
 		mlx_error(MLX_WIN);

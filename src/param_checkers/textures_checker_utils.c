@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   textures_checker_utils.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 12:18:44 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/13 12:59:38 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/22 18:42:20 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 int	onlyint(char *s)
 {

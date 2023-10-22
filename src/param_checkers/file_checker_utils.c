@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   file_checker_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 12:05:19 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/10 15:31:30 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/22 18:41:58 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 int	add_ea(t_game *game, char **arr)
 {
