@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:22 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/23 11:34:58 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/23 11:43:37 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ static int	cub3d(t_game *game)
 	static float	pdx = 1;
 	static float	pdy = 1;
 
+	if (game->img)
+		mlx_destroy_image(game->mlx, game->img);
+	game->img = mlx_new_image(game->mlx, X, Y);
 	draw_fc(game);
 	if (game->player.map == 1)
 	{
@@ -33,6 +36,7 @@ static int	cub3d(t_game *game)
 		draw_map(game);
 		ft_draw_player(game, pdx, pdy);
 	}
+	mlx_put_image_to_window(game->mlx, game->win, game->img, X, Y);
 	//draw_sprites(game);
 	//TO DO
 	return (0);
@@ -51,6 +55,7 @@ void	init_flags(t_game *game)
 	game->flags.cnt = 0;
 	game->map_str = NULL;
 	game->map = NULL;
+	game->img = NULL;
 	game->sprites.n = 0;
 	game->sprites.e = 0;
 	game->sprites.w = 0;

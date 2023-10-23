@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_display.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
+/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 16:39:09 by hubrygo           #+#    #+#             */
-/*   Updated: 2023/10/23 09:06:52 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/23 11:46:04 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ void	ft_draw_player(t_game *game, float pdx, float pdy)
 	{
 		y = -6;
 		while (++y < 5)
-			mlx_pixel_put(game->mlx, game->win, game->player.px + x, \
+			mlx_pixel_put(game->img, game->win, game->player.px + x, \
 							game->player.py + y, color);
 	}
-	mlx_pixel_put(game->mlx, game->win, game->player.px, \
+	mlx_pixel_put(game->img, game->win, game->player.px, \
 					game->player.py, color);
 	while (++x < 16) // longueur
 	{
-		mlx_pixel_put(game->mlx, game->win, game->player.px + pdy, \
+		mlx_pixel_put(game->img, game->win, game->player.px + pdy, \
 						game->player.py + pdx, color);
 		pdx += cos(game->player.dir) * 2;
 		pdy += sin(game->player.dir) * 2;
@@ -55,7 +55,7 @@ void	draw_map(t_game *game)
 		y = 0;
 		while (y < 60)
 		{
-			mlx_pixel_put(game->mlx, game->win, x, y, color);
+			mlx_pixel_put(game->img, game->win, x, y, color);
 			y++;
 		}
 		x++;
@@ -74,12 +74,12 @@ void	ft_erase_player(t_game *game, float pdx, float pdy)
 	{
 		y = -6;
 		while (++y < 5)
-			mlx_pixel_put(game->mlx, game->win, game->player.px + x, \
+			mlx_pixel_put(game->img, game->win, game->player.px + x, \
 							game->player.py + y, color);
 	}
 	while (++x < 16) // longueur
 	{
-		mlx_pixel_put(game->mlx, game->win, game->player.px + pdy, \
+		mlx_pixel_put(game->img, game->win, game->player.px + pdy, \
 						game->player.py + pdx, color);
 		pdx += cos(game->player.dir) * 2;
 		pdy += sin(game->player.dir) * 2;

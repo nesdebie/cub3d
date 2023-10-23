@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 09:05:08 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/23 11:33:56 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/23 11:45:07 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void draw_fc(t_game *game)
 		while (x < X)
 		{
 			if (y < Y / 2)
-				mlx_pixel_put(game->mlx, game->win, x, y, game->sprites.c_rgb);
+				mlx_pixel_put(game->img, game->win, x, y, game->sprites.c_rgb);
 			else
-				mlx_pixel_put(game->mlx, game->win, x, y, game->sprites.f_rgb);
+				mlx_pixel_put(game->img, game->win, x, y, game->sprites.f_rgb);
 			x++;
 		}
 		x = 0;

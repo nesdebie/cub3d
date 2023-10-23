@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/23 11:30:20 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/23 11:40:28 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 //# include <mlx.h>
 # include "../libft/libft.h"
 
-# define X	560
-# define Y	560
+# define X	1080
+# define Y	1080
 
 # define KEY_ESC	53
 # define KEY_Q      12
@@ -111,6 +111,7 @@ typedef struct s_game
 {
 	void		*mlx;
 	void		*win;
+	void		*img;
 	char		**map;
 	char		*map_str;
 	int			held_key;
