@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_press.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
+/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:16:50 by hubrygo           #+#    #+#             */
-/*   Updated: 2023/10/22 18:45:30 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/23 11:31:23 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,13 @@ int	key_press(int key_code, t_game *game)
 		game->player.turn_left = 1;
 	if (key_code == KEY_RIGHT)
 		game->player.turn_right = 1;
+	if (key_code == KEY_M)
+	{
+		if (!game->player.map)
+			game->player.map = 1;
+		else
+			game->player.map = 0;
+	}
 	return (0);
 }
 

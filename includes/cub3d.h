@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
+/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/23 09:08:59 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/23 11:30:20 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@
 # define KEY_A	0
 # define KEY_S	1
 # define KEY_D	2
+
+# define KEY_M 46
 
 # define KEY_LEFT	123
 # define KEY_RIGHT	124
@@ -70,6 +72,7 @@ typedef struct s_player
 	int 	right;
 	int		turn_left;
 	int		turn_right;
+	int		map;
 	float	px;
 	float	py;
 	float	dir;

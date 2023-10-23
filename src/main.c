@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
+/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:22 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/23 09:06:36 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/23 11:34:58 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,17 @@ int	close_game(t_game *game)
 
 static int	cub3d(t_game *game)
 {
-	//static float	pdx = 1; // commented for fc-raycasting test
-	//static float	pdy = 1; // commented for fc-raycasting test
+	static float	pdx = 1;
+	static float	pdy = 1;
 
 	draw_fc(game);
-	//ft_erase_player(game, pdx, pdy); // commented for fc-raycasting test
-	//ft_move(game, pdx, pdy); // commented for fc-raycasting test
-	//draw_map(game); // commented for fc-raycasting test
-	//ft_draw_player(game, pdx, pdy); // commented for fc-raycasting test
+	if (game->player.map == 1)
+	{
+		ft_erase_player(game, pdx, pdy);
+		ft_move(game, pdx, pdy);
+		draw_map(game);
+		ft_draw_player(game, pdx, pdy);
+	}
 	//draw_sprites(game);
 	//TO DO
 	return (0);
@@ -52,6 +55,7 @@ void	init_flags(t_game *game)
 	game->sprites.e = 0;
 	game->sprites.w = 0;
 	game->sprites.s = 0;
+	game->player.map = 0;
 }
 
 void	print_params(t_game *game)
