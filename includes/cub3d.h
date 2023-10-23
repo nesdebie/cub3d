@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/23 11:40:28 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/23 12:01:35 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ typedef enum s_error
 	RGB_FORMAT,
 	MLX_WIN,
 	MLX_INIT,
-	MLX_XPM
+	MLX_XPM,
+	MLX_IMG
 }	t_error;
 
 typedef struct s_player
@@ -115,6 +116,7 @@ typedef struct s_game
 	char		**map;
 	char		*map_str;
 	int			held_key;
+	int			key_pressed;
 	t_spr		sprites;
 	t_flag		flags;
 	t_player	player;

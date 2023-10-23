@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:16:50 by hubrygo           #+#    #+#             */
-/*   Updated: 2023/10/23 11:31:23 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/23 11:59:43 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	key_press(int key_code, t_game *game)
 		else
 			game->player.map = 0;
 	}
+	game->key_pressed = 1;
 	return (0);
 }
 
