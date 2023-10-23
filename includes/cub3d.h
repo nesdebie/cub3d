@@ -6,7 +6,7 @@
 /*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/23 00:49:07 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/23 09:08:59 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,8 @@ typedef struct s_spr
 	char	*ea;
 	char	*f;
 	char	*c;
-	int		f_trgb;
-	int		c_trgb;
+	int		f_rgb;
+	int		c_rgb;
 }				t_spr;
 
 typedef struct s_flag
@@ -143,7 +143,7 @@ int		add_no(t_game *game, char **arr);
 int		add_fc(t_game *game, char **arr, char flag);
 
 /* SETTER */
-int	set_trgb(int r, int g, int b);
+int	set_rgb(int r, int g, int b);
 
 /* UTILS */
 int		isinset(char c, char *set);
@@ -156,9 +156,12 @@ int		key_release(int key_code, t_game *game);
 int		close_game(t_game *game);
 void	ft_move(t_game *game, float pdx, float pdy);
 
-/*Display*/
+/*DISPLAY (Hugo)*/
 void	ft_erase_player(t_game *game, float pdx, float pdy);
 void	draw_map(t_game *game);
 void	ft_draw_player(t_game *game, float pdx, float pdy);
+
+/* DISPLAYS (Nestor) */
+void	draw_fc(t_game *game);
 
 #endif

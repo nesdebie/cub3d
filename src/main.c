@@ -6,7 +6,7 @@
 /*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:22 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/23 00:53:01 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/23 09:06:36 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,31 +18,6 @@ int	close_game(t_game *game)
 		mlx_destroy_window(game->mlx, game->win);
 	clear_args(game);
 	exit(EXIT_SUCCESS);
-}
-
-void draw_fc(t_game *game)
-{
-	int	x;
-	int y;
-
-	x = 0;
-	y = 0;
-	int c1 = (0 << 16) | (0 << 8) | 0;
-	int c2 = (255 << 16) | (255 << 8) | 255;
-	while (y < Y / 2)
-	{
-		while (x < X)
-			mlx_pixel_put(game->mlx, game->win, x++, y, c1);
-		x = 0;
-		y++;
-	}
-	while (y < Y)
-	{
-		while (x < X)
-			mlx_pixel_put(game->mlx, game->win, x++, y, c2);
-		x = 0;
-		y++;
-	}
 }
 
 static int	cub3d(t_game *game)
@@ -86,8 +61,8 @@ void	print_params(t_game *game)
 	i = 0;
 	printf("NO: |%s|\nSO: |%s|\nEA: |%s|\nWE: |%s|\nf : |%s|=|%d|\nc : \
 			|%s|=|%d|\n", game->sprites.no, game->sprites.so, game->sprites.ea, \
-			game->sprites.we, game->sprites.f, game->sprites.f_trgb, \
-			game->sprites.c, game->sprites.c_trgb);
+			game->sprites.we, game->sprites.f, game->sprites.f_rgb, \
+			game->sprites.c, game->sprites.c_rgb);
 	printf("\nMAP (char *):\n%s", game->map_str);
 	ft_putendl_fd("\n________________________\nMAP (arr):", 1);
 	while (game->map[i] != NULL)

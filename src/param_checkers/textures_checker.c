@@ -6,7 +6,7 @@
 /*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 12:02:41 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/22 18:42:13 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/23 09:00:22 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ static int	check_fc(t_game *game, char c)
 		return (1);
 	}
 	if (c == 'c')
-		game->sprites.c_trgb = set_trgb(ft_atoi(arr[0]),
+		game->sprites.c_rgb = set_rgb(ft_atoi(arr[0]),
 				ft_atoi(arr[1]), ft_atoi(arr[2]));
 	if (c == 'f')
-		game->sprites.f_trgb = set_trgb(ft_atoi(arr[0]),
+		game->sprites.f_rgb = set_rgb(ft_atoi(arr[0]),
 				ft_atoi(arr[1]), ft_atoi(arr[2]));
 	ft_freesplit(arr);
 	return (0);

@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   textures_checker_utils.c                           :+:      :+:    :+:   */
+/*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/10 12:18:44 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/23 09:01:06 by nesdebie         ###   ########.fr       */
+/*   Created: 2023/10/23 09:05:08 by nesdebie          #+#    #+#             */
+/*   Updated: 2023/10/23 09:06:41 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	onlyint(char *s)
+void draw_fc(t_game *game)
 {
-	int	i;
+	int	x;
+	int y;
 
-	i = 0;
-	while (s[i])
+	x = 0;
+	y = 0;
+	while (y < Y / 2)
 	{
-		if (s[i] < '0' || s[i] > '9')
-			return (1);
-		i++;
+		while (x < X)
+			mlx_pixel_put(game->mlx, game->win, x++, y, game->sprites.c_rgb);
+		x = 0;
+		y++;
 	}
-	return (0);
-}
-
-int	set_rgb(int red, int green, int blue)
-{
-	return (red << 16 | green << 8 | blue);
+	while (y < Y)
+	{
+		while (x < X)
+			mlx_pixel_put(game->mlx, game->win, x++, y, game->sprites.f_rgb);
+		x = 0;
+		y++;
+	}
 }
