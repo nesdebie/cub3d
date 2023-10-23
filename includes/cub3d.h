@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/23 12:01:35 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/23 15:08:06 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 //# include <mlx.h>
 # include "../libft/libft.h"
 
-# define X	1080
-# define Y	1080
+# define X	480
+# define Y	480
 
 # define KEY_ESC	53
 # define KEY_Q      12
@@ -168,6 +168,6 @@ void	draw_map(t_game *game);
 void	ft_draw_player(t_game *game, float pdx, float pdy);
 
 /* DISPLAYS (Nestor) */
-void	draw_fc(t_game *game);
+void	draw_pov(t_game *game, char *addr);
 
 #endif

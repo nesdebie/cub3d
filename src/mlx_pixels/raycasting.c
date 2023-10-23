@@ -6,19 +6,20 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 09:05:08 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/23 11:45:07 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/23 15:07:54 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void draw_fc(t_game *game)
+void draw_pov(t_game *game, char *addr)
 {
 	int	x;
 	int y;
 
 	x = 0;
 	y = 0;
+	(void)addr;
 	while (y < Y)
 	{
 		while (x < X)
