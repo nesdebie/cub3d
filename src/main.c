@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:22 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/23 15:07:38 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/23 16:02:25 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,15 @@ static int	cub3d(t_game *game)
 {
 	static float	pdx = 1;
 	static float	pdy = 1;
-	char			*addr;
+	char			*addr = NULL;
 
-	if (game->key_pressed == 1 || (game->key_pressed == 0 && !game->img))
+	
+	if (game->key_pressed == 1)
 	{
-		if (game->img)
-			
-		game->img = mlx_new_image(game->mlx, X, Y);
-		if (!game->img)
-		{
-			mlx_error(MLX_IMG);
-			close_game(game);
-		}
-		addr = mlx_get_data_addr(game->img, &(int){0}, &(int){0}, &(int){0});
+		draw_blacked(game, addr);
 		draw_pov(game, addr);
+		addr = mlx_get_data_addr(game->img, &(int){0}, &(int){0}, &(int){0});
+		
 		if (game->player.map == 1)
 		{
 			ft_erase_player(game, pdx, pdy);
@@ -46,10 +41,12 @@ static int	cub3d(t_game *game)
 			ft_draw_player(game, pdx, pdy);
 		}
 		mlx_put_image_to_window(game->mlx, game->win, game->img, X, Y);
-		mlx_destroy_image(game->mlx, game->img);//draw_sprites(game);
+		//draw_sprites(game);
 		//TO DO
 		game->key_pressed = 0;
+		
 	}
+	
 	return (0);
 }
 
@@ -139,8 +136,8 @@ void	ft_init_player(t_game *game, int x, int y)
 		}
 	}
 	player.dir = ft_dir(game->map[(int)player.py][(int)player.px]);
-	player.px = player.px * (1000 / x);
-	player.py = player.py * (600 / y);
+	player.px = player.px * (X / x);
+	player.py = player.py * (Y / y);
 	player.right = 0;
 	player.up = 0;
 	player.turn_left = 0;
@@ -188,7 +185,12 @@ int	main(int argc, char **argv)
 	if (ft_init_img(&game))
 		return (clear_args(&game));
 	ft_init_player(&game, 0, 0);
-	
+	game.img = mlx_new_image(game.mlx, X, Y);
+	if (!game.img)
+	{
+		mlx_error(MLX_IMG);
+		return (clear_args(&game));
+	}
 	mlx_hook(game.win, PRESS_KEY, 0, &key_press, &game);
 	mlx_hook(game.win, RELEASE_KEY, 0, &key_release, &game);
 	mlx_hook(game.win, RED_CROSS, 0, &close_game, &game);

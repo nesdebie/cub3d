@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/23 15:08:06 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/23 15:55:09 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ typedef struct s_player
 	int		map;
 	float	px;
 	float	py;
+	float	pdx;
+	float	pdy;
 	float	dir;
 }				t_player;
 
@@ -169,5 +171,6 @@ void	ft_draw_player(t_game *game, float pdx, float pdy);
 
 /* DISPLAYS (Nestor) */
 void	draw_pov(t_game *game, char *addr);
+void	draw_blacked(t_game *game, char *addr);
 
 #endif
