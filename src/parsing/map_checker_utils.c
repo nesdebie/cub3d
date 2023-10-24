@@ -6,25 +6,11 @@
 /*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 11:29:08 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/22 18:42:05 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/24 23:34:39 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
-
-int	isinset(char c, char *set)
-{
-	int	i;
-
-	i = 0;
-	while (set[i])
-	{
-		if (c == set[i])
-			return (0);
-		i++;
-	}
-	return (1);
-}
 
 static char	*ft_space_line(size_t size)
 {

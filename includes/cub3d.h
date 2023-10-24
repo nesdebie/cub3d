@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/23 15:55:09 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/24 23:44:00 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,11 +133,18 @@ int		mlx_error(int error);
 /* READER */
 int		read_file(t_game *game, char *filename, int fd, char *tmp);
 
-/* CHECKER */
+/* PARSING */
+int		parsing(t_game *game, char *map, int argc);
 int		check_params(t_game *game);
 int		check_extension(char *filename, char *ext);
 int		check_textures(t_game *game);
 int		check_nsew(t_game *game);
+
+/* INIT */
+void	init_player(t_game *game, int x, int y);
+int		init_img(t_game *game);
+void	init_window(t_game *game);
+void	init_flags(t_game *game);
 
 /* FREE */
 void	ft_freesplit(char **arr);

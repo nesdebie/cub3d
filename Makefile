@@ -2,14 +2,15 @@ NAME = cub3d
 
 SRCS = 	src/main.c \
 		src/errors.c \
-		src/param_checkers/file_checker.c \
-		src/param_checkers/file_checker_utils.c \
-		src/param_checkers/map_checker.c \
-		src/param_checkers/map_checker_utils.c \
-		src/param_checkers/textures_checker.c \
-		src/param_checkers/textures_checker_utils.c \
+		src/parsing/parsing.c \
+		src/parsing/file_checker.c \
+		src/parsing/file_checker_utils.c \
+		src/parsing/map_checker.c \
+		src/parsing/map_checker_utils.c \
+		src/parsing/textures_checker.c \
 		src/ft_free.c \
-		src/key_manager/key_press.c \
+		src/init/init.c \
+		src/moves/keys_manager.c \
 		src/mlx_pixels/ft_display.c \
 		src/mlx_pixels/raycasting.c
 
