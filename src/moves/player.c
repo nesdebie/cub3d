@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 11:47:26 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/26 12:43:28 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:57:56 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ void	ft_update_dir(t_game *game)
 	}
 }
 
-void	ft_move(t_game *game, float pdx, float pdy)
+void	ft_move_pixels(t_game *game, float pdx, float pdy)
 {
 	ft_update_dir(game);
-	pdx = cos(game->player.dir) * 15;
-	pdy = sin(game->player.dir) * 15;
+	pdx = cos(game->player.dir) * SPEED;
+	pdy = sin(game->player.dir) * SPEED;
 	if (game->player.down == 1 && game->player.py < Y && game->player.py > 0)
 	{
 		game->player.py -= pdx;

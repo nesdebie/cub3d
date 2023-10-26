@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
+/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/26 03:36:44 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:57:56 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 
 # define X	480
 # define Y	480
+
+# define SPEED 10
 
 # define KEY_ESC	53
 # define KEY_Q      12
@@ -205,7 +207,7 @@ void	wait_inputs(t_game *game);
 int		key_press(int key_code, t_game *game);
 int		key_release(int key_code, t_game *game);
 int		close_game(t_game *game);
-void	ft_move(t_game *game, float pdx, float pdy);
+void	ft_move_pixels(t_game *game, float pdx, float pdy);
 
 /*DISPLAY (Hugo)*/
 void	ft_erase_player(t_game *game, float pdx, float pdy);
