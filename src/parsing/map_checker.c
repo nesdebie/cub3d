@@ -6,7 +6,7 @@
 /*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 12:02:17 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/22 18:42:09 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/25 23:52:39 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,9 @@ static int	check_walls(char **map)
 
 int	check_params(t_game *game)
 {
+	int	i;
+
+	i = 0;
 	if (check_chars(game->map_str))
 		return (1);
 	if (check_textures(game))
@@ -97,5 +100,9 @@ int	check_params(t_game *game)
 		return (error_msg(MALLOC_ERROR));
 	if (check_walls(game->map))
 		return (error_msg(NOT_WALLED));
+	game->map_width = ft_strlen(game->map[0]);
+	while (game->map[i])
+		i++;
+	game->map_height = i;
 	return (0);
 }

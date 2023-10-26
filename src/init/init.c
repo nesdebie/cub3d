@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
+/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 23:39:35 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/24 23:45:46 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/26 11:55:32 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 static float	init_dir(char c)
 {
 	if (c == 'N')
-		return (0.25);
+		return (PI);
 	else if (c == 'E')
-		return (0.00);
+		return (PI/2);
 	else if (c == 'S')
-		return (0.75);
-	return (0.50);
+		return (0.00);
+	return (3*PI/2);
 }
 
 void	init_player(t_game *game, int x, int y)
@@ -52,7 +52,7 @@ void	init_player(t_game *game, int x, int y)
 	game->player = player;
 }
 
-int init_img(t_game *game)
+int init_textures(t_game *game)
 {
 	int	w;
 	int	h;
@@ -74,19 +74,36 @@ int init_img(t_game *game)
 	return (0);
 }
 
-void	init_window(t_game *game)
+int	init_window(t_game *game)
 {
-	int	width;
-	int	height;
-
 	game->mlx = mlx_init();
 	if (!game->mlx)
-		mlx_error(MLX_INIT);
-	width = X;
-	height = Y;
-	game->win = mlx_new_window(game->mlx, width, height, "cub3d");
+		return(mlx_error(MLX_INIT));
+	game->win = mlx_new_window(game->mlx, X, Y, "cub3d");
 	if (!game->win)
-		mlx_error(MLX_WIN);
+		return(mlx_error(MLX_WIN));
+	return (0);
+}
+
+void	init_pov(t_ray *ray)
+{
+	ray->camera_x = 0;
+	ray->dir_x = 0;
+	ray->dir_y = 0;
+	ray->map_x = 0;
+	ray->map_y = 0;
+	ray->step_x = 0;
+	ray->step_y = 0;
+	ray->sidedist_x = 0;
+	ray->sidedist_y = 0;
+	ray->deltadist_x = 0;
+	ray->deltadist_y = 0;
+	ray->wall_dist = 0;
+	ray->wall_x = 0;
+	ray->side = 0;
+	ray->line_height = 0;
+	ray->draw_start = 0;
+	ray->draw_end = 0;
 }
 
 void	init_flags(t_game *game)
@@ -103,6 +120,7 @@ void	init_flags(t_game *game)
 	game->map_str = NULL;
 	game->map = NULL;
 	game->img = NULL;
+	game->binary_screen = NULL;
 	game->sprites.n = 0;
 	game->sprites.e = 0;
 	game->sprites.w = 0;

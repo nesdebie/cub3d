@@ -1,6 +1,7 @@
 NAME = cub3d
 
 SRCS = 	src/main.c \
+		src/close_game.c \
 		src/errors.c \
 		src/parsing/parsing.c \
 		src/parsing/file_checker.c \
@@ -11,6 +12,7 @@ SRCS = 	src/main.c \
 		src/ft_free.c \
 		src/init/init.c \
 		src/moves/keys_manager.c \
+		src/moves/player.c \
 		src/mlx_pixels/ft_display.c \
 		src/mlx_pixels/raycasting.c
 
