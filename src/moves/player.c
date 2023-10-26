@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 11:47:26 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/26 11:47:52 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/26 11:59:34 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	ft_update_dir(t_game *game)
 void	ft_move(t_game *game, float pdx, float pdy)
 {
 	ft_update_dir(game);
-	pdx = cos(game->player.dir) * 5;
-	pdy = sin(game->player.dir) * 5;
+	pdx = cos(game->player.dir) * 15;
+	pdy = sin(game->player.dir) * 15;
 	if (game->player.down == 1 && game->player.py < 600 && game->player.py > 0)
 	{
 		game->player.py -= pdx;
