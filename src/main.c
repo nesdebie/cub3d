@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:22 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/26 11:44:05 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:42:42 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ void	init_img(t_game *game, t_img *image, int width, int height)
 	}
 	image->addr = (int *)mlx_get_data_addr(image->img, &image->pixel_bits,
 			&image->size_line, &image->endian);
-	return ;
 }
 
 void	set_image_pixel(t_img *image, int x, int y, int color)
@@ -87,12 +86,12 @@ void	set_image_pixel(t_img *image, int x, int y, int color)
 
 static void	set_frame_image_pixel(t_game *game, t_img *image, int x, int y)
 {
-	unsigned long tmp = ((128 & 0xff) << 16) + ((128 & 0xff) << 8) + (128 & 0xff);
+	unsigned long tmp = set_rgb(128, 128, 128); // print des murs gris en attendant
 	if (game->binary_screen[y][x] > 0)
 		set_image_pixel(image, x, y, tmp);
 	else if (y < Y / 2)
 		set_image_pixel(image, x, y, game->sprites.c_rgb);
-	else if (y < Y -1)
+	else if (y < Y - 1)
 		set_image_pixel(image, x, y, game->sprites.f_rgb);
 }
 
@@ -144,7 +143,7 @@ int	cub3d(t_game *game)
 			draw_map(game);
 			ft_draw_player(game, pdx, pdy);
 		}
-		game->key_pressed = 0;
+		game->key_pressed = 0; // Retirer augmente la fluidite ofc
 	}
 	return (0);
 }

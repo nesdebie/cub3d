@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 11:47:26 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/26 11:59:34 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:43:28 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ void	ft_move(t_game *game, float pdx, float pdy)
 	ft_update_dir(game);
 	pdx = cos(game->player.dir) * 15;
 	pdy = sin(game->player.dir) * 15;
-	if (game->player.down == 1 && game->player.py < 600 && game->player.py > 0)
+	if (game->player.down == 1 && game->player.py < Y && game->player.py > 0)
 	{
 		game->player.py -= pdx;
 		game->player.px -= pdy;
 	}
-	if (game->player.up == 1 && game->player.py < 600 && game->player.py > 0)
+	if (game->player.up == 1 && game->player.py < Y && game->player.py > 0)
 	{
 		game->player.py += pdx;
 		game->player.px += pdy;
@@ -48,7 +48,7 @@ void	ft_move(t_game *game, float pdx, float pdy)
 		game->player.py -= pdy;
 		game->player.px += pdx;
 	}
-	if (game->player.right == 1 && game->player.px < 1000)
+	if (game->player.right == 1 && game->player.px < X)
 	{
 		game->player.py += pdy;
 		game->player.px -= pdx;
