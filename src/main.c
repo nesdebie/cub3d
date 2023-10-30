@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:22 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/30 11:04:56 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/30 11:11:59 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,7 +173,7 @@ static	int init_params(t_game *game)
 		return (clear_args(game));
 	if (init_textures(game))
 		return (clear_args(game));
-	init_player(game, 0, 0);
+	init_player(game, 0, -1);
 	return (0);
 }
 

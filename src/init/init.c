@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 23:39:35 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/26 11:55:32 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/30 11:47:23 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 static float	init_dir(char c)
 {
-	if (c == 'N')
+	if (c == 'S')
+		return (0);
+	else if (c == 'W')
+		return (3*PI/2);
+	else if (c == 'N')
 		return (PI);
-	else if (c == 'E')
-		return (PI/2);
-	else if (c == 'S')
-		return (0.00);
-	return (3*PI/2);
+	return (PI/2);
 }
 
 void	init_player(t_game *game, int x, int y)
@@ -29,7 +29,6 @@ void	init_player(t_game *game, int x, int y)
 
 	player.down = 0;
 	player.left = 0;
-	y = -1;
 	while (game->map[++y])
 	{
 		x = -1;
@@ -39,10 +38,13 @@ void	init_player(t_game *game, int x, int y)
 			{
 				player.px = x;
 				player.py = y;
+				player.dir = init_dir(game->map[y][x]);
+				player.pos_x = x + 0.5;
+				player.pos_y = y + 0.5;
 			}
 		}
 	}
-	player.dir = init_dir(game->map[(int)player.py][(int)player.px]);
+	printf("|%f|\n", player.dir);
 	player.px = player.px * (X / x);
 	player.py = player.py * (Y / y);
 	player.right = 0;

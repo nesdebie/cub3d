@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/30 11:06:46 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/30 11:32:43 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 //# include <mlx.h>
 # include "../libft/libft.h"
 
-# define X	480
-# define Y	480
+# define X	1000
+# define Y	1000
 
 # define SPEED 10
 
@@ -69,18 +69,24 @@ typedef enum s_error
 
 typedef struct s_player
 {
+	float	dir;
+	float	pdx;
+	float	pdy;
 	int		up;
 	int 	down;
 	int 	left;
 	int 	right;
 	int		turn_left;
 	int		turn_right;
+	
+	//RAYCASTING
+	float	pos_x;
+	float	pos_y;
+
+	//MINIMAP
 	int		map;
 	float	px;
 	float	py;
-	float	pdx;
-	float	pdy;
-	float	dir;
 }				t_player;
 
 typedef struct s_spr
