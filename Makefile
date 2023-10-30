@@ -13,6 +13,7 @@ SRCS = 	src/main.c \
 		src/init/init.c \
 		src/moves/keys_manager.c \
 		src/moves/player.c \
+		src/moves/moves.c \
 		src/mlx_pixels/ft_display.c \
 		src/mlx_pixels/raycasting.c
 

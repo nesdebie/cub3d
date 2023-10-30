@@ -6,21 +6,45 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 23:39:35 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/30 11:47:23 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/30 16:24:50 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static float	init_dir(char c)
+static float	which_dir(char c)
 {
 	if (c == 'S')
-		return (0);
-	else if (c == 'W')
 		return (3*PI/2);
+	else if (c == 'E')
+		return (0);
 	else if (c == 'N')
-		return (PI);
-	return (PI/2);
+		return (PI/2);
+	return (PI);
+}
+
+void	init_dir(t_game *game)
+{
+	if (game->player.first_dir == 'N')
+	{
+		game->player.dir_x = 0;
+		game->player.dir_y = -1;
+	}
+	if (game->player.first_dir == 'S')
+	{
+		game->player.dir_x = 0;
+		game->player.dir_y = 1;
+	}
+	if (game->player.first_dir == 'E')
+	{
+		game->player.dir_x = 1;
+		game->player.dir_y = 0;
+	}
+	if (game->player.first_dir == 'W')
+	{
+		game->player.dir_x = -1;
+		game->player.dir_y = 0;
+	}
 }
 
 void	init_player(t_game *game, int x, int y)
@@ -38,13 +62,13 @@ void	init_player(t_game *game, int x, int y)
 			{
 				player.px = x;
 				player.py = y;
-				player.dir = init_dir(game->map[y][x]);
+				player.dir = which_dir(game->map[y][x]);
+				player.first_dir = game->map[y][x];
 				player.pos_x = x + 0.5;
 				player.pos_y = y + 0.5;
 			}
 		}
 	}
-	printf("|%f|\n", player.dir);
 	player.px = player.px * (X / x);
 	player.py = player.py * (Y / y);
 	player.right = 0;

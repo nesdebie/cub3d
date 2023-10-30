@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
+/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:22 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/30 15:27:20 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/10/30 16:32:31 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,17 +134,18 @@ int	cub3d(t_game *game)
 	static float	pdx = 1;
 	static float	pdy = 1;
 
-	//if (game->key_pressed == 1)
-	//{
+	if (game->key_pressed == 1)
+	{
+		ft_move_player(game, 1, 1);
 		display_screen(game);
+		game->key_pressed = 0; // Retirer augmente la fluidite ofc
+	}
 		if (game->player.map == 1)
 		{
 			ft_move_pixels(game, pdx, pdy);
 			draw_map(game);
 			ft_draw_player(game, pdx, pdy);
 		}
-		//game->key_pressed = 0; // Retirer augmente la fluidite ofc
-	//}
 	return (0);
 }
 
@@ -187,6 +188,7 @@ int	main(int argc, char **argv)
 		return (1);
 	if (init_params(&game))
 		return (1);
+	init_dir(&game);
 	print_params(&game); // DEBUG
 	display_screen(&game);
 	mlx_hook(game.win, PRESS_KEY, 0, &key_press, &game);

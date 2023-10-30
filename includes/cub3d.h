@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
+/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/30 15:36:59 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/10/30 16:20:32 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,11 @@ typedef struct s_player
 	int		turn_right;
 	
 	//RAYCASTING
-	float	pos_x;
-	float	pos_y;
+	char	first_dir;
+	float	pos_x; // pos_x map
+	float	pos_y; // pos_y map
+	float	dir_x; // dir map
+	float	dir_y; // dir map
 
 	//MINIMAP
 	int		map;
@@ -224,5 +227,7 @@ void	ft_draw_player(t_game *game, float pdx, float pdy);
 void	draw_pov(t_game *game, char *addr);
 void	init_img(t_game *game, t_img *image, int width, int height);
 void	set_image_pixel(t_img *image, int x, int y, int color);
-
+void	ft_update_dir(t_game *game);
+void	init_dir(t_game *game);
+void	ft_move_player(t_game *game, float pdx, float pdy);
 #endif
