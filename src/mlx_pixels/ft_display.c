@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_display.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 16:39:09 by hubrygo           #+#    #+#             */
-/*   Updated: 2023/10/26 12:36:11 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/30 16:05:00 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_draw_player(t_game *game, float pdx, float pdy)
 	int	y;
 	int	color;
 
-	color = (255 << 16) | (255 << 8) | 0;
+	color = (100 << 24) | (255 << 16) | (255 << 8) | 0;
 	x = -6;
 	while (++x < 5)
 	{
@@ -38,50 +38,64 @@ void	ft_draw_player(t_game *game, float pdx, float pdy)
 	}
 }
 
-void	draw_map(t_game *game)
+void	set_image_pixel2(t_img *image, int x, int y)
 {
-	int	rgb[3];
-	int	x;
-	int	y;
+	int	pixel;
 	int	color;
-
-	rgb[0] = 128;
-	rgb[1] = 128;
-	rgb[2] = 128;
-	color = (rgb[0] << 16) | (rgb[1] << 8) | rgb[2];
-	x = 0;
-	while (x < 100)
-	{
-		y = 0;
-		while (y < 60)
-		{
-			mlx_pixel_put(game->img, game->win, x, y, color);
-			y++;
-		}
-		x++;
-	}
+	
+	color = (200 << 24 ) | (0 << 16) | (0 << 8) | 0;
+	pixel = y * (image->size_line / 4) + x;
+	image->addr[pixel] = color;
 }
 
-void	ft_erase_player(t_game *game, float pdx, float pdy)
+void	create_wall(t_game *game)
 {
-	int	x;
-	int	y;
-	int	color;
+	t_img	wall;
+	int		y;
+	int		x;
+	int		i;
+	int		j;
 
-	color = (0 << 16) | (0 << 8) | 0;
-	x = -6;
-	while (++x < 5)
+	y = 19;
+	x = 19;
+	wall.img = NULL;
+	init_img(game, &wall, x, y);
+	i = 0;
+	while (i < x)
 	{
-		y = -6;
-		while (++y < 5)
-			mlx_pixel_put(game->img, game->win, game->player.px + x, \
-							game->player.py + y, color);
+		j = 0;
+		while (j < y)
+		{
+			set_image_pixel2(&wall, i, j);
+			j++;
+		}
+		i++;
 	}
-	while (++x < 16) // longueur
+	game->wall = wall;
+}
+
+void	draw_map(t_game *game)
+{
+	int		i;
+	int		j;
+	static int	start = 0;
+
+	if (start == 0)
 	{
-		mlx_pixel_put(game->img, game->win, game->player.px + pdy, \
-						game->player.py + pdx, color);
-		pdx += cos(game->player.dir) * 2;
-		pdy += sin(game->player.dir) * 2;
+		create_wall(game);
+		start++;
+	}
+	//printf("test\n");
+	i = 0;
+	while (i < game->map_height)
+	{
+		j = 0;
+		while (j < game->map_width)
+		{
+			if (game->map[i][j] == '1')
+				mlx_put_image_to_window(game->mlx, game->win, game->wall.img, (i * 20) + 250, (j * 20) + 200);
+			j++;
+		}
+		i++;
 	}
 }

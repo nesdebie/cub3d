@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/30 11:32:43 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/30 15:36:59 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,6 +160,7 @@ typedef struct s_game
 	char		*map_str;
 	int			held_key;
 	int			key_pressed;
+	t_img		wall;
 	t_ray		ray;
 	t_spr		sprites;
 	t_flag		flags;
@@ -216,12 +217,12 @@ int		close_game(t_game *game);
 void	ft_move_pixels(t_game *game, float pdx, float pdy);
 
 /*DISPLAY (Hugo)*/
-void	ft_erase_player(t_game *game, float pdx, float pdy);
 void	draw_map(t_game *game);
 void	ft_draw_player(t_game *game, float pdx, float pdy);
 
 /* DISPLAYS (Nestor) */
 void	draw_pov(t_game *game, char *addr);
-void	draw_blacked(t_game *game, char *addr);
+void	init_img(t_game *game, t_img *image, int width, int height);
+void	set_image_pixel(t_img *image, int x, int y, int color);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
+/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 23:25:58 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/26 00:21:30 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/30 14:47:31 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 unsigned long	set_rgb(int red, int green, int blue)
 {
-	return ((red & 0xff) << 16) + ((green & 0xff) << 8) + (blue & 0xff);
+	return ((red) << 16) | ((green) << 8) | (blue);
 }
 
 int	onlyint(char *s)

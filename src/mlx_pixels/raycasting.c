@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 09:05:08 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/23 15:57:46 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/30 14:46:40 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,24 +35,3 @@ void draw_pov(t_game *game, char *addr)
 	}
 }
 
-void draw_blacked(t_game *game, char *addr)
-{
-	int	x;
-	int y;
-	int black;
-
-	x = 0;
-	y = 0;
-	black = 0 << 16 | 0 << 8 | 0;
-	(void)addr;
-	while (y < Y)
-	{
-		while (x < X)
-		{
-				mlx_pixel_put(game->img, game->win, x, y, black);
-			x++;
-		}
-		x = 0;
-		y++;
-	}
-}
