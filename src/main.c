@@ -6,44 +6,12 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:22 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/26 13:44:28 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/30 11:04:56 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static void	init_raycasting_params(int x, t_ray *ray, t_player *player)
-{
-	(void)player;
-	init_pov(ray);
-	ray->camera_x = 2 * x / (double)X - 1;
-	ray->dir_x = cos(player->dir) + player->plane_x * ray->camera_x;
-	ray->dir_y = sin(player->dir) + player->plane_y * ray->camera_x;
-	ray->map_x = (int)player->pos_x;
-	ray->map_y = (int)player->pos_y;
-	ray->deltadist_x = fabs(1 / ray->dir_x);
-	ray->deltadist_y = fabs(1 / ray->dir_y);
-	printf("---\n%f\n%f\n%f\n%d\n%d\n---\n", ray->camera_x, ray->dir_x, ray->dir_y, ray->map_x, ray->map_y);
-}
-
-void	raycasting(t_player *player, t_game *game)
-{
-	t_ray	ray;
-	int		x;
-
-	x = 0;
-	ray = game->ray;
-	while (x < X)
-	{
-		init_raycasting_params(x, &ray, player);
-		//printf ("%f\n%f\n", game->player.pos_x, game->player.pos_y);
-		init_dist(&ray, player); // set dist
-		set_dist(game, &ray); // check hit
-		calculate_wall_height(&ray, player);
-		set_hit_to_sprites_colors(game);
-		x++;
-	}
-}
 
 void	free_tab(void **tab)
 {
@@ -155,7 +123,7 @@ void	display_screen(t_game *game)
 {
 	init_binary_screen(game); // split de calloc de taille X x Y
 	init_pov(&game->ray); // set les donnees raycast
-	raycasting(&game->player, game);
+	//raycasting(&game->player, game);
 	render_frame(game); // put image to window
 	
 	//if (map) {DO MAP STUFF}
