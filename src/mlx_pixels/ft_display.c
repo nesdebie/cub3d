@@ -6,49 +6,56 @@
 /*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 16:39:09 by hubrygo           #+#    #+#             */
-/*   Updated: 2023/10/30 16:05:00 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/10/30 17:36:15 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	ft_draw_player(t_game *game, float pdx, float pdy)
+void	create_player(t_game *game, int color)
+{
+	t_img	player;
+	int		i;
+	int		j;
+
+	color = (100 << 24) | (255 << 16) | (255 << 8) | 0;
+	player.img = NULL;
+	init_img(game, &player, 5, 5);
+	i = 0;
+	while (i < 5)
+	{
+		j = 0;
+		while (j < 5)
+		{
+			set_image_pixel(&player, i, j, color);
+			j++;
+		}
+		i++;
+	}
+	game->player.img_player = player;
+}
+
+void	ft_draw_player(t_game *game, float pdy, float pdx)
 {
 	int	x;
-	int	y;
 	int	color;
 
 	color = (100 << 24) | (255 << 16) | (255 << 8) | 0;
-	x = -6;
-	while (++x < 5)
+	create_player(game, color);
+	mlx_put_image_to_window(game->mlx, game->win, game->player.img_player.img, (game->player.pos_x * 20) + 200, (game->player.pos_y * 20) + 200);
+	mlx_destroy_image(game->mlx, game->player.img_player.img);
+	x = -1;
+	while (++x < 7) // longueur
 	{
-		y = -6;
-		while (++y < 5)
-			mlx_pixel_put(game->img, game->win, game->player.px + x, \
-							game->player.py + y, color);
-	}
-	mlx_pixel_put(game->img, game->win, game->player.px, \
-					game->player.py, color);
-	while (++x < 16) // longueur
-	{
-		mlx_pixel_put(game->img, game->win, game->player.px + pdy, \
-						game->player.py + pdx, color);
-		pdx += cos(game->player.dir) * 2;
-		pdy += sin(game->player.dir) * 2;
+		mlx_pixel_put(game->img, game->win, (game->player.pos_x * 20) + pdx + 200, \
+						(game->player.pos_y * 20) + 200 + pdy, color);
+		pdy += cos(game->player.dir) * 2;
+		pdx += sin(game->player.dir) * 2;
 	}
 }
 
-void	set_image_pixel2(t_img *image, int x, int y)
-{
-	int	pixel;
-	int	color;
-	
-	color = (200 << 24 ) | (0 << 16) | (0 << 8) | 0;
-	pixel = y * (image->size_line / 4) + x;
-	image->addr[pixel] = color;
-}
 
-void	create_wall(t_game *game)
+void	create_wall(t_game *game, int color)
 {
 	t_img	wall;
 	int		y;
@@ -56,6 +63,7 @@ void	create_wall(t_game *game)
 	int		i;
 	int		j;
 
+	color = (100 << 24) | (0 << 16) | (0 << 8) | 0;
 	y = 19;
 	x = 19;
 	wall.img = NULL;
@@ -66,7 +74,7 @@ void	create_wall(t_game *game)
 		j = 0;
 		while (j < y)
 		{
-			set_image_pixel2(&wall, i, j);
+			set_image_pixel(&wall, i, j, color);
 			j++;
 		}
 		i++;
@@ -78,11 +86,13 @@ void	draw_map(t_game *game)
 {
 	int		i;
 	int		j;
+	int		color;
 	static int	start = 0;
 
+	color = 0;
 	if (start == 0)
 	{
-		create_wall(game);
+		create_wall(game, color);
 		start++;
 	}
 	//printf("test\n");
@@ -93,7 +103,7 @@ void	draw_map(t_game *game)
 		while (j < game->map_width)
 		{
 			if (game->map[i][j] == '1')
-				mlx_put_image_to_window(game->mlx, game->win, game->wall.img, (i * 20) + 250, (j * 20) + 200);
+				mlx_put_image_to_window(game->mlx, game->win, game->wall.img, (j * 20) + 202.5, (i * 20) + 202.5);
 			j++;
 		}
 		i++;

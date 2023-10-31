@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:22 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/30 16:32:31 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/30 16:51:59 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,9 +137,9 @@ int	cub3d(t_game *game)
 	if (game->key_pressed == 1)
 	{
 		ft_move_player(game, 1, 1);
-		display_screen(game);
 		game->key_pressed = 0; // Retirer augmente la fluidite ofc
 	}
+	display_screen(game);
 		if (game->player.map == 1)
 		{
 			ft_move_pixels(game, pdx, pdy);

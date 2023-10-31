@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/30 16:20:32 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/10/30 17:10:55 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define X	1000
 # define Y	1000
 
-# define SPEED 10
+# define SPEED 3
 
 # define KEY_ESC	53
 # define KEY_Q      12
@@ -67,6 +67,15 @@ typedef enum s_error
 	MLX_IMG
 }	t_error;
 
+typedef struct s_img
+{
+	void	*img;
+	int		*addr;
+	int		pixel_bits;
+	int		size_line;
+	int		endian;
+}	t_img;
+
 typedef struct s_player
 {
 	float	dir;
@@ -90,6 +99,7 @@ typedef struct s_player
 	int		map;
 	float	px;
 	float	py;
+	t_img	img_player;
 }				t_player;
 
 typedef struct s_spr
@@ -141,15 +151,6 @@ typedef struct s_ray
 	int		draw_start;
 	int		draw_end;
 }	t_ray;
-
-typedef struct s_img
-{
-	void	*img;
-	int		*addr;
-	int		pixel_bits;
-	int		size_line;
-	int		endian;
-}	t_img;
 
 typedef struct s_game
 {
