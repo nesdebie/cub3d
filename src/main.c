@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
+/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:22 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/30 16:51:59 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/11/01 11:42:21 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,23 +149,23 @@ int	cub3d(t_game *game)
 	return (0);
 }
 
-void	print_params(t_game *game)
-{
-	int	i;
+// void	print_params(t_game *game)
+// {
+// 	int	i;
 
-	i = 0;
-	printf("NO: |%s|\nSO: |%s|\nEA: |%s|\nWE: |%s|\nf : |%s|=|%lu|\nc : \
-			|%s|=|%lu|\n", game->sprites.no, game->sprites.so, game->sprites.ea, \
-			game->sprites.we, game->sprites.f, game->sprites.f_rgb, \
-			game->sprites.c, game->sprites.c_rgb);
-	printf("\nMAP (char *):\n%s", game->map_str);
-	ft_putendl_fd("\n________________________\nMAP (arr):", 1);
-	while (game->map[i] != NULL)
-	{
-		ft_putendl_fd(game->map[i], 1);
-		i++;
-	}
-}
+// 	i = 0;
+// 	printf("NO: |%s|\nSO: |%s|\nEA: |%s|\nWE: |%s|\nf : |%s|=|%lu|\nc : \
+// 			|%s|=|%lu|\n", game->sprites.no, game->sprites.so, game->sprites.ea, \
+// 			game->sprites.we, game->sprites.f, game->sprites.f_rgb, \
+// 			game->sprites.c, game->sprites.c_rgb);
+// 	printf("\nMAP (char *):\n%s", game->map_str);
+// 	ft_putendl_fd("\n________________________\nMAP (arr):", 1);
+// 	while (game->map[i] != NULL)
+// 	{
+// 		ft_putendl_fd(game->map[i], 1);
+// 		i++;
+// 	}
+// }
 
 static	int init_params(t_game *game)
 {
@@ -189,7 +189,7 @@ int	main(int argc, char **argv)
 	if (init_params(&game))
 		return (1);
 	init_dir(&game);
-	print_params(&game); // DEBUG
+	//print_params(&game); // DEBUG
 	display_screen(&game);
 	mlx_hook(game.win, PRESS_KEY, 0, &key_press, &game);
 	mlx_hook(game.win, RELEASE_KEY, 0, &key_release, &game);

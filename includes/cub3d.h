@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
+/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/30 17:10:55 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/11/01 13:06:16 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -231,4 +231,6 @@ void	set_image_pixel(t_img *image, int x, int y, int color);
 void	ft_update_dir(t_game *game);
 void	init_dir(t_game *game);
 void	ft_move_player(t_game *game, float pdx, float pdy);
+int		rotate(t_game *game);
+
 #endif
