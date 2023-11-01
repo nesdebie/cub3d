@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_display.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
+/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 16:39:09 by hubrygo           #+#    #+#             */
-/*   Updated: 2023/10/30 17:36:15 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/11/01 14:00:29 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ void	ft_draw_player(t_game *game, float pdy, float pdx)
 	{
 		mlx_pixel_put(game->img, game->win, (game->player.pos_x * 20) + pdx + 200, \
 						(game->player.pos_y * 20) + 200 + pdy, color);
-		pdy += cos(game->player.dir) * 2;
-		pdx += sin(game->player.dir) * 2;
+		pdy += game->player.dir_y * 2;
+		pdx += game->player.dir_x * 2;
 	}
 }
 
@@ -95,7 +95,6 @@ void	draw_map(t_game *game)
 		create_wall(game, color);
 		start++;
 	}
-	//printf("test\n");
 	i = 0;
 	while (i < game->map_height)
 	{

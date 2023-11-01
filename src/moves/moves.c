@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 13:36:27 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/01 13:12:09 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/01 13:52:12 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ static int  move_up(t_game *game, float pdx, float pdy)
 
 void	ft_move_player(t_game *game, float pdx, float pdy)
 {
-	ft_update_dir(game);
+	//ft_update_dir(game);
 	pdx = game->player.dir_x;
 	pdy = game->player.dir_y;
 
