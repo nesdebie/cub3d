@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 13:36:27 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/01 13:52:12 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/01 16:03:10 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	is_valid_pos_wall_collision(t_game *data, double x, double y)
 {
-	if (data->map[(int)y][(int)x] == '0' || data->map[(int)y][(int)x] == 'c') //DEBUG
+	if (data->map[(int)y][(int)x] == '0')// || data->map[(int)y][(int)x] == 'c') //DEBUG
 		return (0);
 	return (1);
 }
@@ -56,11 +56,11 @@ int	validate_move(t_game *data, double new_x, double new_y)
 		data->player.pos_y = new_y;
 		moved = 1;
 	}
-    if (moved == 1 && data->map[(int)new_y][(int)new_x] != '1')
-    {
-        data->map[old_pos_y][old_pos_x] = '0';
-        data->map[(int)new_y][(int)new_x] = 'c';
-    }
+    // if (moved == 1 && data->map[(int)new_y][(int)new_x] != '1')
+    // {
+    //     data->map[old_pos_y][old_pos_x] = '0';
+    //     data->map[(int)new_y][(int)new_x] = 'c';
+    // }
 	return (moved);
 }
 
@@ -126,20 +126,20 @@ void	ft_move_player(t_game *game, float pdx, float pdy)
     {
         move_left(game, pdx, pdy);
     }
-    if (game->player.down || game->player.up || game->player.left || game->player.right) // DEBUG
-    {
-        int i = 0;
-        while (game->map[i] != NULL)
-        {
-            ft_putendl_fd(game->map[i], 1);
-            i++;
-        }
-        ft_putchar_fd('\n', 1);
-    }
-    printf("\n---\npre-rotate:\ndirx: %f\ndiry: %f\n", game->player.dir_x, game->player.dir_y);
+    // if (game->player.down || game->player.up || game->player.left || game->player.right) // DEBUG
+    // {
+    //     int i = 0;
+    //     while (game->map[i] != NULL)
+    //     {
+    //         ft_putendl_fd(game->map[i], 1);
+    //         i++;
+    //     }
+    //     ft_putchar_fd('\n', 1);
+    // }
+    // printf("\n---\npre-rotate:\ndirx: %f\ndiry: %f\n", game->player.dir_x, game->player.dir_y);
     if (game->player.turn_right == 1 || game->player.turn_left == 1)
     {
         rotate(game);
     }
-    printf("\n---\npost-rotate:\ndirx: %f\ndiry: %f\n", game->player.dir_x, game->player.dir_y);
+    // printf("\n---\npost-rotate:\ndirx: %f\ndiry: %f\n", game->player.dir_x, game->player.dir_y);
 }
