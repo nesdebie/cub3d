@@ -6,7 +6,7 @@
 /*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 23:39:35 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/06 15:33:04 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/11/06 17:48:48 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ void	init_player(t_game *game, int x, int y)
 	player.pdy = 1;
 	player.turn_left = 0;
 	player.turn_right = 0;
+	player.current_speed = 0;
 	game->player = player;
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys_manager.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:16:50 by hubrygo           #+#    #+#             */
-/*   Updated: 2023/10/26 11:47:42 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/06 17:50:36 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ int	key_press(int key_code, t_game *game)
 		game->player.turn_left = 1;
 	if (key_code == KEY_RIGHT)
 		game->player.turn_right = 1;
+	if (key_code == KEY_UP)
+		game->player.augment_move_speed = 1;
+	if (key_code == KEY_DOWN)
+		game->player.downgrade_move_speed = 1;
 	if (key_code == KEY_M)
 	{
 		if (!game->player.map)
@@ -53,5 +57,9 @@ int	key_release(int key_code, t_game *game)
 		game->player.turn_left = 0;
 	if (key_code == KEY_RIGHT)
 		game->player.turn_right = 0;
+	if (key_code == KEY_UP)
+		game->player.augment_move_speed = 0;
+	if (key_code == KEY_DOWN)
+		game->player.downgrade_move_speed = 0;
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 13:36:27 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/06 15:34:04 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/11/06 17:52:04 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static int  move_right(t_game *game, float pdx, float pdy)
    float new_y;
    
    new_x = game->player.pos_x - pdy;
-   new_y =game->player.pos_y + pdx;
+   new_y = game->player.pos_y + pdx;
    return (validate_move(game, new_x, new_y));
 }
 
@@ -80,7 +80,7 @@ static int  move_left(t_game *game, float pdx, float pdy)
    float new_y;
    
    new_x = game->player.pos_x + pdy;
-   new_y =game->player.pos_y - pdx;
+   new_y = game->player.pos_y - pdx;
    return (validate_move(game, new_x, new_y));    
 }
 
@@ -90,7 +90,7 @@ static int  move_down(t_game *game, float pdx, float pdy)
    float new_y;
    
    new_x = game->player.pos_x - pdx;
-   new_y =game->player.pos_y - pdy;
+   new_y = game->player.pos_y - pdy;
    return (validate_move(game, new_x, new_y));
 }
 
@@ -100,16 +100,25 @@ static int  move_up(t_game *game, float pdx, float pdy)
    float new_y;
    
    new_x = game->player.pos_x + pdx;
-   new_y =game->player.pos_y + pdy;
+   new_y = game->player.pos_y + pdy;
    return (validate_move(game, new_x, new_y));
 }
 
 void	ft_move_player(t_game *game)
 {
 	//ft_update_dir(game);
-	game->player.pdx = game->player.dir_x;
-	game->player.pdy = game->player.dir_y;
-
+    if (game->player.augment_move_speed == 1)
+    {
+        if (game->player.current_speed < 9)
+            game->player.current_speed++;
+    }
+    if (game->player.downgrade_move_speed == 1)
+    {
+        if (game->player.current_speed > 0)
+            game->player.current_speed--;
+    }
+	game->player.pdx = game->player.dir_x / (SPEED - game->player.current_speed);
+	game->player.pdy = game->player.dir_y / (SPEED - game->player.current_speed);
 	if (game->player.down == 1)
     {
         move_down(game, game->player.pdx, game->player.pdy);

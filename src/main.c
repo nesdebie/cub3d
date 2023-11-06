@@ -6,7 +6,7 @@
 /*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:22 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/06 14:11:07 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/11/06 16:43:22 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,24 +145,6 @@ int	cub3d(t_game *game)
 	}
 	return (0);
 }
-
-// void	print_params(t_game *game)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	printf("NO: |%s|\nSO: |%s|\nEA: |%s|\nWE: |%s|\nf : |%s|=|%lu|\nc : \
-// 			|%s|=|%lu|\n", game->sprites.no, game->sprites.so, game->sprites.ea, \
-// 			game->sprites.we, game->sprites.f, game->sprites.f_rgb, \
-// 			game->sprites.c, game->sprites.c_rgb);
-// 	printf("\nMAP (char *):\n%s", game->map_str);
-// 	ft_putendl_fd("\n________________________\nMAP (arr):", 1);
-// 	while (game->map[i] != NULL)
-// 	{
-// 		ft_putendl_fd(game->map[i], 1);
-// 		i++;
-// 	}
-// }
 
 static	int init_params(t_game *game)
 {

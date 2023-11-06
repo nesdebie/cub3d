@@ -6,7 +6,7 @@
 /*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/06 14:10:05 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/11/06 17:51:25 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@
 # define X	1000
 # define Y	1000
 
-# define SPEED 3
+# define SPEED 10
+# define ROTSPEED 0.07
 
 # define KEY_ESC	53
 # define KEY_Q      12
@@ -40,6 +41,8 @@
 
 # define KEY_LEFT	123
 # define KEY_RIGHT	124
+# define KEY_UP	126
+# define KEY_DOWN	125
 
 # define RED_CROSS 17
 # define PRESS_KEY 2
@@ -87,6 +90,9 @@ typedef struct s_player
 	int 	right;
 	int		turn_left;
 	int		turn_right;
+	int		augment_move_speed;
+	int		downgrade_move_speed;
+	int		current_speed;
 	
 	//RAYCASTING
 	char	first_dir;
