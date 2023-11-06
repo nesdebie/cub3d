@@ -6,7 +6,7 @@
 /*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 09:05:08 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/06 09:01:12 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/06 09:24:10 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static void	set_dda(t_ray *ray, t_player *player)
 	}
 }
 
-static void	perform_dda(t_game *game, t_ray *ray)
+static void	dda(t_game *game, t_ray *ray)
 {
 	int	hit;
 
@@ -125,7 +125,7 @@ void	raycasting(t_player *player, t_game *game)
 	{
 		init_raycasting_info(x, &ray, player);
 		set_dda(&ray, player);
-		perform_dda(game, &ray);
+		dda(game, &ray);
 		calculate_line_height(&ray, player);
 		update_binary_screen(game, &ray, x);
 		x++;
