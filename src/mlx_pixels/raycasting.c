@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
+/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 09:05:08 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/06 09:24:10 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/06 13:46:08 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	update_binary_screen(t_game *game, t_ray *ray, int x)
+void	set_binary_screen(t_game *game, t_ray *ray, int x)
 {
 	int			y;
 	int			i;
@@ -29,7 +29,7 @@ void	update_binary_screen(t_game *game, t_ray *ray, int x)
 	}
 }
 
-static void	init_raycasting_info(int x, t_ray *ray, t_player *player)
+static void	init_raycasting(int x, t_ray *ray, t_player *player)
 {
 	init_pov(ray);
 	ray->camera_x = 2 * x / (double)X - 1;
@@ -85,10 +85,11 @@ static void	dda(t_game *game, t_ray *ray)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if (ray->map_y < 0.25
-			|| ray->map_x < 0.25
-			|| ray->map_y > game->map_height - 0.25
-			|| ray->map_x > game->map_width - 1.25)
+		if (ray->map_y < 0.25 || ray->map_x < 0.25)
+			break ;
+		else if (ray->map_y > game->map_height - 0.25)
+			break ;
+		else if (ray->map_x > game->map_width - 1.25)
 			break ;
 		else if (game->map[ray->map_y][ray->map_x] > '0')
 			hit = 1;
@@ -97,21 +98,15 @@ static void	dda(t_game *game, t_ray *ray)
 
 static void	calculate_line_height(t_ray *ray, t_player *player)
 {
+	(void) player;
 	if (ray->side == 0)
-	{
 		ray->wall_dist = (ray->sidedist_x - ray->deltadist_x);
-		ray->wall_x = player->pos_y + ray->wall_dist * ray->dir_y;
-	}
 	else
-	{
 		ray->wall_dist = (ray->sidedist_y - ray->deltadist_y);
-		ray->wall_x = player->pos_x + ray->wall_dist * ray->dir_x;
-	}
 	ray->line_height = (int)(Y / ray->wall_dist);
 	ray->draw_start = Y / 2 - ((ray->line_height) / 2);
 	if (ray->draw_start < 0)
 		ray->draw_start = 0;
-	ray->wall_x -= floor(ray->wall_x);
 }
 
 void	raycasting(t_player *player, t_game *game)
@@ -123,11 +118,11 @@ void	raycasting(t_player *player, t_game *game)
 	ray = game->ray;
 	while (x < X)
 	{
-		init_raycasting_info(x, &ray, player);
+		init_raycasting(x, &ray, player);
 		set_dda(&ray, player);
 		dda(game, &ray);
 		calculate_line_height(&ray, player);
-		update_binary_screen(game, &ray, x);
+		set_binary_screen(game, &ray, x);
 		x++;
 	}
 }
