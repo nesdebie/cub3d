@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 13:36:27 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/01 16:03:10 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/05 11:09:44 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,11 @@ static int	is_valid_pos(t_game *data, double x, double y)
 int	validate_move(t_game *data, double new_x, double new_y)
 {
 	int	moved;
-    int old_pos_x;
-    int old_pos_y;
+    //int old_pos_x;
+    //int old_pos_y;
     
-    old_pos_x = (int)data->player.pos_x;
-    old_pos_y = (int)data->player.pos_y;
+    //old_pos_x = (int)data->player.pos_x;
+    //old_pos_y = (int)data->player.pos_y;
 	moved = 0;
 	if (is_valid_pos(data, new_x, data->player.pos_y))
 	{

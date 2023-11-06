@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 11:33:33 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/01 13:46:34 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/05 11:08:59 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ static int	rotate_left_right(t_game *game, double rotspeed)
 	tmp_x = p->dir_x;
 	p->dir_x = p->dir_x * cos(rotspeed) - p->dir_y * sin(rotspeed);
 	p->dir_y = tmp_x * sin(rotspeed) + p->dir_y * cos(rotspeed);
+	tmp_x = p->plane_x;
+	p->plane_x = p->plane_x * cos(rotspeed) - p->plane_y * sin(rotspeed);
+	p->plane_y = tmp_x * sin(rotspeed) + p->plane_y * cos(rotspeed);
 	return (1);
 }
 

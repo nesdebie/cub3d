@@ -6,7 +6,7 @@
 /*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:22 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/05 10:19:34 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/05 18:42:37 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ void	display_screen(t_game *game)
 {
 	init_binary_screen(game); // split de calloc de taille X x Y
 	init_pov(&game->ray); // set les donnees raycast
-	//raycasting(&game->player, game);
+	raycasting(&game->player, game);
 	render_frame(game); // put image to window
 	
 	//if (map) {DO MAP STUFF}
@@ -138,8 +138,9 @@ int	cub3d(t_game *game)
 	{
 		ft_move_player(game, 1, 1);
 		game->key_pressed = 0; // Retirer augmente la fluidite ofc
-	}
+	//}
 	display_screen(game);
+	}
 		if (game->player.map == 1)
 		{
 			ft_move_pixels(game, pdx, pdy);
@@ -174,6 +175,7 @@ static	int init_params(t_game *game)
 	if (init_textures(game))
 		return (clear_args(game));
 	init_player(game, 0, -1);
+	init_dir(game);
 	return (0);
 }
 
@@ -188,7 +190,6 @@ int	main(int argc, char **argv)
 		return (1);
 	if (init_params(&game))
 		return (1);
-	init_dir(&game);
 	//print_params(&game); // DEBUG
 	display_screen(&game);
 	mlx_hook(game.win, PRESS_KEY, 0, &key_press, &game);
