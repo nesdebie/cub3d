@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
+/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 13:36:27 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/05 11:09:44 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/06 15:34:04 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,11 @@ static int	is_valid_pos(t_game *data, double x, double y)
 int	validate_move(t_game *data, double new_x, double new_y)
 {
 	int	moved;
-    //int old_pos_x;
-    //int old_pos_y;
+    int old_pos_x;
+    int old_pos_y;
     
-    //old_pos_x = (int)data->player.pos_x;
-    //old_pos_y = (int)data->player.pos_y;
+    old_pos_x = (int)data->player.pos_x;
+    old_pos_y = (int)data->player.pos_y;
 	moved = 0;
 	if (is_valid_pos(data, new_x, data->player.pos_y))
 	{
@@ -58,7 +58,7 @@ int	validate_move(t_game *data, double new_x, double new_y)
 	}
     // if (moved == 1 && data->map[(int)new_y][(int)new_x] != '1')
     // {
-    //     data->map[old_pos_y][old_pos_x] = '0';
+         data->map[old_pos_y][old_pos_x] = '0';
     //     data->map[(int)new_y][(int)new_x] = 'c';
     // }
 	return (moved);
@@ -104,27 +104,27 @@ static int  move_up(t_game *game, float pdx, float pdy)
    return (validate_move(game, new_x, new_y));
 }
 
-void	ft_move_player(t_game *game, float pdx, float pdy)
+void	ft_move_player(t_game *game)
 {
 	//ft_update_dir(game);
-	pdx = game->player.dir_x;
-	pdy = game->player.dir_y;
+	game->player.pdx = game->player.dir_x;
+	game->player.pdy = game->player.dir_y;
 
 	if (game->player.down == 1)
     {
-        move_down(game, pdx, pdy);
+        move_down(game, game->player.pdx, game->player.pdy);
     }
 	if (game->player.up == 1)
 	{
-        move_up(game, pdx, pdy);
+        move_up(game, game->player.pdx, game->player.pdy);
 	}
     if (game->player.right == 1)
     {
-        move_right(game, pdx, pdy);
+        move_right(game, game->player.pdx, game->player.pdy);
     }
     if (game->player.left == 1)
     {
-        move_left(game, pdx, pdy);
+        move_left(game, game->player.pdx, game->player.pdy);
     }
     // if (game->player.down || game->player.up || game->player.left || game->player.right) // DEBUG
     // {

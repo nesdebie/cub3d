@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
+/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 23:39:35 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/05 18:39:40 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/06 15:33:04 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,21 +29,29 @@ void	init_dir(t_game *game)
 	{
 		game->player.dir_x = 0;
 		game->player.dir_y = -1;
+		game->player.plane_x = 0.66;
+		game->player.plane_y = 0;
 	}
 	if (game->player.first_dir == 'S')
 	{
 		game->player.dir_x = 0;
 		game->player.dir_y = 1;
+		game->player.plane_x = -0.66;
+		game->player.plane_y = 0;
 	}
 	if (game->player.first_dir == 'E')
 	{
 		game->player.dir_x = 1;
 		game->player.dir_y = 0;
+		game->player.plane_x = 0;
+		game->player.plane_y = 0.66;
 	}
 	if (game->player.first_dir == 'W')
 	{
 		game->player.dir_x = -1;
 		game->player.dir_y = 0;
+		game->player.plane_x = 0;
+		game->player.plane_y = -0.66;
 	}
 }
 
@@ -73,6 +81,8 @@ void	init_player(t_game *game, int x, int y)
 	player.py = player.py * (Y / y);
 	player.right = 0;
 	player.up = 0;
+	player.pdx = 1;
+	player.pdy = 1;
 	player.turn_left = 0;
 	player.turn_right = 0;
 	game->player = player;

@@ -12,7 +12,6 @@ SRCS = 	src/main.c \
 		src/ft_free.c \
 		src/init/init.c \
 		src/moves/keys_manager.c \
-		src/moves/player.c \
 		src/moves/rotate.c \
 		src/moves/moves.c \
 		src/mlx_pixels/ft_display.c \

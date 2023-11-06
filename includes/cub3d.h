@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/06 13:47:53 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/06 14:10:05 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,18 +220,17 @@ void	wait_inputs(t_game *game);
 int		key_press(int key_code, t_game *game);
 int		key_release(int key_code, t_game *game);
 int		close_game(t_game *game);
-void	ft_move_pixels(t_game *game, float pdx, float pdy);
 
 /*DISPLAY (Hugo)*/
 void	draw_map(t_game *game);
-void	ft_draw_player(t_game *game, float pdx, float pdy);
+void	ft_draw_player(t_game *game);
 
 /* DISPLAYS (Nestor) */
 void	init_img(t_game *game, t_img *image, int width, int height);
 void	set_image_pixel(t_img *image, int x, int y, int color);
 void	ft_update_dir(t_game *game);
 void	init_dir(t_game *game);
-void	ft_move_player(t_game *game, float pdx, float pdy);
+void	ft_move_player(t_game *game);
 int		rotate(t_game *game);
 void	raycasting(t_player *player, t_game *game);
 
