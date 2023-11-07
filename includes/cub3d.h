@@ -6,7 +6,7 @@
 /*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/06 17:51:25 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/11/07 18:32:45 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define X	1000
 # define Y	1000
 
-# define SPEED 10
+# define SPEED 7
 # define ROTSPEED 0.07
 
 # define KEY_ESC	53
@@ -36,6 +36,7 @@
 # define KEY_A	0
 # define KEY_S	1
 # define KEY_D	2
+# define KEY_SPACE	49
 
 # define KEY_M 46
 
@@ -172,6 +173,8 @@ typedef struct s_game
 	char		*map_str;
 	int			held_key;
 	int			key_pressed;
+	int			mouse_x;
+	int			mouse_y;
 	t_img		wall;
 	t_ray		ray;
 	t_spr		sprites;

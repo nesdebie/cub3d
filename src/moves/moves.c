@@ -6,7 +6,7 @@
 /*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 13:36:27 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/06 17:52:04 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/11/07 11:29:14 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,16 +109,16 @@ void	ft_move_player(t_game *game)
 	//ft_update_dir(game);
     if (game->player.augment_move_speed == 1)
     {
-        if (game->player.current_speed < 9)
-            game->player.current_speed++;
+        if (game->player.current_speed > -2)
+            game->player.current_speed--;
     }
     if (game->player.downgrade_move_speed == 1)
     {
-        if (game->player.current_speed > 0)
-            game->player.current_speed--;
+        if (game->player.current_speed < 9)
+            game->player.current_speed++;
     }
-	game->player.pdx = game->player.dir_x / (SPEED - game->player.current_speed);
-	game->player.pdy = game->player.dir_y / (SPEED - game->player.current_speed);
+	game->player.pdx = game->player.dir_x / (SPEED + game->player.current_speed);
+	game->player.pdy = game->player.dir_y / (SPEED + game->player.current_speed);
 	if (game->player.down == 1)
     {
         move_down(game, game->player.pdx, game->player.pdy);

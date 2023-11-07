@@ -6,7 +6,7 @@
 /*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:22 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/06 16:43:22 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/11/07 18:39:50 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,15 +129,38 @@ void	display_screen(t_game *game)
 	//if (map) {DO MAP STUFF}
 }
 
+void	set_dir(t_game *game)
+{
+	t_player	*p;
+	double		rotspeed;
+	double		tmp_x;
+
+	rotspeed = ROTSPEED;
+    if (game->mouse_x < X / 2)
+	    rotspeed *= -1;
+	p = &game->player;
+	tmp_x = p->dir_x;
+	p->dir_x = p->dir_x * cos(rotspeed) - p->dir_y * sin(rotspeed);
+	p->dir_y = tmp_x * sin(rotspeed) + p->dir_y * cos(rotspeed);
+	tmp_x = p->plane_x;
+	p->plane_x = p->plane_x * cos(rotspeed) - p->plane_y * sin(rotspeed);
+	p->plane_y = tmp_x * sin(rotspeed) + p->plane_y * cos(rotspeed);
+}
+
 int	cub3d(t_game *game)
 {
-	//if (game->key_pressed == 1)
-	//{
-		ft_move_player(game);
-		//game->key_pressed = 0; // Retirer augmente la fluidite ofc
-	//}
+	if (game->key_pressed == 1)
+	{
+		mlx_mouse_hide();
+		mlx_mouse_get_pos(game->win, &game->mouse_x, &game->mouse_y);
+		mlx_mouse_move(game->win, X / 2, Y / 2);
+		if (game->mouse_x != X / 2)
+			set_dir(game);
+	}
+	ft_move_player(game);
+	if (game->key_pressed == 0)
+		mlx_mouse_show();
 	display_screen(game);
-	//}
 	if (game->player.map == 1)
 	{
 		draw_map(game);

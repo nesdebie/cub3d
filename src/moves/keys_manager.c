@@ -6,7 +6,7 @@
 /*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:16:50 by hubrygo           #+#    #+#             */
-/*   Updated: 2023/11/06 17:50:36 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/11/07 18:36:47 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,13 @@ int	key_press(int key_code, t_game *game)
 		else
 			game->player.map = 0;
 	}
-	game->key_pressed = 1;
+	if (key_code == KEY_SPACE)
+	{
+		if (game->key_pressed == 0)
+			game->key_pressed = 1;
+		else
+			game->key_pressed = 0;
+	}
 	return (0);
 }
 
