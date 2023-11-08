@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
+/*   By: hugo <hugo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 11:33:33 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/08 10:43:19 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/08 19:39:16 by hugo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,10 @@ int	rotate(t_game *game)
 
 	moved = 0;
     rotspeed = ROTSPEED;
-    if (game->player.turn_left || game->mouse_x < X / 2)
+    if (game->player.turn_left == 1)
 	    rotspeed *= -1;
+	if (game->key_pressed == 1 && game->mouse_x < X / 2)
+		rotspeed *= -1;
 	moved += rotate_left_right(game, rotspeed);
 	return (moved);
 }
