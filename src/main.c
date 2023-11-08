@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
+/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:22 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/07 18:39:50 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/11/08 10:47:38 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	init_binary_screen(t_game *game)
 	if (!game->binary_screen)
 	{
 		clear_args(game);
-		exit (EXIT_FAILURE); // PAS AU POINT IMO (leaks)
+		exit (EXIT_FAILURE);
 	}
 	i = 0;
 	while (i < Y)
@@ -71,7 +71,7 @@ void	init_img(t_game *game, t_img *image, int width, int height)
 	if (image->img == NULL)
 	{
 			clear_args(game);
-			exit (EXIT_FAILURE); // PAS AU POINT IMO (leaks)
+			exit (EXIT_FAILURE);
 	}
 	image->addr = (int *)mlx_get_data_addr(image->img, &image->pixel_bits,
 			&image->size_line, &image->endian);
@@ -121,30 +121,10 @@ static void	render_frame(t_game *game)
 
 void	display_screen(t_game *game)
 {
-	init_binary_screen(game); // split de calloc de taille X x Y
-	init_pov(&game->ray); // set les donnees raycast
+	init_binary_screen(game);
+	init_pov(&game->ray);
 	raycasting(&game->player, game);
-	render_frame(game); // put image to window
-	
-	//if (map) {DO MAP STUFF}
-}
-
-void	set_dir(t_game *game)
-{
-	t_player	*p;
-	double		rotspeed;
-	double		tmp_x;
-
-	rotspeed = ROTSPEED;
-    if (game->mouse_x < X / 2)
-	    rotspeed *= -1;
-	p = &game->player;
-	tmp_x = p->dir_x;
-	p->dir_x = p->dir_x * cos(rotspeed) - p->dir_y * sin(rotspeed);
-	p->dir_y = tmp_x * sin(rotspeed) + p->dir_y * cos(rotspeed);
-	tmp_x = p->plane_x;
-	p->plane_x = p->plane_x * cos(rotspeed) - p->plane_y * sin(rotspeed);
-	p->plane_y = tmp_x * sin(rotspeed) + p->plane_y * cos(rotspeed);
+	render_frame(game);
 }
 
 int	cub3d(t_game *game)
@@ -155,7 +135,7 @@ int	cub3d(t_game *game)
 		mlx_mouse_get_pos(game->win, &game->mouse_x, &game->mouse_y);
 		mlx_mouse_move(game->win, X / 2, Y / 2);
 		if (game->mouse_x != X / 2)
-			set_dir(game);
+			rotate(game);
 	}
 	ft_move_player(game);
 	if (game->key_pressed == 0)
@@ -191,7 +171,6 @@ int	main(int argc, char **argv)
 		return (1);
 	if (init_params(&game))
 		return (1);
-	//print_params(&game); // DEBUG
 	display_screen(&game);
 	mlx_hook(game.win, PRESS_KEY, 0, &key_press, &game);
 	mlx_hook(game.win, RELEASE_KEY, 0, &key_release, &game);

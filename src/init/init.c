@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
+/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 23:39:35 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/06 17:48:48 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/11/08 10:46:10 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,6 @@ void	init_player(t_game *game, int x, int y)
 		{
 			if (isinset(game->map[y][x], "NSWE") == 0)
 			{
-				player.px = x;
-				player.py = y;
 				player.dir = which_dir(game->map[y][x]);
 				player.first_dir = game->map[y][x];
 				player.pos_x = x + 0.5;
@@ -77,8 +75,6 @@ void	init_player(t_game *game, int x, int y)
 			}
 		}
 	}
-	player.px = player.px * (X / x);
-	player.py = player.py * (Y / y);
 	player.right = 0;
 	player.up = 0;
 	player.pdx = 1;

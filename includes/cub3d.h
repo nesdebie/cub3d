@@ -3,24 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
+/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/07 18:32:45 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/11/08 10:48:54 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include <stdio.h> // DEBUG
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
 # include <math.h>
 # include <fcntl.h>
 # include "../mlx/mlx.h"
-//# include <mlx.h>
 # include "../libft/libft.h"
 
 # define X	1000
@@ -106,8 +104,6 @@ typedef struct s_player
 
 	//MINIMAP
 	int		map;
-	float	px; //SUPPR
-	float	py; //SUPPR
 	t_img	img_player;
 }				t_player;
 
@@ -208,6 +204,7 @@ void	init_pov(t_ray *ray);
 /* FREE */
 void	ft_freesplit(char **arr);
 int		clear_args(t_game *game);
+void	free_tab(void **tab);
 
 /* TEMP */
 int		add_ea(t_game *game, char **arr);

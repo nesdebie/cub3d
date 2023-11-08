@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 09:05:08 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/06 13:46:08 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/08 10:46:35 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,27 +39,26 @@ static void	init_raycasting(int x, t_ray *ray, t_player *player)
 	ray->map_y = (int)player->pos_y;
 	ray->deltadist_x = fabs(1 / ray->dir_x);
 	ray->deltadist_y = fabs(1 / ray->dir_y);
-	//printf("cam:%f\ndx:%f\ndy:%f\nmapx:%i\nmapy:%i\ndeltax:%f\ndeltay:%f\n", ray->camera_x, ray->dir_x, ray->dir_y, ray->map_x, ray->map_y, ray->deltadist_x, ray->deltadist_y);
 }
 
 static void	set_dda(t_ray *ray, t_player *player)
 {
-	if (ray->dir_x < 0) // WEST
+	if (ray->dir_x < 0)
 	{
 		ray->step_x = -1;
 		ray->sidedist_x = (player->pos_x - ray->map_x) * ray->deltadist_x;
 	}
-	else // EAST
+	else
 	{
 		ray->step_x = 1;
 		ray->sidedist_x = (ray->map_x + 1.0 - player->pos_x) * ray->deltadist_x;
 	}
-	if (ray->dir_y < 0) // NORTH
+	if (ray->dir_y < 0)
 	{
 		ray->step_y = -1;
 		ray->sidedist_y = (player->pos_y - ray->map_y) * ray->deltadist_y;
 	}
-	else // SOUTH
+	else
 	{
 		ray->step_y = 1;
 		ray->sidedist_y = (ray->map_y + 1.0 - player->pos_y) * ray->deltadist_y;
