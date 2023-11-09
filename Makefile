@@ -27,7 +27,7 @@ RM		= rm -rf
 
 CC 		= cc
 
-CFLAGS 	= -Wall -Wextra -Werror -O3 -flto -ffast-math #-march=native 
+CFLAGS 	= -Wall -Wextra -Werror -O3 -flto -ffast-math -march=native 
 
 MLXFLAGS = -lmlx -framework OpenGL -framework AppKit -Lmlx
 
