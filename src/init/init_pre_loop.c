@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   init_pre_loop.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 23:39:35 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/08 10:46:10 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/09 14:17:55 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static float	which_dir(char c)
+static void	init_dir(t_game *game)
 {
-	if (c == 'S')
-		return (3*PI/2);
-	else if (c == 'E')
-		return (0);
-	else if (c == 'N')
-		return (PI/2);
-	return (PI);
-}
-
-void	init_dir(t_game *game)
-{
-	if (game->player.first_dir == 'N')
+	if (game->player.first_dir == 'N' || game->player.first_dir == 'S')
 	{
 		game->player.dir_x = 0;
 		game->player.dir_y = -1;
@@ -34,12 +23,10 @@ void	init_dir(t_game *game)
 	}
 	if (game->player.first_dir == 'S')
 	{
-		game->player.dir_x = 0;
 		game->player.dir_y = 1;
 		game->player.plane_x = -0.66;
-		game->player.plane_y = 0;
 	}
-	if (game->player.first_dir == 'E')
+	if (game->player.first_dir == 'E' || game->player.first_dir == 'W')
 	{
 		game->player.dir_x = 1;
 		game->player.dir_y = 0;
@@ -49,13 +36,11 @@ void	init_dir(t_game *game)
 	if (game->player.first_dir == 'W')
 	{
 		game->player.dir_x = -1;
-		game->player.dir_y = 0;
-		game->player.plane_x = 0;
 		game->player.plane_y = -0.66;
 	}
 }
 
-void	init_player(t_game *game, int x, int y)
+static void	init_player(t_game *game, int x, int y)
 {
 	t_player	player;
 
@@ -68,7 +53,6 @@ void	init_player(t_game *game, int x, int y)
 		{
 			if (isinset(game->map[y][x], "NSWE") == 0)
 			{
-				player.dir = which_dir(game->map[y][x]);
 				player.first_dir = game->map[y][x];
 				player.pos_x = x + 0.5;
 				player.pos_y = y + 0.5;
@@ -85,7 +69,7 @@ void	init_player(t_game *game, int x, int y)
 	game->player = player;
 }
 
-int init_textures(t_game *game)
+static int init_textures(t_game *game)
 {
 	int	w;
 	int	h;
@@ -107,7 +91,7 @@ int init_textures(t_game *game)
 	return (0);
 }
 
-int	init_window(t_game *game)
+static int	init_window(t_game *game)
 {
 	game->mlx = mlx_init();
 	if (!game->mlx)
@@ -118,46 +102,13 @@ int	init_window(t_game *game)
 	return (0);
 }
 
-void	init_pov(t_ray *ray)
+int init_pre_loop(t_game *game)
 {
-	ray->camera_x = 0;
-	ray->dir_x = 0;
-	ray->dir_y = 0;
-	ray->map_x = 0;
-	ray->map_y = 0;
-	ray->step_x = 0;
-	ray->step_y = 0;
-	ray->sidedist_x = 0;
-	ray->sidedist_y = 0;
-	ray->deltadist_x = 0;
-	ray->deltadist_y = 0;
-	ray->wall_dist = 0;
-	ray->wall_x = 0;
-	ray->side = 0;
-	ray->line_height = 0;
-	ray->draw_start = 0;
-	ray->draw_end = 0;
-}
-
-void	init_flags(t_game *game)
-{
-	game->flags.c_flag = 0;
-	game->flags.e_flag = 0;
-	game->flags.f_flag = 0;
-	game->flags.l_flag = 0;
-	game->flags.n_flag = 0;
-	game->flags.p_flag = 0;
-	game->flags.s_flag = 0;
-	game->flags.w_flag = 0;
-	game->flags.cnt = 0;
-	game->map_str = NULL;
-	game->map = NULL;
-	game->img = NULL;
-	game->binary_screen = NULL;
-	game->sprites.n = 0;
-	game->sprites.e = 0;
-	game->sprites.w = 0;
-	game->sprites.s = 0;
-	game->player.map = 0;
-	game->key_pressed = 0;
+	if (init_window(game))
+		return (clear_args(game));
+	if (init_textures(game))
+		return (clear_args(game));
+	init_player(game, 0, -1);
+	init_dir(game);
+	return (0);
 }

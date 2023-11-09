@@ -10,12 +10,16 @@ SRCS = 	src/main.c \
 		src/parsing/map_checker_utils.c \
 		src/parsing/textures_checker.c \
 		src/ft_free.c \
-		src/init/init.c \
-		src/moves/keys_manager.c \
+		src/init/init_pre_loop.c \
+		src/init/init_during_loop.c \
+		src/moves/keys_flags.c \
 		src/moves/rotate.c \
 		src/moves/moves.c \
-		src/mlx_pixels/ft_display.c \
-		src/mlx_pixels/raycasting.c
+		src/moves/validate_moves.c \
+		src/images/draw_map.c \
+		src/images/display_pov.c \
+		src/images/dda.c \
+		src/images/raycasting.c
 
 OBJS 	= $(SRCS:.c=.o)
 
@@ -23,7 +27,7 @@ RM		= rm -rf
 
 CC 		= cc
 
-CFLAGS 	= -Wall -Wextra -Werror -O3 -flto -ffast-math -march=native 
+CFLAGS 	= -Wall -Wextra -Werror -O3 -flto -ffast-math #-march=native 
 
 MLXFLAGS = -lmlx -framework OpenGL -framework AppKit -Lmlx
 

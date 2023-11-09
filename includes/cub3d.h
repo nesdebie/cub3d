@@ -6,7 +6,7 @@
 /*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/08 10:48:54 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/09 14:08:45 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,23 +159,23 @@ typedef struct s_ray
 
 typedef struct s_game
 {
-	void		*mlx;
-	void		*win;
-	void		*img;
-	char		**map;
-	int			map_width;
-	int			map_height;
-	int			**binary_screen;
-	char		*map_str;
-	int			held_key;
-	int			key_pressed;
-	int			mouse_x;
-	int			mouse_y;
-	t_img		wall;
-	t_ray		ray;
-	t_spr		sprites;
-	t_flag		flags;
-	t_player	player;
+	void			*mlx;
+	void			*win;
+	void			*img;
+	char			**map;
+	int				map_width;
+	int				map_height;
+	unsigned long	**binary_screen;
+	char			*map_str;
+	int				held_key;
+	int				key_pressed;
+	int				mouse_x;
+	int				mouse_y;
+	t_img			wall;
+	t_ray			ray;
+	t_spr			sprites;
+	t_flag			flags;
+	t_player		player;
 }				t_game;
 
 /* ERRORS */
@@ -195,16 +195,17 @@ int		check_textures(t_game *game);
 int		check_nsew(t_game *game);
 
 /* INIT */
-void	init_player(t_game *game, int x, int y);
-int		init_textures(t_game *game);
-int		init_window(t_game *game);
-void	init_flags(t_game *game);
+int		init_pre_loop(t_game *game);
+void	init_raycasting(int x, t_ray *ray, t_player *player);
 void	init_pov(t_ray *ray);
+void	init_img(t_game *game, t_img *image, int width, int height);
+void	init_binary_screen(t_game *game);
 
 /* FREE */
 void	ft_freesplit(char **arr);
 int		clear_args(t_game *game);
 void	free_tab(void **tab);
+void	free_failed_tab(void **tab, int last);
 
 /* TEMP */
 int		add_ea(t_game *game, char **arr);
@@ -227,17 +228,19 @@ int		key_press(int key_code, t_game *game);
 int		key_release(int key_code, t_game *game);
 int		close_game(t_game *game);
 
-/*DISPLAY (Hugo)*/
+/* MAP (Hugo)*/
 void	draw_map(t_game *game);
 void	ft_draw_player(t_game *game);
 
 /* DISPLAYS (Nestor) */
-void	init_img(t_game *game, t_img *image, int width, int height);
+void	display_pov(t_game *game);
 void	set_image_pixel(t_img *image, int x, int y, int color);
 void	ft_update_dir(t_game *game);
-void	init_dir(t_game *game);
 void	ft_move_player(t_game *game);
+int		validate_move(t_game *data, double new_x, double new_y);
 int		rotate(t_game *game);
 void	raycasting(t_player *player, t_game *game);
+void	set_dda(t_ray *ray, t_player *player);
+void	dda(t_game *game, t_ray *ray);
 
 #endif

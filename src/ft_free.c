@@ -3,14 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 00:03:27 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/19 15:46:57 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/09 14:04:30 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+void	free_failed_tab(void **tab, int last)
+{
+	while (last >= 0)
+	{
+		free(tab[last]);
+		last--;
+	}
+	if (tab)
+	{
+		free(tab);
+		tab = NULL;
+	}
+}
+
+void	free_tab(void **tab)
+{
+	size_t	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	if (tab)
+	{
+		free(tab);
+		tab = NULL;
+	}
+}
 
 void	ft_freesplit(char **arr)
 {
