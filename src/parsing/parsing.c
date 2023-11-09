@@ -3,19 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
+/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 23:25:58 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/30 14:47:31 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/11/09 14:32:55 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
-
-unsigned long	set_rgb(int red, int green, int blue)
-{
-	return ((red) << 16) | ((green) << 8) | (blue);
-}
 
 int	onlyint(char *s)
 {

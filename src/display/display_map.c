@@ -6,13 +6,13 @@
 /*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 16:39:09 by hubrygo           #+#    #+#             */
-/*   Updated: 2023/11/09 14:09:32 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/09 14:37:39 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	create_player(t_game *game, int color)
+static void	create_player(t_game *game, int color)
 {
 	t_img	player;
 	int		i;
@@ -35,7 +35,7 @@ void	create_player(t_game *game, int color)
 	game->player.img_player = player;
 }
 
-void	ft_draw_player(t_game *game)
+void	display_player(t_game *game)
 {
 	int	x;
 	int	color;
@@ -53,7 +53,7 @@ void	ft_draw_player(t_game *game)
 	mlx_put_image_to_window(game->mlx, game->win, game->player.img_player.img, (game->player.pos_x * 20) + placement_x, (game->player.pos_y * 20) + placement_y);
 	mlx_destroy_image(game->mlx, game->player.img_player.img);
 	x = -1;
-	while (++x < 7) // longueur
+	while (++x < 7)
 	{
 		mlx_pixel_put(game->img, game->win, (game->player.pos_x * 20) + pdx + placement_x, \
 						(game->player.pos_y * 20) + placement_y + pdy, color);
@@ -90,7 +90,7 @@ void	create_wall(t_game *game, int color)
 	game->wall = wall;
 }
 
-void	draw_map(t_game *game)
+void	display_map(t_game *game)
 {
 	int		i;
 	int		j;

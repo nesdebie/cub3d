@@ -6,7 +6,7 @@
 /*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 14:06:33 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/09 14:08:28 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/09 14:29:26 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,8 @@ void	set_image_pixel(t_img *image, int x, int y, int color)
 
 static void	set_frame_image_pixel(t_game *game, t_img *image, int x, int y)
 {
-	unsigned long tmp = set_rgb(128, 128, 128); // print des murs gris en attendant
 	if (game->binary_screen[y][x] > 0)
-		set_image_pixel(image, x, y, tmp);
+		set_image_pixel(image, x, y, game->binary_screen[y][x]);
 	else if (y < Y / 2)
 		set_image_pixel(image, x, y, game->sprites.c_rgb);
 	else if (y < Y - 1)

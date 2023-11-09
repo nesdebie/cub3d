@@ -6,7 +6,7 @@
 /*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/09 14:08:45 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/09 14:37:20 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -229,8 +229,8 @@ int		key_release(int key_code, t_game *game);
 int		close_game(t_game *game);
 
 /* MAP (Hugo)*/
-void	draw_map(t_game *game);
-void	ft_draw_player(t_game *game);
+void	display_map(t_game *game);
+void	display_player(t_game *game);
 
 /* DISPLAYS (Nestor) */
 void	display_pov(t_game *game);

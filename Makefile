@@ -16,10 +16,10 @@ SRCS = 	src/main.c \
 		src/moves/rotate.c \
 		src/moves/moves.c \
 		src/moves/validate_moves.c \
-		src/images/draw_map.c \
-		src/images/display_pov.c \
-		src/images/dda.c \
-		src/images/raycasting.c
+		src/display/display_map.c \
+		src/display/display_pov.c \
+		src/display/dda.c \
+		src/display/raycasting.c
 
 OBJS 	= $(SRCS:.c=.o)
 

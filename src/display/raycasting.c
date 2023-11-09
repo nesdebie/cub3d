@@ -6,7 +6,7 @@
 /*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 09:05:08 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/09 13:52:37 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/09 14:30:14 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 static void	set_binary_screen(t_game *game, t_ray *ray, int x)
 {
-	int			y;
-	int			i;
-	int			color;
+	int				y;
+	int				i;
+	unsigned long	color;
 
 	y = ray->draw_start;
 	i = 0;
 	while (y < Y - 1 && i < ray->line_height)
 	{
-		color = 1;
+		color = set_rgb(128, 128, 128);
 		game->binary_screen[y][x] = color;
 		y++;
 		i++;

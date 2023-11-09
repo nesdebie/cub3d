@@ -6,13 +6,18 @@
 /*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:22 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/09 14:07:13 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/09 14:37:20 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int	cub3d(t_game *game)
+unsigned long	set_rgb(int red, int green, int blue)
+{
+	return ((red) << 16) | ((green) << 8) | (blue);
+}
+
+static int	cub3d(t_game *game)
 {
 	if (game->key_pressed == 1)
 	{
@@ -28,8 +33,8 @@ int	cub3d(t_game *game)
 	display_pov(game);
 	if (game->player.map == 1)
 	{
-		draw_map(game);
-		ft_draw_player(game);
+		display_map(game);
+		display_player(game);
 	}
 	return (0);
 }
