@@ -1,7 +1,7 @@
-NO ./img/Shreck1.xpm
-SO ./img/spooder_man.xpm
-WE ./img/mimikyu.xpm
-EA ./img/Sanic.xpm
+NO ./img/patrick.xpm
+SO ./img/patrick.xpm
+WE ./img/patrick.xpm
+EA ./img/patrick.xpm
 
 F 100,100,0
 C 155,0,0
