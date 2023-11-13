@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 13:41:36 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/13 12:10:27 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/13 12:48:04 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,6 @@ void	init_binary_screen(t_game *game)
 			i++;
 		}
 	}
-}
-
-void	init_img_clean(t_img *img)
-{
-	img->img = NULL;
-	img->addr = NULL;
-	img->pixel_bits = 0;
-	img->size_line = 0;
-	img->endian = 0;
 }
 
 void	init_img(t_game *game, t_img *image, int width, int height)

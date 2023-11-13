@@ -6,11 +6,29 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:16:50 by hubrygo           #+#    #+#             */
-/*   Updated: 2023/11/10 15:52:28 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/13 12:43:23 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+static void	key_features(int key_code, t_game *game)
+{
+	if (key_code == KEY_M)
+	{
+		if (game->player.map == 0)
+			game->player.map = 1;
+		else
+			game->player.map = 0;
+	}
+	if (key_code == KEY_SPACE)
+	{
+		if (game->spacebar == 0)
+			game->spacebar = 1;
+		else
+			game->spacebar = 0;
+	}	
+}
 
 int	key_press(int key_code, t_game *game)
 {
@@ -32,20 +50,7 @@ int	key_press(int key_code, t_game *game)
 		game->player.speed_up = 1;
 	if (key_code == KEY_DOWN)
 		game->player.speed_down = 1;
-	if (key_code == KEY_M)
-	{
-		if (!game->player.map)
-			game->player.map = 1;
-		else
-			game->player.map = 0;
-	}
-	if (key_code == KEY_SPACE)
-	{
-		if (game->key_pressed == 0)
-			game->key_pressed = 1;
-		else
-			game->key_pressed = 0;
-	}
+	key_features(key_code, game);
 	return (0);
 }
 

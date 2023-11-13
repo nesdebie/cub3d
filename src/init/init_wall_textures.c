@@ -6,11 +6,20 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 15:18:46 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/10 14:31:09 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/13 12:48:18 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+void	init_img_clean(t_img *img)
+{
+	img->img = NULL;
+	img->addr = NULL;
+	img->pixel_bits = 0;
+	img->size_line = 0;
+	img->endian = 0;
+}
 
 static int	init_texture_img(t_game *game, t_img *image, char *path)
 {

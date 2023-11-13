@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/13 11:00:37 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/13 12:42:56 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,7 +168,7 @@ typedef struct s_game
 	unsigned long	**binary_screen;
 	char			*map_str;
 	int				held_key;
-	int				key_pressed;
+	int				spacebar;
 	int				mouse_x;
 	int				mouse_y;
 	t_img			wall;
@@ -240,7 +240,7 @@ void	set_image_pixel(t_img *image, int x, int y, int color);
 void	ft_update_dir(t_game *game);
 void	ft_move_player(t_game *game);
 int		validate_move(t_game *data, double new_x, double new_y);
-int		rotate(t_game *game);
+void	rotate(t_game *game);
 void	raycasting(t_player *player, t_game *game);
 void	set_dda(t_ray *ray, t_player *player);
 void	dda(t_game *game, t_ray *ray);

@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 13:36:27 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/10 15:53:04 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/13 12:41:46 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,5 @@ void	ft_move_player(t_game *game)
     if (game->player.left == 1)
         move_left(game, game->player.pdx, game->player.pdy);
     if (game->player.turn_right == 1 || game->player.turn_left == 1)
-        rotate(game);
+            rotate(game);
 }
