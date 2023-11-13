@@ -1,7 +1,7 @@
 NO ./img/eagle.xpm
-SO ./img/eagle.xpm
+SO ./img/wood.xpm
 WE ./img/eagle.xpm
-EA ./img/eagle.xpm
+EA ./img/mossy.xpm
 
 F 100,100,0
 C 155,0,0

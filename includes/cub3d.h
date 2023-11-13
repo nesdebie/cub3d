@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/13 12:42:56 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/13 13:59:36 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include "../mlx/mlx.h"
 # include "../libft/libft.h"
 
-# define X	1000
-# define Y	1000
+# define X	1920
+# define Y	1080
 
 # define SPEED 7
 # define ROTSPEED 0.07

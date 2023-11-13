@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 13:41:36 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/13 12:48:04 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/13 13:28:25 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,13 @@
 
 void set_zero(unsigned long **arr)
 {
-	int y = 0;
+	int y;
+	int x;
+
+	y = 0;
 	while (y < Y)
 	{
-		int x = 0;
+		x = 0;
 		while (x < X)
 		{
 			arr[y][x] = 0;

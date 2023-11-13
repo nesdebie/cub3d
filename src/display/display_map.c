@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
+/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 16:39:09 by hubrygo           #+#    #+#             */
-/*   Updated: 2023/11/09 14:37:39 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/13 14:12:15 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	display_player(t_game *game)
 	placement_x = (X / 2) - (game->map_width * 19) / 2;
 	pdx = game->player.pdx;
 	pdy = game->player.pdy;
-	color = (150 << 24) | (255 << 16) | (255 << 8) | 0;
+	color = (100 << 24) | (255 << 16) | (255 << 8) | 0;
 	create_player(game, color);
 	mlx_put_image_to_window(game->mlx, game->win, game->player.img_player.img, (game->player.pos_x * 20) + placement_x, (game->player.pos_y * 20) + placement_y);
 	mlx_destroy_image(game->mlx, game->player.img_player.img);
@@ -71,7 +71,7 @@ void	create_wall(t_game *game, int color)
 	int		i;
 	int		j;
 
-	color = (180 << 24) | (0 << 16) | (0 << 8) | 0;
+	color = (140 << 24) | (0 << 16) | (0 << 8) | 0;
 	y = 19;
 	x = 19;
 	wall.img = NULL;

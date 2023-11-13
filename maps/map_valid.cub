@@ -1,10 +1,10 @@
-NO ./img/eagle.xpm
-SO ./img/eagle.xpm
-WE ./img/eagle.xpm
-EA ./img/eagle.xpm
+NO ./img/Shreck1.xpm
+SO ./img/spooder_man.xpm
+WE ./img/mimikyu.xpm
+EA ./img/Sanic.xpm
 
-F 200,200,0
-C 255,0,0
+F 100,100,0
+C 155,0,0
 
         1111111111111111111111111
         1000000000110000000000001
