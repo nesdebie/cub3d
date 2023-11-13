@@ -1,10 +1,10 @@
-NO ./img/dark_wood.xpm
-SO ./img/dark_wood.xpm
-WE ./img/dark_wood.xpm
-EA ./img/dark_wood.xpm
+NO ./img/Shreck1.xpm
+SO ./img/Shreck2.xpm
+WE ./img/Shreck3.xpm
+EA ./img/Shreck4.xpm
 
-F 0,0,0
-C 255,255,255
+F 107,71,0
+C 107,71,0
 
 111111111111111111111111111111111111111111111111111
 100000000000000000000000000000000000000000000000001
