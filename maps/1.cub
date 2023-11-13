@@ -1,10 +1,10 @@
-NO ./img/eagle.xpm
-SO ./img/mossy.xpm
-WE ./img/wood.xpm
-EA ./img/wood.xpm
+NO ./img/img/observed1.xpm
+SO ./img/img/observed2.xpm
+WE ./img/img/observed3.xpm
+EA ./img/img/observed4.xpm
 
 F 000,000,0
-C 055,0,0
+C 0,0,0
 
 11111111111111111111111111111
 10000000001100000000000000001
