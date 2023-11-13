@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 00:03:27 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/10 12:12:14 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/13 12:54:23 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,8 @@
 void	free_failed_tab(void **tab, int last)
 {
 	while (last >= 0)
-	{
-		free(tab[last]);
+		free(tab[last--]);
 		last--;
-	}
 	if (tab)
 	{
 		free(tab);
@@ -32,10 +30,7 @@ void	free_tab(void **tab)
 
 	i = 0;
 	while (tab[i])
-	{
-		free(tab[i]);
-		i++;
-	}
+		free(tab[i++]);
 	if (tab)
 	{
 		free(tab);
@@ -52,6 +47,7 @@ void	ft_freesplit(char **arr)
 		free(arr[i++]);
 	free(arr[i]);
 	free(arr);
+	arr = NULL;
 }
 
 int	clear_args(t_game *game)
