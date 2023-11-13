@@ -1,7 +1,7 @@
-NO ./img/eagle.xpm
-SO ./img/eagle.xpm
-WE ./img/eagle.xpm
-EA ./img/eagle.xpm
+NO ./img/dark_wood.xpm
+SO ./img/dark_wood.xpm
+WE ./img/dark_wood.xpm
+EA ./img/dark_wood.xpm
 
 F 0,0,0
 C 255,255,255

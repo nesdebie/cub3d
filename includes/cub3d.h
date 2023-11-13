@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
+/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/09 14:37:20 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/10 16:01:02 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 # define SPEED 7
 # define ROTSPEED 0.07
 
+# define SIZE	64
+
 # define KEY_ESC	53
 # define KEY_Q      12
 
@@ -34,8 +36,8 @@
 # define KEY_A	0
 # define KEY_S	1
 # define KEY_D	2
-# define KEY_SPACE	49
 
+# define KEY_SPACE	49
 # define KEY_M 46
 
 # define KEY_LEFT	123
@@ -46,8 +48,6 @@
 # define RED_CROSS 17
 # define PRESS_KEY 2
 # define RELEASE_KEY 3
-
-# define PI 3.1415926535
 
 typedef enum s_error
 {
@@ -89,16 +89,16 @@ typedef struct s_player
 	int 	right;
 	int		turn_left;
 	int		turn_right;
-	int		augment_move_speed;
-	int		downgrade_move_speed;
-	int		current_speed;
+	int		speed_up;
+	int		speed_down;
+	int		speed;
 	
 	//RAYCASTING
 	char	first_dir;
-	float	pos_x; // pos_x map
-	float	pos_y; // pos_y map
-	float	dir_x; // dir map
-	float	dir_y; // dir map
+	float	pos_x;
+	float	pos_y;
+	float	dir_x;
+	float	dir_y;
 	float	plane_x;
 	float	plane_y;
 
@@ -109,10 +109,10 @@ typedef struct s_player
 
 typedef struct s_spr
 {
-	void	*n;
-	void	*s;
-	void	*w;
-	void	*e;
+	int		*n;
+	int		*s;
+	int		*w;
+	int		*e;
 	char	*no;
 	char	*so;
 	char	*we;
@@ -196,10 +196,12 @@ int		check_nsew(t_game *game);
 
 /* INIT */
 int		init_pre_loop(t_game *game);
+int		init_wall_textures(t_game *game);
 void	init_raycasting(int x, t_ray *ray, t_player *player);
 void	init_pov(t_ray *ray);
 void	init_img(t_game *game, t_img *image, int width, int height);
 void	init_binary_screen(t_game *game);
+void	init_img_clean(t_img *img);
 
 /* FREE */
 void	ft_freesplit(char **arr);

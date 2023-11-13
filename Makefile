@@ -12,6 +12,7 @@ SRCS = 	src/main.c \
 		src/ft_free.c \
 		src/init/init_pre_loop.c \
 		src/init/init_during_loop.c \
+		src/init/init_wall_textures.c \
 		src/moves/keys_flags.c \
 		src/moves/rotate.c \
 		src/moves/moves.c \

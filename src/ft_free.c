@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
+/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 00:03:27 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/09 14:04:30 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/10 12:12:14 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,12 @@ int	clear_args(t_game *game)
 	if (game->map)
 		ft_freesplit(game->map);
 	if (game->sprites.n)
-		mlx_destroy_image(game->mlx, game->sprites.n);
+		free(game->sprites.n);
 	if (game->sprites.s)
-		mlx_destroy_image(game->mlx, game->sprites.s);
+		free(game->sprites.s);
 	if (game->sprites.e)
-		mlx_destroy_image(game->mlx, game->sprites.e);
+		free(game->sprites.e);
 	if (game->sprites.w)
-		mlx_destroy_image(game->mlx, game->sprites.w);
+		free(game->sprites.w);
 	return (1);
 }

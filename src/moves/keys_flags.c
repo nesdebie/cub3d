@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keys_manager.c                                     :+:      :+:    :+:   */
+/*   keys_flags.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
+/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:16:50 by hubrygo           #+#    #+#             */
-/*   Updated: 2023/11/07 18:36:47 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/11/10 15:52:28 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int	key_press(int key_code, t_game *game)
 	if (key_code == KEY_RIGHT)
 		game->player.turn_right = 1;
 	if (key_code == KEY_UP)
-		game->player.augment_move_speed = 1;
+		game->player.speed_up = 1;
 	if (key_code == KEY_DOWN)
-		game->player.downgrade_move_speed = 1;
+		game->player.speed_down = 1;
 	if (key_code == KEY_M)
 	{
 		if (!game->player.map)
@@ -64,8 +64,8 @@ int	key_release(int key_code, t_game *game)
 	if (key_code == KEY_RIGHT)
 		game->player.turn_right = 0;
 	if (key_code == KEY_UP)
-		game->player.augment_move_speed = 0;
+		game->player.speed_up = 0;
 	if (key_code == KEY_DOWN)
-		game->player.downgrade_move_speed = 0;
+		game->player.speed_down = 0;
 	return (0);
 }

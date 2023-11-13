@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_pre_loop.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
+/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 23:39:35 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/09 14:17:55 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/10 15:53:04 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,30 +65,8 @@ static void	init_player(t_game *game, int x, int y)
 	player.pdy = 1;
 	player.turn_left = 0;
 	player.turn_right = 0;
-	player.current_speed = 0;
+	player.speed = 0;
 	game->player = player;
-}
-
-static int init_textures(t_game *game)
-{
-	int	w;
-	int	h;
-
-	w = 128;
-	h = 128;
-	game->sprites.n = mlx_xpm_file_to_image(game->mlx, game->sprites.no, &h, &w);
-	if (!game->sprites.n)
-		return (mlx_error(MLX_XPM));
-	game->sprites.s = mlx_xpm_file_to_image(game->mlx, game->sprites.so, &h, &w);
-	if (!game->sprites.s)
-		return (mlx_error(MLX_XPM));
-	game->sprites.e = mlx_xpm_file_to_image(game->mlx, game->sprites.ea, &h, &w);
-	if (!game->sprites.e)
-		return (mlx_error(MLX_XPM));
-	game->sprites.w = mlx_xpm_file_to_image(game->mlx, game->sprites.we, &h, &w);
-	if (!game->sprites.w)
-		return (mlx_error(MLX_XPM));
-	return (0);
 }
 
 static int	init_window(t_game *game)
@@ -106,7 +84,7 @@ int init_pre_loop(t_game *game)
 {
 	if (init_window(game))
 		return (clear_args(game));
-	if (init_textures(game))
+	if (init_wall_textures(game))
 		return (clear_args(game));
 	init_player(game, 0, -1);
 	init_dir(game);

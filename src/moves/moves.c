@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
+/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 13:36:27 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/09 13:28:01 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/10 15:53:04 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,14 @@ static int  move_up(t_game *game, float pdx, float pdy)
 
 void	ft_move_player(t_game *game)
 {
-    if (game->player.augment_move_speed == 1)
-        if (game->player.current_speed > -2)
-            game->player.current_speed--;
-    if (game->player.downgrade_move_speed == 1)
-        if (game->player.current_speed < 9)
-            game->player.current_speed++;
-	game->player.pdx = game->player.dir_x / (SPEED + game->player.current_speed);
-	game->player.pdy = game->player.dir_y / (SPEED + game->player.current_speed);
+    if (game->player.speed_up == 1)
+        if (game->player.speed > -2)
+            game->player.speed--;
+    if (game->player.speed_down == 1)
+        if (game->player.speed < 9)
+            game->player.speed++;
+	game->player.pdx = game->player.dir_x / (SPEED + game->player.speed);
+	game->player.pdy = game->player.dir_y / (SPEED + game->player.speed);
 	if (game->player.down == 1)
         move_down(game, game->player.pdx, game->player.pdy);
 	if (game->player.up == 1)

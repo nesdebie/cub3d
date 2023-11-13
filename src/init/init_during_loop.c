@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_during_loop.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
+/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 13:41:36 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/09 14:10:58 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/10 12:07:38 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	init_binary_screen(t_game *game)
 	}
 }
 
-static void	init_img_clean(t_img *img)
+void	init_img_clean(t_img *img)
 {
 	img->img = NULL;
 	img->addr = NULL;
