@@ -3,18 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
+/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 09:05:08 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/13 08:34:42 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/13 11:57:49 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
+#include <time.h>
 
 static int	get_texture_pixel(t_game * game, t_ray *ray, int x, int y)
 {
+	//srand(time(NULL));
+	//int r = rand();
+	//if (r % 2 == 0)
+	//{
 	if (ray->side == 0)
 	{
 		if (ray->dir_x < 0)
@@ -25,6 +30,21 @@ static int	get_texture_pixel(t_game * game, t_ray *ray, int x, int y)
 	else if (ray->dir_y > 0)
 		return (game->sprites.s[SIZE * y + x]);
 	return (game->sprites.n[SIZE * y + x]);
+	// }
+	// else
+	// 	{
+	// if (ray->side == 0)
+	// {
+	// 	if (ray->dir_x < 0)
+	// 		return (game->sprites.e[SIZE * y + x]);
+	// 	else
+	// 		return (game->sprites.w[SIZE * y + x]);
+	// }
+	// else if (ray->dir_y > 0)
+	// 	return (game->sprites.n[SIZE * y + x]);
+	// return (game->sprites.s[SIZE * y + x]);
+	// }
+	// return (0);
 }
 
 static void	set_binary_screen(t_game *game, t_ray *ray, int x, int i)

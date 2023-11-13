@@ -6,35 +6,53 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 13:41:36 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/10 12:07:38 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/13 12:10:27 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+void set_zero(unsigned long **arr)
+{
+	int y = 0;
+	while (y < Y)
+	{
+		int x = 0;
+		while (x < X)
+		{
+			arr[y][x] = 0;
+			x++;
+		}
+		y++;
+	}
+}
 
 void	init_binary_screen(t_game *game)
 {
 	int	i;
 
 	if (game->binary_screen)
-		free_tab((void **)game->binary_screen);
-	game->binary_screen = ft_calloc(Y + 1, sizeof * game->binary_screen);
-	if (!game->binary_screen)
+		set_zero(game->binary_screen);
+	else
 	{
-		clear_args(game);
-		exit (EXIT_FAILURE);
-	}
-	i = 0;
-	while (i < Y)
-	{
-		game->binary_screen[i] = ft_calloc(X + 1, sizeof * game->binary_screen);
-		if (!game->binary_screen[i])
+		game->binary_screen = ft_calloc(Y + 1, sizeof * game->binary_screen);
+		if (!game->binary_screen)
 		{
-			free_failed_tab((void **)game->binary_screen, i);
 			clear_args(game);
 			exit (EXIT_FAILURE);
 		}
-		i++;
+		i = 0;
+		while (i < Y)
+		{
+			game->binary_screen[i] = ft_calloc(X + 1, sizeof * game->binary_screen);
+			if (!game->binary_screen[i])
+			{
+				free_failed_tab((void **)game->binary_screen, i);
+				clear_args(game);
+				exit (EXIT_FAILURE);
+			}
+			i++;
+		}
 	}
 }
 
