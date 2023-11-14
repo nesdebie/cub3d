@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycasting.c                                       :+:      :+:    :+:   */
+/*   raycasting_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 09:05:08 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/14 15:05:50 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/11/14 15:07:45 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include <time.h>
 
-static int	get_texture_pixel(t_game * game, t_ray *ray, int x, int y)
+static int	choose_texture(t_game * game, t_ray *ray, int x, int y)
 {
 	if (ray->side == 0)
 	{
@@ -26,6 +26,30 @@ static int	get_texture_pixel(t_game * game, t_ray *ray, int x, int y)
 	else if (ray->dir_y > 0)
 		return (game->sprites.s[SIZE * y + x]);
 	return (game->sprites.n[SIZE * y + x]);
+}
+
+static int	get_texture_pixel(t_game * game, t_ray *ray, int x, int y)
+{
+	int r;
+	
+	r = rand();
+	srand(time(NULL));
+	if (r % 2 == 0)
+		return (choose_texture(game, ray, x, y));
+	else
+	{
+		if (ray->side == 0)
+		{
+	 		if (ray->dir_x < 0)
+	 			return (game->sprites.e[SIZE * y + x]);
+	 		else
+	 			return (game->sprites.w[SIZE * y + x]);
+		}
+		else if (ray->dir_y > 0)
+			return (game->sprites.n[SIZE * y + x]);
+		return (game->sprites.s[SIZE * y + x]);
+	}
+	return (0);
 }
 
 static void	set_binary_screen(t_game *game, t_ray *ray, int x, int i)
