@@ -6,7 +6,7 @@
 /*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:22 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/15 12:31:35 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/11/15 13:03:14 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ static void	init_flags(t_game *game)
 	game->player.map = 0;
 	game->spacebar = 0;
 	game->door = 0;
+	game->random = 0;
 }
 
 int	main(int argc, char **argv)

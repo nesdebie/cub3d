@@ -6,7 +6,7 @@
 /*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/15 12:22:33 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/11/15 13:04:12 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,6 +174,7 @@ typedef struct s_game
 	int				held_key;
 	int				spacebar;
 	int				mouse_x;
+	int				random;
 	int				mouse_y;
 	t_img			wall;
 	t_ray			ray;

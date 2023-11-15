@@ -6,7 +6,7 @@
 /*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 09:05:08 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/15 11:51:25 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/11/15 13:12:12 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,28 @@
 
 static int	choose_texture(t_game * game, t_ray *ray, int x, int y)
 {
-	if (ray->side == 0)
+	if (game->door == 1)
+		return (game->sprites.d[SIZE * y + x]);
+	else
 	{
-		if (ray->dir_x < 0)
-			return (game->sprites.w[SIZE * y + x]);
-		else
-			return (game->sprites.e[SIZE * y + x]);
+		if (ray->side == 0)
+		{
+			if (ray->dir_x < 0)
+				return (game->sprites.w[SIZE * y + x]);
+			else
+				return (game->sprites.e[SIZE * y + x]);
+		}
+		else if (ray->dir_y > 0)
+			return (game->sprites.s[SIZE * y + x]);
+		return (game->sprites.n[SIZE * y + x]);
 	}
-	else if (ray->dir_y > 0)
-		return (game->sprites.s[SIZE * y + x]);
-	return (game->sprites.n[SIZE * y + x]);
+	return (0);
 }
 
 static int	get_texture_pixel(t_game * game, t_ray *ray, int x, int y)
 {
-	int r;
-	
-	r = rand();
-	srand(time(NULL));
 	if (game->door == 1)
 		return (game->sprites.d[SIZE * y + x]);
-	if (r % 2 == 0)
-		return (choose_texture(game, ray, x, y));
 	else
 	{
 		if (ray->side == 0)
@@ -72,7 +72,10 @@ static void	set_binary_screen(t_game *game, t_ray *ray, int x, int i)
 	{
 		ty = (int)t_pos & (SIZE - 1);
 		t_pos += t_step;
-		game->binary_screen[y][x] = get_texture_pixel(game, ray, tx, ty);
+		if ((game->random < 50 && game->random >= 0))
+			game->binary_screen[y][x] = choose_texture(game, ray, tx, ty);
+		else
+			game->binary_screen[y][x] = get_texture_pixel(game, ray, tx, ty);
 	}
 	game->door = 0;
 }
@@ -101,6 +104,9 @@ void	raycasting(t_player *player, t_game *game)
 
 	x = 0;
 	ray = game->ray;
+	game->random++;
+	if (game->random > 100)
+		game->random = 0;
 	while (x < X)
 	{
 		init_raycasting(x, &ray, player);
