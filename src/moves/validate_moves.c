@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_moves.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
+/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 13:25:56 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/15 11:55:43 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/11/15 14:24:53 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,11 @@ static int	is_valid_pos(t_game *data, double x, double y)
 int	validate_move(t_game *data, double new_x, double new_y)
 {
 	int	moved;
-    int old_pos_x;
-    int old_pos_y;
-    
-    old_pos_x = (int)data->player.pos_x;
-    old_pos_y = (int)data->player.pos_y;
+	int	old_pos_x;
+	int	old_pos_y;
+
+	old_pos_x = (int)data->player.pos_x;
+	old_pos_y = (int)data->player.pos_y;
 	moved = 0;
 	if (is_valid_pos(data, new_x, data->player.pos_y))
 	{
@@ -57,6 +57,6 @@ int	validate_move(t_game *data, double new_x, double new_y)
 		moved = 1;
 	}
 	if (!isinset(data->map[old_pos_y][old_pos_x], "NSEW"))
-    	data->map[old_pos_y][old_pos_x] = '0';
+		data->map[old_pos_y][old_pos_x] = '0';
 	return (moved);
 }

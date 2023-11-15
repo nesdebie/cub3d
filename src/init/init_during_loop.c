@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   init_during_loop.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
+/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 13:41:36 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/15 13:02:55 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/11/15 14:36:34 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void set_zero(unsigned long **arr)
+void	set_zero(int **arr)
 {
-	int y;
-	int x;
+	int	y;
+	int	x;
 
 	y = 0;
 	while (y < Y)
@@ -30,16 +30,16 @@ void set_zero(unsigned long **arr)
 	}
 }
 
-void	init_binary_screen(t_game *game)
+void	init_pixels(t_game *game)
 {
 	int	i;
 
-	if (game->binary_screen)
-		set_zero(game->binary_screen);
+	if (game->pixels)
+		set_zero(game->pixels);
 	else
 	{
-		game->binary_screen = ft_calloc(Y + 1, sizeof * game->binary_screen);
-		if (!game->binary_screen)
+		game->pixels = ft_calloc(Y + 1, sizeof * game->pixels);
+		if (!game->pixels)
 		{
 			clear_args(game);
 			exit (EXIT_FAILURE);
@@ -47,10 +47,10 @@ void	init_binary_screen(t_game *game)
 		i = 0;
 		while (i < Y)
 		{
-			game->binary_screen[i] = ft_calloc(X + 1, sizeof * game->binary_screen);
-			if (!game->binary_screen[i])
+			game->pixels[i] = ft_calloc(X + 1, sizeof * game->pixels);
+			if (!game->pixels[i])
 			{
-				free_failed_tab((void **)game->binary_screen, i);
+				free_failed_tab((void **)game->pixels, i);
 				clear_args(game);
 				exit (EXIT_FAILURE);
 			}
@@ -65,8 +65,8 @@ void	init_img(t_game *game, t_img *image, int width, int height)
 	image->img = mlx_new_image(game->mlx, width, height);
 	if (image->img == NULL)
 	{
-			clear_args(game);
-			exit (EXIT_FAILURE);
+		clear_args(game);
+		exit (EXIT_FAILURE);
 	}
 	image->addr = (int *)mlx_get_data_addr(image->img, &image->pixel_bits,
 			&image->size_line, &image->endian);

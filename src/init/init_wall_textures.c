@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_wall_textures.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
+/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 15:18:46 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/15 11:45:13 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/11/15 14:31:19 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ void	init_img_clean(t_img *img)
 
 static int	init_texture_img(t_game *game, t_img *image, char *path)
 {
-	int size;
+	int	size;
 
 	size = SIZE;
 	init_img_clean(image);
 	image->img = mlx_xpm_file_to_image(game->mlx, path, &size, &size);
 	if (image->img == NULL)
-		return(error_msg(MLX_XPM));
+		return (error_msg(MLX_XPM));
 	image->addr = (int *)mlx_get_data_addr(image->img, &image->pixel_bits,
 			&image->size_line, &image->endian);
 	return (0);
@@ -46,10 +46,10 @@ static int	*xpm_to_img(t_game *game, char *path)
 		return (NULL);
 	buffer = ft_calloc(1, sizeof * buffer * SIZE * SIZE);
 	if (!buffer)
-    {
+	{
 		error_msg(MALLOC_ERROR);
 		return (NULL);
-    }
+	}
 	y = -1;
 	while (++y < SIZE)
 	{

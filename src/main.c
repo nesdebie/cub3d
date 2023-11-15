@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
+/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:22 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/15 13:03:14 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/11/15 14:47:45 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ unsigned long	set_rgb(int red, int green, int blue)
 {
 	return ((red) << 16) | ((green) << 8) | (blue);
 }
-
-//#include <stdio.h>
 
 static int	cub3d(t_game *game)
 {
@@ -43,8 +41,8 @@ static int	cub3d(t_game *game)
 	//}
 	if (game->player.map == 1)
 	{
-		display_map(game);
-		display_player(game);
+		display_map(game, 0);
+		display_player(game, -1);
 	}
 	return (0);
 }
@@ -59,11 +57,14 @@ static void	init_flags(t_game *game)
 	game->flags.p_flag = 0;
 	game->flags.s_flag = 0;
 	game->flags.w_flag = 0;
+	game->flags.door = 0;
+	game->flags.random = 0;
 	game->flags.cnt = 0;
+	game->flags.open = 0;
 	game->map_str = NULL;
 	game->map = NULL;
 	game->img = NULL;
-	game->binary_screen = NULL;
+	game->pixels = NULL;
 	game->sprites.n = 0;
 	game->sprites.e = 0;
 	game->sprites.w = 0;
@@ -71,8 +72,6 @@ static void	init_flags(t_game *game)
 	game->sprites.d = 0;
 	game->player.map = 0;
 	game->spacebar = 0;
-	game->door = 0;
-	game->random = 0;
 }
 
 int	main(int argc, char **argv)

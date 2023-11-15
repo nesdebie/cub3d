@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_pre_loop.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
+/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 23:39:35 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/15 12:09:00 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/11/15 14:34:59 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ static void	init_player(t_game *game, int x, int y)
 	player.turn_left = 0;
 	player.turn_right = 0;
 	player.speed = 0;
-	player.open = 0;
 	game->player = player;
 }
 
@@ -74,14 +73,14 @@ static int	init_window(t_game *game)
 {
 	game->mlx = mlx_init();
 	if (!game->mlx)
-		return(mlx_error(MLX_INIT));
+		return (mlx_error(MLX_INIT));
 	game->win = mlx_new_window(game->mlx, X, Y, "cub3d");
 	if (!game->win)
-		return(mlx_error(MLX_WIN));
+		return (mlx_error(MLX_WIN));
 	return (0);
 }
 
-int init_pre_loop(t_game *game)
+int	init_pre_loop(t_game *game)
 {
 	if (init_window(game))
 		return (clear_args(game));

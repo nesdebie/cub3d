@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
+/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 00:03:27 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/15 11:39:58 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/11/15 14:41:41 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	free_failed_tab(void **tab, int last)
 {
 	while (last >= 0)
 		free(tab[last--]);
-		last--;
 	if (tab)
 	{
 		free(tab);
@@ -50,6 +49,20 @@ void	ft_freesplit(char **arr)
 	arr = NULL;
 }
 
+static void	clear_textures(t_game *game)
+{
+	if (game->sprites.n)
+		free(game->sprites.n);
+	if (game->sprites.s)
+		free(game->sprites.s);
+	if (game->sprites.e)
+		free(game->sprites.e);
+	if (game->sprites.w)
+		free(game->sprites.w);
+	if (game->sprites.d)
+		free(game->sprites.d);
+}
+
 int	clear_args(t_game *game)
 {
 	if (game->flags.n_flag > 0)
@@ -68,15 +81,6 @@ int	clear_args(t_game *game)
 		free(game->map_str);
 	if (game->map)
 		ft_freesplit(game->map);
-	if (game->sprites.n)
-		free(game->sprites.n);
-	if (game->sprites.s)
-		free(game->sprites.s);
-	if (game->sprites.e)
-		free(game->sprites.e);
-	if (game->sprites.w)
-		free(game->sprites.w);
-	if (game->sprites.d)
-		free(game->sprites.d);
+	clear_textures(game);
 	return (1);
 }

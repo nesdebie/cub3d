@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
+/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 23:25:58 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/09 14:32:55 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/15 14:23:38 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ int	isinset(char c, char *set)
 	return (1);
 }
 
-int parsing(t_game *game, char *map, int argc)
+int	parsing(t_game *game, char *map, int argc)
 {
-    if (check_extension(map, ".cub"))
+	if (check_extension(map, ".cub"))
 		return (args_error(argc, map));
 	if (read_file(game, map, 0, NULL))
 		return (clear_args(game));
 	if (check_params(game))
 		return (clear_args(game));
-    return (0);
+	return (0);
 }

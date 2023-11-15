@@ -1,10 +1,10 @@
 NO ./img/mimikyu.xpm
-SO ./img/mimikyu.xpm
+SO ./img/patrick.xpm
 WE ./img/mimikyu.xpm
-EA ./img/mimikyu.xpm
+EA ./img/spooder_man.xpm
 
-F 000,000,0
-C 0,0,0
+F 255,000,0
+C 0,0,255
 
 11111111111111111111111111111
 10000000001100000000000000001
