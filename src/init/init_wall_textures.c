@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_wall_textures.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 15:18:46 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/15 14:31:19 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/15 15:15:44 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	init_wall_textures(t_game *game)
 	game->sprites.w = xpm_to_img(game, game->sprites.we);
 	if (!game->sprites.w)
 		return (1);
-	game->sprites.d = xpm_to_img(game, "./img/patrick.xpm");
+	game->sprites.d = xpm_to_img(game, "./img/porte.xpm");
 	if (!game->sprites.d)
 		return (1);
 	return (0);
