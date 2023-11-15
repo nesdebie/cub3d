@@ -6,7 +6,7 @@
 /*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/13 13:59:36 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/11/15 12:22:33 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@
 
 # define KEY_SPACE	49
 # define KEY_M 46
+# define KEY_E 14
 
 # define KEY_LEFT	123
 # define KEY_RIGHT	124
@@ -92,6 +93,7 @@ typedef struct s_player
 	int		speed_up;
 	int		speed_down;
 	int		speed;
+	int		open;
 	
 	//RAYCASTING
 	char	first_dir;
@@ -112,6 +114,7 @@ typedef struct s_spr
 	int		*n;
 	int		*s;
 	int		*w;
+	int		*d;
 	int		*e;
 	char	*no;
 	char	*so;
@@ -164,6 +167,7 @@ typedef struct s_game
 	void			*img;
 	char			**map;
 	int				map_width;
+	int				door;
 	int				map_height;
 	unsigned long	**binary_screen;
 	char			*map_str;

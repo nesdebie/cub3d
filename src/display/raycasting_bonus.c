@@ -6,7 +6,7 @@
 /*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 09:05:08 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/14 15:07:45 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/11/15 11:51:25 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ static int	get_texture_pixel(t_game * game, t_ray *ray, int x, int y)
 	
 	r = rand();
 	srand(time(NULL));
+	if (game->door == 1)
+		return (game->sprites.d[SIZE * y + x]);
 	if (r % 2 == 0)
 		return (choose_texture(game, ray, x, y));
 	else
@@ -72,6 +74,7 @@ static void	set_binary_screen(t_game *game, t_ray *ray, int x, int i)
 		t_pos += t_step;
 		game->binary_screen[y][x] = get_texture_pixel(game, ray, tx, ty);
 	}
+	game->door = 0;
 }
 
 static void	calculate_line_height(t_game *game, t_ray *ray)

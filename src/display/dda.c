@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dda.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
+/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 13:40:16 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/09 13:41:24 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/15 12:30:19 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,20 @@ void	dda(t_game *game, t_ray *ray)
 		else if (ray->map_x > game->map_width - 1.25)
 			break ;
 		else if (game->map[ray->map_y][ray->map_x] > '0')
-			hit = 1;
+		{
+			//if (game->player.open == 1 && game->door == 1)
+			//{
+			//	if (game->map[game->ray.map_y][game->ray.map_x] == 'P')
+			//		game->map[game->ray.map_y][game->ray.map_x] = 'p';
+			//	else if (game->map[game->ray.map_y][game->ray.map_x] == 'p')
+			//		game->map[game->ray.map_y][game->ray.map_x] = 'P';
+			//	printf("%c\n", game->map[game->ray.map_y][game->ray.map_x]);
+			//	game->player.open = 0;
+			//}
+			if (game->map[ray->map_y][ray->map_x] == 'P')
+				game->door = 1;
+			if (game->map[ray->map_y][ray->map_x] != 'p')
+				hit = 1;
+		}
 	}
 }

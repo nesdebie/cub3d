@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_pre_loop.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 23:39:35 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/10 15:53:04 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/15 12:09:00 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ static void	init_player(t_game *game, int x, int y)
 	player.turn_left = 0;
 	player.turn_right = 0;
 	player.speed = 0;
+	player.open = 0;
 	game->player = player;
 }
 

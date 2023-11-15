@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_moves.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 13:25:56 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/13 12:46:23 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/15 11:55:43 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	is_valid_pos_wall_collision(t_game *data, double x, double y)
 {
-	if (data->map[(int)y][(int)x] == '0')
+	if (data->map[(int)y][(int)x] == '0' || data->map[(int)y][(int)x] == 'p')
 		return (0);
 	return (1);
 }
@@ -56,6 +56,7 @@ int	validate_move(t_game *data, double new_x, double new_y)
 		data->player.pos_y = new_y;
 		moved = 1;
 	}
-    data->map[old_pos_y][old_pos_x] = '0';
+	if (!isinset(data->map[old_pos_y][old_pos_x], "NSEW"))
+    	data->map[old_pos_y][old_pos_x] = '0';
 	return (moved);
 }

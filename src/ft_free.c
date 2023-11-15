@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 00:03:27 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/13 12:54:23 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/15 11:39:58 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,7 @@ int	clear_args(t_game *game)
 		free(game->sprites.e);
 	if (game->sprites.w)
 		free(game->sprites.w);
+	if (game->sprites.d)
+		free(game->sprites.d);
 	return (1);
 }

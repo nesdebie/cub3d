@@ -28,7 +28,7 @@ SRCS_BONUS = 	src/main.c \
 				src/parsing/parsing.c \
 				src/parsing/file_checker.c \
 				src/parsing/file_checker_utils.c \
-				src/parsing/map_checker.c \
+				src/parsing/map_checker_bonus.c \
 				src/parsing/map_checker_utils.c \
 				src/parsing/textures_checker.c \
 				src/ft_free.c \
