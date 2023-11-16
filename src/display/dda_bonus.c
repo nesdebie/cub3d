@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 13:40:16 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/16 16:09:45 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/16 16:10:49 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	set_dda(t_ray *ray, t_player *player)
 		ray->sidedist_y = (ray->map_y + 1.0 - player->pos_y) * ray->deltadist_y;
 	}
 }
-#include <stdio.h>
+
 static double distance(t_game *game, t_ray *ray)
 {
 	double ret;
