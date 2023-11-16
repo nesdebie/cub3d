@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
+/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 09:05:08 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/15 15:26:07 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/11/16 15:48:54 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,42 +14,30 @@
 
 static int	choose_texture(t_game *game, t_ray *ray, int x, int y)
 {
-	if (game->flags.door == 1)
-		return (game->sprites.d[SIZE * y + x]);
-	else
+	if (ray->side == 0)
 	{
-		if (ray->side == 0)
-		{
-			if (ray->dir_x < 0)
-				return (game->sprites.w[SIZE * y + x]);
-			else
-				return (game->sprites.e[SIZE * y + x]);
-		}
-		else if (ray->dir_y > 0)
-			return (game->sprites.s[SIZE * y + x]);
-		return (game->sprites.n[SIZE * y + x]);
+		if (ray->dir_x < 0)
+			return (game->sprites.w[SIZE * y + x]);
+		else
+			return (game->sprites.e[SIZE * y + x]);
 	}
-	return (0);
+	else if (ray->dir_y > 0)
+		return (game->sprites.s[SIZE * y + x]);
+	return (game->sprites.n[SIZE * y + x]);
 }
 
 static int	get_texture_pixel(t_game *game, t_ray *ray, int x, int y)
 {
-	if (game->flags.door == 1)
-		return (game->sprites.d[SIZE * y + x]);
-	else
+	if (ray->side == 0)
 	{
-		if (ray->side == 0)
-		{
-			if (ray->dir_x < 0)
-				return (game->sprites.e[SIZE * y + x]);
-			else
-				return (game->sprites.w[SIZE * y + x]);
-		}
-		else if (ray->dir_y > 0)
-			return (game->sprites.n[SIZE * y + x]);
-		return (game->sprites.s[SIZE * y + x]);
+		if (ray->dir_x < 0)
+			return (game->sprites.e[SIZE * y + x]);
+		else
+			return (game->sprites.w[SIZE * y + x]);
 	}
-	return (0);
+	else if (ray->dir_y > 0)
+		return (game->sprites.n[SIZE * y + x]);
+	return (game->sprites.s[SIZE * y + x]);
 }
 
 static void	set_pixels(t_game *game, t_ray *ray, int x, int i)
@@ -72,7 +60,9 @@ static void	set_pixels(t_game *game, t_ray *ray, int x, int i)
 	{
 		ty = (int)t_pos & (SIZE - 1);
 		t_pos += t_step;
-		if ((game->flags.random < 50 && game->flags.random >= 0))
+		if (game->flags.door == 1)
+			game->pixels[y][x] = game->sprites.d[SIZE * ty + tx];
+		else if ((game->flags.random < 50 && game->flags.random >= 0))
 			game->pixels[y][x] = choose_texture(game, ray, tx, ty);
 		else
 			game->pixels[y][x] = get_texture_pixel(game, ray, tx, ty);

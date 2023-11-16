@@ -42,7 +42,7 @@ SRCS_B =	src/main.c \
 		src/moves/validate_moves.c \
 		src/display/display_map.c \
 		src/display/display_pov.c \
-		src/display/dda.c \
+		src/display/dda_bonus.c \
 		src/display/raycasting_bonus.c
 
 OBJS 	= $(SRCS:.c=.o)

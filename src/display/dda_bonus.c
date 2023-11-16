@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dda.c                                              :+:      :+:    :+:   */
+/*   dda_bonus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 13:40:16 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/16 15:38:40 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/16 16:09:45 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,23 @@ void	set_dda(t_ray *ray, t_player *player)
 		ray->sidedist_y = (ray->map_y + 1.0 - player->pos_y) * ray->deltadist_y;
 	}
 }
+#include <stdio.h>
+static double distance(t_game *game, t_ray *ray)
+{
+	double ret;
+
+	double	x1 = (double)game->player.pos_x;
+	double	y1 = (double)game->player.pos_y;
+	double x2 = ray->map_x * 1.0;
+	double y2 = ray->map_y * 1.0;
+
+	if (((int)x1 - (int)x2) > 1 || ((int)x1 - (int)x2) < -1)
+		return (2);
+	if (((int)y1 - (int)y2) > 1 || ((int)y1 - (int)y2) < -1)
+		return (2);
+	ret = sqrt((y1 - y2) + (y1 - y2));
+	return (ret);
+}
 
 void	dda(t_game *game, t_ray *ray)
 {
@@ -62,6 +79,21 @@ void	dda(t_game *game, t_ray *ray)
 		else if (ray->map_x > game->map_width - 1.25)
 			break ;
 		else if (game->map[ray->map_y][ray->map_x] > '0')
-			hit = 1;
+		{
+			if (game->map[ray->map_y][ray->map_x] == 'P')
+			{
+				if (distance(game, ray) < 1.22 && distance(game, ray) >= -1.22)
+					game->map[ray->map_y][ray->map_x] = 'p';
+			}
+			else if (game->map[ray->map_y][ray->map_x] == 'p')
+			{
+				if (distance(game, ray) >= 1.22 || distance(game, ray) < -1.22)
+					game->map[ray->map_y][ray->map_x] = 'P';
+			}
+			if (game->map[ray->map_y][ray->map_x] == 'P')
+				game->flags.door = 1;
+			if (game->map[ray->map_y][ray->map_x] != 'p')
+				hit = 1;
+		}
 	}
 }
