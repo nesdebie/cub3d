@@ -1,7 +1,7 @@
-NO ./img/patrick.xpm
-SO ./img/patrick.xpm
-WE ./img/patrick.xpm
-EA ./img/patrick.xpm
+NO ./img/eagle.xpm
+SO ./img/mossy.xpm
+WE ./img/wall_1.xpm
+EA ./img/wood.xpm
 
 F 100,100,0
 C 155,0,0
