@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dda_bonus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 13:40:16 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/16 16:10:49 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/19 20:00:38 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ static double distance(t_game *game, t_ray *ray)
 
 	double	x1 = (double)game->player.pos_x;
 	double	y1 = (double)game->player.pos_y;
-	double x2 = ray->map_x * 1.0;
-	double y2 = ray->map_y * 1.0;
+	double x2 = ray->map_x + 0.5;
+	double y2 = ray->map_y + 0.5;
 
 	if (((int)x1 - (int)x2) > 1 || ((int)x1 - (int)x2) < -1)
 		return (2);
@@ -82,12 +82,12 @@ void	dda(t_game *game, t_ray *ray)
 		{
 			if (game->map[ray->map_y][ray->map_x] == 'P')
 			{
-				if (distance(game, ray) < 1.22 && distance(game, ray) >= -1.22)
+				if (distance(game, ray) < 0.75 && distance(game, ray) >= -0.75)
 					game->map[ray->map_y][ray->map_x] = 'p';
 			}
 			else if (game->map[ray->map_y][ray->map_x] == 'p')
 			{
-				if (distance(game, ray) >= 1.22 || distance(game, ray) < -1.22)
+				if (distance(game, ray) >= 0.75 || distance(game, ray) < -0.75)
 					game->map[ray->map_y][ray->map_x] = 'P';
 			}
 			if (game->map[ray->map_y][ray->map_x] == 'P')
