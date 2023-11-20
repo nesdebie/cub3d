@@ -6,7 +6,7 @@
 /*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/20 14:05:03 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/11/20 15:27:11 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@
 
 # define KEY_SPACE	49
 # define KEY_M 46
-# define KEY_E 14
 
 # define KEY_LEFT	123
 # define KEY_RIGHT	124
@@ -133,7 +132,6 @@ typedef struct s_flag
 	int	f_flag;
 	int	cnt;
 	int	door;
-	int	open;
 	int	random;
 }				t_flag;
 

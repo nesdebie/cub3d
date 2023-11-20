@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys_flags.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:16:50 by hubrygo           #+#    #+#             */
-/*   Updated: 2023/11/15 14:34:22 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/20 15:26:23 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ int	key_press(int key_code, t_game *game)
 		game->player.speed_up = 1;
 	if (key_code == KEY_DOWN)
 		game->player.speed_down = 1;
-	if (key_code == KEY_E)
-		game->flags.open = 1;
 	key_features(key_code, game);
 	return (0);
 }
@@ -74,7 +72,5 @@ int	key_release(int key_code, t_game *game)
 		game->player.speed_up = 0;
 	if (key_code == KEY_DOWN)
 		game->player.speed_down = 0;
-	if (key_code == KEY_E)
-		game->flags.open = 0;
 	return (0);
 }
