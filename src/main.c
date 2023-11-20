@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:22 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/15 14:47:45 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/20 13:56:13 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 unsigned long	set_rgb(int red, int green, int blue)
 {
-	return ((red) << 16) | ((green) << 8) | (blue);
+	return ((red << 16) | (green << 8) | blue);
 }
 
 static int	cub3d(t_game *game)
@@ -31,14 +31,6 @@ static int	cub3d(t_game *game)
 	if (game->spacebar == 0)
 		mlx_mouse_show();
 	display_pov(game);
-	//if (game->e == 1)
-	//{
-	//	printf("fdasfa\n");
-	//	if (game->map[game->ray.map_y][game->ray.map_x] == 'P')
-	//		game->map[game->ray.map_y][game->ray.map_x] = 'p';
-	//	else if (game->map[game->ray.map_y][game->ray.map_x] == 'p')
-	//		game->map[game->ray.map_y][game->ray.map_x] = 'P';
-	//}
 	if (game->player.map == 1)
 	{
 		display_map(game, 0);

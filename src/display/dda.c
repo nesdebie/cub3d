@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dda.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 13:40:16 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/16 15:38:40 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/20 13:58:47 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,8 @@ void	dda(t_game *game, t_ray *ray)
 		}
 		if (ray->map_y < 0.25 || ray->map_x < 0.25)
 			break ;
-		else if (ray->map_y > game->map_height - 0.25)
-			break ;
-		else if (ray->map_x > game->map_width - 1.25)
+		else if ((ray->map_y > game->map_height - 0.25) || \
+					(ray->map_x > game->map_width - 1.25))
 			break ;
 		else if (game->map[ray->map_y][ray->map_x] > '0')
 			hit = 1;

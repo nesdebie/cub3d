@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dda_bonus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
+/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 13:40:16 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/19 20:00:38 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/20 14:04:38 by hubrygo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,21 +36,43 @@ void	set_dda(t_ray *ray, t_player *player)
 	}
 }
 
-static double distance(t_game *game, t_ray *ray)
+static double	distance(t_game *game, t_ray *ray)
 {
-	double ret;
+	double	ret;
+	double	x1;
+	double	y1;
+	double	x2;
+	double	y2;
 
-	double	x1 = (double)game->player.pos_x;
-	double	y1 = (double)game->player.pos_y;
-	double x2 = ray->map_x + 0.5;
-	double y2 = ray->map_y + 0.5;
-
+	x1 = (double)game->player.pos_x;
+	y1 = (double)game->player.pos_y;
+	x2 = ray->map_x + 0.5;
+	y2 = ray->map_y + 0.5;
 	if (((int)x1 - (int)x2) > 1 || ((int)x1 - (int)x2) < -1)
 		return (2);
 	if (((int)y1 - (int)y2) > 1 || ((int)y1 - (int)y2) < -1)
 		return (2);
 	ret = sqrt((y1 - y2) + (y1 - y2));
 	return (ret);
+}
+
+int	check_door(t_game *game, t_ray *ray)
+{
+	if (game->map[ray->map_y][ray->map_x] == 'P')
+	{
+		if (distance(game, ray) < 0.75 && distance(game, ray) >= -0.75)
+			game->map[ray->map_y][ray->map_x] = 'p';
+	}
+	else if (game->map[ray->map_y][ray->map_x] == 'p')
+	{
+		if (distance(game, ray) >= 0.75 || distance(game, ray) < -0.75)
+			game->map[ray->map_y][ray->map_x] = 'P';
+	}
+	if (game->map[ray->map_y][ray->map_x] == 'P')
+		game->flags.door = 1;
+	if (game->map[ray->map_y][ray->map_x] != 'p')
+		return (1);
+	return (0);
 }
 
 void	dda(t_game *game, t_ray *ray)
@@ -74,26 +96,10 @@ void	dda(t_game *game, t_ray *ray)
 		}
 		if (ray->map_y < 0.25 || ray->map_x < 0.25)
 			break ;
-		else if (ray->map_y > game->map_height - 0.25)
-			break ;
-		else if (ray->map_x > game->map_width - 1.25)
+		else if ((ray->map_y > game->map_height - 0.25) || \
+				(ray->map_x > game->map_width - 1.25))
 			break ;
 		else if (game->map[ray->map_y][ray->map_x] > '0')
-		{
-			if (game->map[ray->map_y][ray->map_x] == 'P')
-			{
-				if (distance(game, ray) < 0.75 && distance(game, ray) >= -0.75)
-					game->map[ray->map_y][ray->map_x] = 'p';
-			}
-			else if (game->map[ray->map_y][ray->map_x] == 'p')
-			{
-				if (distance(game, ray) >= 0.75 || distance(game, ray) < -0.75)
-					game->map[ray->map_y][ray->map_x] = 'P';
-			}
-			if (game->map[ray->map_y][ray->map_x] == 'P')
-				game->flags.door = 1;
-			if (game->map[ray->map_y][ray->map_x] != 'p')
-				hit = 1;
-		}
+			hit = check_door(game, ray);
 	}
 }
