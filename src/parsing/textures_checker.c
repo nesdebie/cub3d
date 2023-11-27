@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 12:02:41 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/10 11:20:41 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/27 11:18:54 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ static int	check_fc(t_game *game, char c)
 	char	**arr;
 
 	if (c == 'c')
-		arr = ft_split(game->sprites.c, ',');
+		arr = ft_split(game->tx.c, ',');
 	if (c == 'f')
-		arr = ft_split(game->sprites.f, ',');
+		arr = ft_split(game->tx.f, ',');
 	if (!arr)
 		return (error_msg(MALLOC_ERROR));
 	if (check_fc_args(arr))
@@ -49,10 +49,10 @@ static int	check_fc(t_game *game, char c)
 		return (1);
 	}
 	if (c == 'c')
-		game->sprites.c_rgb = set_rgb(ft_atoi(arr[0]),
+		game->tx.c_rgb = set_rgb(ft_atoi(arr[0]),
 				ft_atoi(arr[1]), ft_atoi(arr[2]));
 	if (c == 'f')
-		game->sprites.f_rgb = set_rgb(ft_atoi(arr[0]),
+		game->tx.f_rgb = set_rgb(ft_atoi(arr[0]),
 				ft_atoi(arr[1]), ft_atoi(arr[2]));
 	ft_freesplit(arr);
 	return (0);
@@ -76,13 +76,13 @@ int	check_xpm(char *texture)
 
 int	check_nsew(t_game *game)
 {
-	if (check_xpm(game->sprites.no))
+	if (check_xpm(game->tx.no))
 		return (1);
-	if (check_xpm(game->sprites.so))
+	if (check_xpm(game->tx.so))
 		return (1);
-	if (check_xpm(game->sprites.ea))
+	if (check_xpm(game->tx.ea))
 		return (1);
-	if (check_xpm(game->sprites.we))
+	if (check_xpm(game->tx.we))
 		return (1);
 	return (0);
 }
@@ -92,15 +92,15 @@ int	check_textures(t_game *game)
 	int	i;
 
 	i = 0;
-	while (game->sprites.f[i] && game->sprites.f[i] != '\n')
+	while (game->tx.f[i] && game->tx.f[i] != '\n')
 		i++;
-	if (game->sprites.f[i])
-		game->sprites.f[i] = 0;
+	if (game->tx.f[i])
+		game->tx.f[i] = 0;
 	i = 0;
-	while (game->sprites.c[i] && game->sprites.c[i] != '\n')
+	while (game->tx.c[i] && game->tx.c[i] != '\n')
 		i++;
-	if (game->sprites.c[i])
-		game->sprites.c[i] = 0;
+	if (game->tx.c[i])
+		game->tx.c[i] = 0;
 	if (check_fc (game, 'f'))
 		return (1);
 	if (check_fc (game, 'c'))

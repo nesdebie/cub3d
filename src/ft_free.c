@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 00:03:27 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/15 14:41:41 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/27 11:18:54 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,32 +51,32 @@ void	ft_freesplit(char **arr)
 
 static void	clear_textures(t_game *game)
 {
-	if (game->sprites.n)
-		free(game->sprites.n);
-	if (game->sprites.s)
-		free(game->sprites.s);
-	if (game->sprites.e)
-		free(game->sprites.e);
-	if (game->sprites.w)
-		free(game->sprites.w);
-	if (game->sprites.d)
-		free(game->sprites.d);
+	if (game->tx.n)
+		free(game->tx.n);
+	if (game->tx.s)
+		free(game->tx.s);
+	if (game->tx.e)
+		free(game->tx.e);
+	if (game->tx.w)
+		free(game->tx.w);
+	if (game->tx.d)
+		free(game->tx.d);
 }
 
 int	clear_args(t_game *game)
 {
 	if (game->flags.n_flag > 0)
-		free(game->sprites.no);
+		free(game->tx.no);
 	if (game->flags.s_flag > 0)
-		free(game->sprites.so);
+		free(game->tx.so);
 	if (game->flags.e_flag > 0)
-		free(game->sprites.ea);
+		free(game->tx.ea);
 	if (game->flags.w_flag > 0)
-		free(game->sprites.we);
+		free(game->tx.we);
 	if (game->flags.f_flag > 0)
-		free(game->sprites.f);
+		free(game->tx.f);
 	if (game->flags.c_flag > 0)
-		free(game->sprites.c);
+		free(game->tx.c);
 	if (game->map_str)
 		free(game->map_str);
 	if (game->map)

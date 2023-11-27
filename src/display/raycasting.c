@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 09:05:08 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/15 14:40:55 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/27 11:18:54 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ static int	get_texture_pixel(t_game *game, t_ray *ray, int x, int y)
 	if (ray->side == 0)
 	{
 		if (ray->dir_x < 0)
-			return (game->sprites.w[SIZE * y + x]);
+			return (game->tx.w[SIZE * y + x]);
 		else
-			return (game->sprites.e[SIZE * y + x]);
+			return (game->tx.e[SIZE * y + x]);
 	}
 	else if (ray->dir_y > 0)
-		return (game->sprites.s[SIZE * y + x]);
-	return (game->sprites.n[SIZE * y + x]);
+		return (game->tx.s[SIZE * y + x]);
+	return (game->tx.n[SIZE * y + x]);
 }
 
 static void	set_pixels(t_game *game, t_ray *ray, int x, int i)

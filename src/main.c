@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
+/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:22 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/20 15:26:49 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/11/27 11:18:54 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,11 @@ static void	init_flags(t_game *game)
 	game->map = NULL;
 	game->img = NULL;
 	game->pixels = NULL;
-	game->sprites.n = 0;
-	game->sprites.e = 0;
-	game->sprites.w = 0;
-	game->sprites.s = 0;
-	game->sprites.d = 0;
+	game->tx.n = 0;
+	game->tx.e = 0;
+	game->tx.w = 0;
+	game->tx.s = 0;
+	game->tx.d = 0;
 	game->player.map = 0;
 	game->spacebar = 0;
 }

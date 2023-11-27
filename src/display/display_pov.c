@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 14:06:33 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/15 14:41:02 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/27 11:18:54 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ static void	set_frame_image_pixel(t_game *game, t_img *image, int x, int y)
 	if (game->pixels[y][x] > 0)
 		set_image_pixel(image, x, y, game->pixels[y][x]);
 	else if (y < Y / 2)
-		set_image_pixel(image, x, y, game->sprites.c_rgb);
+		set_image_pixel(image, x, y, game->tx.c_rgb);
 	else if (y < Y - 1)
-		set_image_pixel(image, x, y, game->sprites.f_rgb);
+		set_image_pixel(image, x, y, game->tx.f_rgb);
 }
 
 static void	render_frame(t_game *game)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
+/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:57 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/20 15:27:11 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/11/27 11:18:54 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ typedef struct s_player
 	t_img	img_player;
 }				t_player;
 
-typedef struct s_spr
+typedef struct s_tx
 {
 	int				*n;
 	int				*s;
@@ -118,7 +118,7 @@ typedef struct s_spr
 	char			*c;
 	unsigned long	f_rgb;
 	unsigned long	c_rgb;
-}				t_spr;
+}				t_tx;
 
 typedef struct s_flag
 {
@@ -172,7 +172,7 @@ typedef struct s_game
 	int			mouse_y;
 	t_img		wall;
 	t_ray		ray;
-	t_spr		sprites;
+	t_tx		tx;
 	t_flag		flags;
 	t_player	player;
 }				t_game;

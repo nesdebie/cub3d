@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_wall_textures.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hubrygo < hubrygo@student.s19.be>          +#+  +:+       +#+        */
+/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 15:18:46 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/20 12:02:02 by hubrygo          ###   ########.fr       */
+/*   Updated: 2023/11/27 11:18:54 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,20 +63,20 @@ static int	*xpm_to_img(t_game *game, char *path)
 
 int	init_wall_textures(t_game *game)
 {
-	game->sprites.n = xpm_to_img(game, game->sprites.no);
-	if (!game->sprites.n)
+	game->tx.n = xpm_to_img(game, game->tx.no);
+	if (!game->tx.n)
 		return (1);
-	game->sprites.s = xpm_to_img(game, game->sprites.so);
-	if (!game->sprites.s)
+	game->tx.s = xpm_to_img(game, game->tx.so);
+	if (!game->tx.s)
 		return (1);
-	game->sprites.e = xpm_to_img(game, game->sprites.ea);
-	if (!game->sprites.e)
+	game->tx.e = xpm_to_img(game, game->tx.ea);
+	if (!game->tx.e)
 		return (1);
-	game->sprites.w = xpm_to_img(game, game->sprites.we);
-	if (!game->sprites.w)
+	game->tx.w = xpm_to_img(game, game->tx.we);
+	if (!game->tx.w)
 		return (1);
-	game->sprites.d = xpm_to_img(game, "./img/porte-bleu.xpm");
-	if (!game->sprites.d)
+	game->tx.d = xpm_to_img(game, "./img/porte-bleu.xpm");
+	if (!game->tx.d)
 		return (1);
 	return (0);
 }
