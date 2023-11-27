@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 12:02:41 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/27 11:18:54 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/27 14:35:59 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ static int	check_fc_args(char **arr)
 	while (arr[i])
 	{
 		if (onlyint(arr[i]))
-			error_msg(RGB_FORMAT);
+			return (error_msg(RGB_FORMAT));
 		tmp = ft_atoi(arr[i]);
 		if (tmp < 0 || tmp > 255)
-			error_msg(RGB_VALUE);
+			return (error_msg(RGB_VALUE));
 		i++;
 	}
 	if (i != 3)

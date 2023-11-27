@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:11:22 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/27 11:18:54 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/27 14:34:09 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	main(int argc, char **argv)
 	if (argc < 2 || argc > 2)
 		return (args_error(argc, NULL));
 	init_flags(&game);
-	if (parsing(&game, argv[1], argc))
+	if (parsing(&game, argv[1], argc) == 1)
 		return (1);
 	if (init_pre_loop(&game))
 		return (1);
