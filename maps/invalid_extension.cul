@@ -1,0 +1,13 @@
+NO ./img/hp_ron.xpm
+SO ./img/hp_harry.xpm
+WE ./img/hp_ron.xpm
+EA ./img/hp_harry.xpm
+
+F 200,200,0
+C 255,0,0
+
+11111
+10001
+10N01
+10001
+11111
