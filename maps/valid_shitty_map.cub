@@ -1,10 +1,8 @@
-NO ./img/wall_1.xpm
+NO ./img/patrick.xpm
 
-SO      ./img/wall_2.xpm
+SO      ./img/patrick.xpm
 
-WE              ./img/wall_3.xpm
-
-
+WE              ./img/patrick.xpm
 
 
 
@@ -12,7 +10,9 @@ WE              ./img/wall_3.xpm
 
 
 
-EA                                          ./img/wall_4.xpm
+
+
+EA                                          ./img/patrick.xpm
 
 
 
@@ -31,6 +31,8 @@ C                       51,198,227
 
 
 
-        111
-        1S1
-        111
+        11111
+        10001
+        10S01
+        10001
+        11111
