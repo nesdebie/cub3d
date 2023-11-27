@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 15:18:46 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/11/27 11:18:54 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/27 13:10:11 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	init_wall_textures(t_game *game)
 	game->tx.w = xpm_to_img(game, game->tx.we);
 	if (!game->tx.w)
 		return (1);
-	game->tx.d = xpm_to_img(game, "./img/porte-bleu.xpm");
+	game->tx.d = xpm_to_img(game, "./img/bonus_blue_door.xpm");
 	if (!game->tx.d)
 		return (1);
 	return (0);

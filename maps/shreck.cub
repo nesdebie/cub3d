@@ -1,7 +1,7 @@
-NO ./img/Shreck1.xpm
-SO ./img/Shreck2.xpm
-WE ./img/Shreck3.xpm
-EA ./img/Shreck4.xpm
+NO ./img/shreck1.xpm
+SO ./img/shreck2.xpm
+WE ./img/shreck3.xpm
+EA ./img/shreck4.xpm
 
 F 200,200,0
 C 255,0,0

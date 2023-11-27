@@ -1,7 +1,7 @@
-NO ./img/leviosaa.xpm
+NO ./img/hp_ron.xpm
 SO ./img/Spooder_man.xpm
-WE ./img/chien.xpm
-EA ./img/Sanic.xpm
+WE ./img/le_dog.xpm
+EA ./img/sanic.xpm
 
 F 100,100,0
 C 155,0,0
