@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_checker.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nesdebie <nesdebie@marvin.42.fr>           +#+  +:+       +#+        */
+/*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 12:01:49 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/10/22 18:42:02 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/11/29 11:51:18 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,7 @@ int	read_file(t_game *game, char *filename, int fd, char *tmp)
 		if (tmp[0] != '\n')
 		{
 			if (parse_texture(game, tmp, 1))
-			{
-				free(tmp);
-				return (error_msg(FORMAT_ERROR));
-			}
+				return (1);
 			game->flags.cnt++;
 		}
 		free (tmp);
